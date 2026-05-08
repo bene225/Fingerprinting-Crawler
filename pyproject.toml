@@ -5,6 +5,7 @@ description = "Crawler, um Fingerprinting auf diversen Websites auszulesen"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
+    "pandas>=3.0.2",
     "playwright>=1.59.0",
     "pydantic>=2.13.4",
 ]
