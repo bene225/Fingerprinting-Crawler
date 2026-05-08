@@ -1,13 +1,14 @@
 # Python
-
 __pycache__/
 *.py[cod] # Byte Code aus Compiler
 
 # Enviroment
-
 .env      # Enviroment Variablen (Secrets)
 .venv     # Virtuelle Umgebung
 
 # Datenbanken
 *.db
 *.log
+
+# System
+settings.json

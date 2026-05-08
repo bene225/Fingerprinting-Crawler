@@ -5,5 +5,6 @@ from models import CrawlerConfig
 
 class Crawler:
     
-    def __init__(self,CrawlerConfig):
-        self.config = CrawlerConfig
+    def __init__(self, config = CrawlerConfig):
+        self.config = config
+        
