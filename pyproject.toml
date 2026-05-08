@@ -1,0 +1,10 @@
+[project]
+name = "fingerprinting-crawler"
+version = "0.1.0"
+description = "Crawler, um Fingerprinting auf diversen Websites auszulesen"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "playwright>=1.59.0",
+    "pydantic>=2.13.4",
+]
