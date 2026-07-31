@@ -44,6 +44,6 @@ class BrowserController:
 
 
 
-def _cookie_origin_domain(url_uncut : str) -> str:
+def _cookie_origin_cutter(url_uncut : str) -> str:
     
 return
