@@ -10,3 +10,10 @@ https://www.chromium.org/Home/chromium-privacy/privacy-sandbox/third-party-cooki
 - Nicht wirklich nachvollziehbar (- verlässlichkeit)
 - offizieller Flag eines der meistgenutzen Browser (+ verlässlichkeit)
 
+### context.route 
+
+- selber geschrieben und fix (+reprpduzierbarkeit)
+- unterschiedlicher Umfang zur Flag
+- völlig nachvollziehbar
+- wiederverwendbar
+- erweiterbar
