@@ -36,6 +36,14 @@ class BrowserController:
         if self._browser is None:
             raise RuntimeError("Async with zuerst aufrufen")
         context = await self._browser.new_context()
-        
-        # Hier weitermachen
+        # 3P-Cookies bei Bedarf ab Browser Start blockieren
+        if self._allow_3p == False:
+            
+            
         return context
+
+
+
+def _cookie_origin_domain(url_uncut : str) -> str:
+    
+return
