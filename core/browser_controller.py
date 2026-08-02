@@ -62,7 +62,8 @@ async def _block_thirdparty_cookies(route : Route, request : Request, main_site 
     
     # RO -> Kopie erstellen
     headers = request.headers
-    # entferne Cookies-Setzen von 3P
+    # entferne Cookies-Auslesen von 3P 
+    # TODO setzen auch verhindern
     headers.pop("cookie", None)
     await route.continue_(headers = headers)
     
