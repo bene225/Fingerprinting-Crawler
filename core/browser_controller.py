@@ -1,6 +1,7 @@
-from playwright.async_api import  Playwright, Browser, BrowserContext, async_playwright
+from playwright.async_api import  Playwright, Browser, BrowserContext, Route, Request, async_playwright
 from typing import Literal
 import tldextract
+
 # Vorbereitung für Pydantic 
 BrowserType = Literal["chromium", "firefox"]
 
@@ -50,3 +51,19 @@ def _origin_domain(url_uncut : str) -> str:
     url_parts = tldextract.extract(url_uncut)
     hostname = url_parts.registered_domain
     return hostname
+
+async def _block_thirdparty_cookies(route : Route, request : Request, main_site : str):
+    requested_site = _origin_domain(request.url)
+    
+    # 1P erkennen und durchlassen
+    if requested_site == main_site:
+        await route.continue_()
+        return
+    
+    # RO -> Kopie erstellen
+    headers = request.headers
+    # entferne Cookies-Setzen von 3P
+    headers.pop("cookie", None)
+    await route.continue_(headers = headers)
+    
+    
