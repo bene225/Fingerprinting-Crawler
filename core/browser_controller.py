@@ -1,6 +1,6 @@
 from playwright.async_api import  Playwright, Browser, BrowserContext, async_playwright
 from typing import Literal
-
+import tldextract
 # Vorbereitung für Pydantic 
 BrowserType = Literal["chromium", "firefox"]
 
@@ -20,6 +20,7 @@ class BrowserController:
     #Hier wird Browser gestartet    
     async def __aenter__(self) -> BrowserController: # -> BC wird erst hier fertig 
         self._playwright = await async_playwright().start()
+        # Gewählter Browser aus BrowserType
         self._browser = await getattr(self._playwright,self._browser_type).launch(headless = self._headless)
         return self
     
@@ -36,14 +37,16 @@ class BrowserController:
         if self._browser is None:
             raise RuntimeError("Async with zuerst aufrufen")
         context = await self._browser.new_context()
-        # 3P-Cookies bei Bedarf ab Browser Start blockieren
+        # Bei Bedarf nur 1P
         if self._allow_3p == False:
             
             
         return context
 
 
-
-def _cookie_origin_cutter(url_uncut : str) -> str:
-    
-return
+# Bsp: blog.bmw.de => bmw.de
+# Erkennung des Hosts 
+def _origin_domain(url_uncut : str) -> str:
+    url_parts = tldextract.extract(url_uncut)
+    hostname = url_parts.registered_domain
+    return hostname
