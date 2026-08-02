@@ -54,9 +54,9 @@ def _origin_domain(url_uncut : str) -> str:
 
 async def _block_thirdparty_cookies(route : Route, request : Request, main_site : str):
     requested_site = _origin_domain(request.url)
-    
+    first_party = requested_site == main_site
     # 1P erkennen und durchlassen
-    if requested_site == main_site:
+    if first_party:
         await route.continue_()
         return
     
