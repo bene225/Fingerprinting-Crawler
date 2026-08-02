@@ -40,8 +40,10 @@ class BrowserController:
         context = await self._browser.new_context()
         # Bei Bedarf nur 1P
         if self._allow_3p == False:
-            
-            
+            main_site = _origin_domain(url)
+            # route->3p->dann wieder alles was darf an route. lambda KI
+            await context.route("**/*", lambda route, request: _block_thirdparty_cookies(
+                route, request, main_site))
         return context
 
 
@@ -52,6 +54,7 @@ def _origin_domain(url_uncut : str) -> str:
     hostname = url_parts.registered_domain
     return hostname
 
+# main_site = first_party, requested_site = einzelner request
 async def _block_thirdparty_cookies(route : Route, request : Request, main_site : str):
     requested_site = _origin_domain(request.url)
     first_party = requested_site == main_site
