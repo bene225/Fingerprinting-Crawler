@@ -69,7 +69,6 @@ async def _block_thirdparty_cookies(route : Route, request : Request, main_site 
     # entferne Cookies-Auslesen von 3P 
     headers.pop("cookie", None)
     # TODO Wird Cookies im Header immer klein geschrieben ???
-    await route.continue_(headers = headers)
     
     # COOKIES SCHREIBEN BLOCKIEREN
     # Antwort vom Server abfangen vor Browser, C löschen
