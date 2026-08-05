@@ -72,7 +72,7 @@ async def _block_thirdparty_cookies(route : Route, request : Request, main_site 
     
     # COOKIES SCHREIBEN BLOCKIEREN
     # Antwort vom Server abfangen vor Browser, C löschen
-    response = await route.fetch()
+    response = await route.fetch(headers=headers)
     response_header = dict(response.headers)
     response_header.pop("set-cookie", None)
     await route.fulfill(response=response, headers=response_header)
