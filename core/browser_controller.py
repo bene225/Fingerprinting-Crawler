@@ -63,11 +63,18 @@ async def _block_thirdparty_cookies(route : Route, request : Request, main_site 
         await route.continue_()
         return
     
+    #COOKIES LESEN BLOCKIEREN
     # RO -> Kopie erstellen mit dict sonst nur referenz
     headers = dict(request.headers)
     # entferne Cookies-Auslesen von 3P 
-    # TODO setzen auch verhindern
     headers.pop("cookie", None)
+    # TODO Wird Cookies im Header immer klein geschrieben ???
     await route.continue_(headers = headers)
     
+    # COOKIES SCHREIBEN BLOCKIEREN
+    # Antwort vom Server abfangen vor Browser, C löschen
+    response = await route.fetch()
+    response_header = dict(response.headers)
+    response_header.pop("set-cookie", None)
+    await route.fulfill(response=response, headers=response_header)
     
