@@ -23,3 +23,8 @@ https://www.chromium.org/Home/chromium-privacy/privacy-sandbox/third-party-cooki
 - Computer empfängt die http Response und leitet sie um
 - Header wird manipuliert, Set-Cookies werden rausgeschnitten
 - Dann weiterleitung der Response ohne cookie setter
+
+## Überlegung JS Cookies
+- werden sie wegen nicht filterung gesetzt
+- oder greift hier xss Schutz
+# TESTEN
