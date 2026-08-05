@@ -10,8 +10,7 @@ async def testcrawl():
         #print(await page.content())
         if visti_page:
             print (await visti_page.request.all_headers())
-            print (await visti_page.all_headers())
-            
+            print (await visti_page.all_headers())  
         await context.close()
         
         
