@@ -16,5 +16,9 @@ class Injector:
         self.events : list[DetectedFingerprint] = []
     
     async def integrade_monkeypatch(self, page : Page) -> None:
+        # Zählfunktion verfügbar machen
         await page.expose_binding("register_fp", _append_event)
-        with open("monkeypatch.js", ) as mp_script:
+        # Skript einlesen und in Website einfügen
+        with open("monkeypatch.js", "r", encoding="utf-8") as mp_script:
+            mp_script = mp_script.read()
+        await page.add_init_script(mp_script)
