@@ -1,4 +1,4 @@
-import playwright.async_api as async_api
+from playwright.async_api import Page
 
 # Datenübergabe, TODO fertigstellen
 class DetectedFingerprint:
@@ -9,4 +9,12 @@ class DetectedFingerprint:
         self.url = url
         
 
+# https://playwright.dev/python/docs/api/class-browsercontext
+class Injector:
+    def __init__(self) -> None:
+        self.events : list[DetectedFingerprint] = []
     
+    async def integrade_monkeypatch(self):
+        await Page.expose_binding("register_fp", _append_event)
+        
+    # TODO implementiere _append_event
