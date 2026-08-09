@@ -24,6 +24,7 @@ class Injector:
         await page.add_init_script(mp_script)
     
     # Aufruf auf Website duch mp wenn Fp erkannt, dann zählen
-    async def _append_event(self, _, api, method, url) -> None:
-        self.events.append(DetectedFingerprint(api=api, method=method,url=url))
+    # location href aus der mp.js
+    async def _append_event(self, _, api, method, location_href) -> None:
+        self.events.append(DetectedFingerprint(api=api, method=method,url=location_href))
         
