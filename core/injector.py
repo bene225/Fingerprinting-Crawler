@@ -4,8 +4,8 @@ from os import path
 # Datenübergabe, TODO fertigstellen
 class DetectedFingerprint:
     
-    def __init__(self, type : str, method : str, url : str ) -> None:
-        self.type = type
+    def __init__(self, api : str, method : str, url : str ) -> None:
+        self.type = api
         self.method = method
         self.url = url
         
@@ -22,6 +22,8 @@ class Injector:
         with open("monkeypatch.js", "r", encoding="utf-8") as mp_script:
             mp_script = mp_script.read()
         await page.add_init_script(mp_script)
+    
+    # Aufruf auf Website duch mp wenn Fp erkannt, dann zählen
+    async def _append_event(self, _, api, method, url) -> None:
+        self.events.append(DetectedFingerprint(api=api, method=method,url=url))
         
-    async def _append_event(self, _, api, method, page_url) -> None:
-        self.events.append(DetectedFingerprint(type=api, method=method,url=page_url))
