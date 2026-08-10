@@ -17,8 +17,7 @@
     canvas_methods.forEach((name) => {
         //https://developer.mozilla.org/de/docs/Web/API/HTMLCanvasElement#instanzmethoden
         const fp_original_function = HTMLCanvasElement.prototype[name]
-        // Ändern der original Funktion
-        
+        // Wrapper zu fp_o_f
     }) 
 
 
