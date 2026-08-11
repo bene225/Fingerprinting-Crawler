@@ -12,7 +12,7 @@
     }
     
     // MP für Canvas
-    const canvas_methods = ["toDataUrl", "toBlob"]; //Die beiden Test
+    const canvas_methods = ["toDataURL", "toBlob"]; //Die beiden Test
     // Ba Text auf welche Funktionen genau getestet wird schreiben getImageData usw. suchen
     canvas_methods.forEach((method) => {
         if (HTMLCanvasElement.prototype[method]){
