@@ -11,9 +11,9 @@
         }
     }
     
+    // MP für Canvas
     const canvas_methods = ["toDataUrl", "toBlob"]; //Die beiden Test
     // Ba Text auf welche Funktionen genau getestet wird schreiben getImageData usw. suchen
-
     canvas_methods.forEach((method) => {
         //https://developer.mozilla.org/de/docs/Web/API/HTMLCanvasElement#instanzmethoden
         const fp_original_function = HTMLCanvasElement.prototype[method]
@@ -22,7 +22,9 @@
             register_fp(canvas ,method)
             fp_original_function.apply(this, args)
         }
-    }) 
-
+    })
+    
+    //MP für Audio
+    
 
 });
