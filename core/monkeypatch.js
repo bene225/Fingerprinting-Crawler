@@ -14,10 +14,14 @@
     const canvas_methods = ["toDataUrl", "toBlob"]; //Die beiden Test
     // Ba Text auf welche Funktionen genau getestet wird schreiben getImageData usw. suchen
 
-    canvas_methods.forEach((name) => {
+    canvas_methods.forEach((method) => {
         //https://developer.mozilla.org/de/docs/Web/API/HTMLCanvasElement#instanzmethoden
-        const fp_original_function = HTMLCanvasElement.prototype[name]
+        const fp_original_function = HTMLCanvasElement.prototype[method]
         // Wrapper zu fp_o_f
+        HTMLCanvasElement.prototype[method] = function wrapper_and_original_fp(...args){
+            register_fp(canvas ,method)
+            fp_original_function.apply(this, args)
+        }
     }) 
 
 
