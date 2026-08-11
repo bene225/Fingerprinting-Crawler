@@ -39,4 +39,14 @@
         }
     })
 
+    const audio_constructor = "OfflineAudioContext";
+    if (window[audio_constructor]){
+        const fp_original_function = window[audio_constructor]
+        window[audio_constructor] = function wrapper_and_original_fp (...args){
+            register_fp("webaudio", audio_constructor);
+            return new window[audio_constructor];
+            // Neue fkt muss wieder Instanzen vom Original erzeugen
+            window[audio_constructor].prototype = fp_original_function.prototype;            
+        }
+    }
 });
