@@ -19,7 +19,7 @@ class Injector:
         # app_ev durch Browser aufrufbar machen 
         await page.expose_binding("register_fp", self._append_event)
         # Skript einlesen und in Website einfügen
-        with open("monkeypatch.js", "r", encoding="utf-8") as mp_script:
+        with open("core/monkeypatch.js", "r", encoding="utf-8") as mp_script:
             mp_script = mp_script.read()
         await page.add_init_script(mp_script)
     
