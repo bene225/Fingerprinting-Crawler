@@ -47,7 +47,7 @@
             register_fp("webaudio", audio_constructor);
             // Neue fkt muss wieder Instanzen vom Original erzeugen
             window[audio_constructor].prototype = fp_original_function.prototype;
-            return new fp_original_function;
+            return new fp_original_function(...args);
                         
         }
     }
