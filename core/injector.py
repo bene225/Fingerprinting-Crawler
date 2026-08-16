@@ -1,13 +1,13 @@
 from playwright.async_api import Page
 from os import path
+from dataclasses import dataclass
 
 # Datenübergabe, TODO fertigstellen
+@dataclass
 class DetectedFingerprint:
-    
-    def __init__(self, api : str, method : str, url : str ) -> None:
-        self.type = api
-        self.method = method
-        self.url = url
+    api : str
+    method : str
+    url : str
         
 
 # https://playwright.dev/python/docs/api/class-browsercontext
