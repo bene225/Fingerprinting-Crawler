@@ -4,14 +4,14 @@ import core.injector
 
 async def testcrawl():
     async with BrowserController(headless = False, allow_3p = False) as bc:
-        context = await bc.new_context("https://browserleaks.com/canvas")
+        context = await bc.new_context("https://coveryourtracks.eff.org")
         page = await context.new_page()
         page.on("console", lambda msg: print(f"Browser-Konsole [{msg.type}]: {msg.text}")) #ki
         page.on("pageerror", lambda err: print(f"JS-Absturz: {err.message}")) #ki
         # MP starten
         page_injection = core.injector.Injector()
         await page_injection.integrade_monkeypatch(page=page)
-        visti_page = await page.goto("https://browserleaks.com/canvas")
+        visti_page = await page.goto("https://coveryourtracks.eff.org")
         await asyncio.sleep(30) 
         #print(await page.content())
         if visti_page:

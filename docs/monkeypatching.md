@@ -16,3 +16,6 @@ Laperdrix, P., Bielova, N., Baudry, B., & Avoine, G. (2020). Browser fingerprint
 - audio entsteht erst bei new AuContext() 
 -  **AudioContext ist legitim, offlineaudiocontext nicht**
 - AudioC abdecken  mit AudioBuffer.prototype.getChannelData, Nutzung für Hash
+
+
+## Übergabe Main Site
