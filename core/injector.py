@@ -1,6 +1,8 @@
 from playwright.async_api import Page
 from os import path
 from dataclasses import dataclass
+import json
+from core.browser_controller import origin_domain
 
 # Datenübergabe, TODO fertigstellen
 @dataclass
@@ -28,3 +30,7 @@ class Injector:
     async def _append_event(self, _, api, method, location_href) -> None:
         self.events.append(DetectedFingerprint(api=api, method=method,url=location_href))
         
+async def first_party_url_to_js(url :str, page: Page) -> None:
+    cutted_url = origin_domain(url_uncut=url)
+    escaped_url = json.dumps(cutted_url)
+    await page.add_init_script(f"window._main_url = {escaped_url}")
