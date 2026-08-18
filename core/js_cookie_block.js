@@ -2,7 +2,8 @@
     document.cookie;
     Object.defineProperty(document, "cookie");
     Object.getOwnPropertyDescriptor(Document.prototype, "cookie");
-    const original_cookie = Object.getOwnPropertyDescriptor(Document.prototype, 'cookie');
+
+    const original_cookie_descriptor = Object.getOwnPropertyDescriptor(Document.prototype, 'cookie') || Object.getOwnPropertyDescriptor(HTMLDocument.prototype, 'cookie');
     //HTMLDocument.prototype Cookie auch nutzen?? lange veraltet.
 
 
