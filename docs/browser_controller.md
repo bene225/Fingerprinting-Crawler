@@ -17,3 +17,8 @@ https://www.chromium.org/Home/chromium-privacy/privacy-sandbox/third-party-cooki
 - völlig nachvollziehbar
 - wiederverwendbar
 - erweiterbar
+
+disable-features=Blockthirdpartycookkes: enabled
+disable blink features= Blockthirdpartycookies
+
+TCF von IAB nachschlagen : Klasse 3 und 4 für Werbung
