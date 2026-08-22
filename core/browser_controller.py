@@ -70,4 +70,5 @@ async def _block_thirdparty_cookies(route : Route, request : Request, main_site 
     headers.pop("cookie", None)
     await route.continue_(headers = headers)
     
+    # TODO document.cookies, local storage überprüfen
     
