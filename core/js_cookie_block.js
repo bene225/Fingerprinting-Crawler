@@ -10,7 +10,7 @@
     //neuer Setter Doc.pr um auch alle ifrmaes zu erwischen
     Object.defineProperty(Document.prototype, 'cookie', {
         set: function (val){
-
+            
 
         }
 
