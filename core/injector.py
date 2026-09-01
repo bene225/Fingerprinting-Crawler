@@ -33,4 +33,4 @@ class Injector:
 async def first_party_url_to_js(url :str, page: Page) -> None:
     cutted_url = origin_domain(url_uncut=url)
     escaped_url = json.dumps(cutted_url)
-    await page.add_init_script(f"window._main_url = {escaped_url}")
+    await page.add_init_script(f"window._location_url = {escaped_url}")
