@@ -9,8 +9,22 @@
 
     //neuer Setter Doc.pr um auch alle ifrmaes zu erwischen
     Object.defineProperty(Document.prototype, 'cookie', {
+        //1 Million Site Measurement
         set: function (val){
-            
+            //Urls von Cookieaufruf aus Browser auslesen.
+            const new_stack = new Error().stack || '';
+            const script_urls = new_stack.match(/https?:\/\/[^\s\):]+/g) || [];
+            // Url für 1P-Vergleich
+            const py_url = window._location_url;
+
+            //Notfalls durchreichen, falls Übertrgungsfehler von py script
+            if (!py_url){
+                return original_cookie_descriptor.set.call(document,val);
+            }
+            third_party = true
+            for (let script_url in script_urls){
+                
+            }
 
         }
 
@@ -21,3 +35,4 @@
 //call
 //https://github.com/BrunoFenzl/cookie-interceptor/
 //https://stackoverflow.com/questions/32410331/proxying-of-document-cookie
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/stack
