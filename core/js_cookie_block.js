@@ -22,7 +22,7 @@
                 return original_cookie_descriptor.set.call(document,val);
             }
             third_party = true
-            for (let script_url in script_urls){
+            for (let script_url of script_urls){
                 
             }
 
