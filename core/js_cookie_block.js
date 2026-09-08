@@ -21,13 +21,27 @@
             if (!py_url){
                 return original_cookie_descriptor.set.call(this, val);
             }
-            let third_party = true;
+
+            let third_party = false;
             for (let script_url of script_urls){
-                
+                try {
+                    const script_hostname = new URL(script_url).hostname;
+                    //Domain Matching (mit Subdomain)
+                    if (script_hostname !== py_url && !script_hostname.endsWith('.' + py_url)) {
+                        third_party = true;
+                        break;
+                    }
+                }
+                catch(e) {
+                    console.log("URL Fehlerhaft");
+                }
             }
-
+                if (third_party == true){
+                    console.log(script_urls + "3P Block");
+                    return;
+                }
+                return original_cookie_descriptor.set.call(this, val);
         }
-
     })
 })();
 
