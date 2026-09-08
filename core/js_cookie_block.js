@@ -21,7 +21,7 @@
             if (!py_url){
                 return original_cookie_descriptor.set.call(document,val);
             }
-            third_party = true
+            let third_party = true
             for (let script_url of script_urls){
                 
             }
