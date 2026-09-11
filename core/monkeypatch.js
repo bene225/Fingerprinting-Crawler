@@ -28,7 +28,7 @@
     })
 
      // MP für Canvas2d
-    const canvas2d_methods = ["getImageData, isPointInPath, measureText"]; //Die beiden Test
+    const canvas2d_methods = ["getImageData", "isPointInPath", "measureText"]; //Die beiden Test
     canvas2d_methods.forEach((method) => {
         if (CanvasRenderingContext2D.prototype[method]){
             const fp_original_function = CanvasRenderingContext2D.prototype[method];
@@ -41,7 +41,7 @@
     })
     
     // MP für WebGL
-    const WebGL_methods = ["getImageData, isPointInPath, measureText"]; //Die beiden Test
+    const WebGL_methods = ["getParameter", "getSupportedExtensions", "readPixels"]; //Die beiden Test
     WebGL_methods.forEach((method) => {
         if (WebGLRenderingContext.prototype[method]){
             const fp_original_function = WebGLRenderingContext.prototype[method];
