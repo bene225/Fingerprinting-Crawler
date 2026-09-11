@@ -66,18 +66,19 @@
         }
     })
 
-    const audio_constructor = "OfflineAudioContext";
-    if (window[audio_constructor]){
-        const fp_original_function = window[audio_constructor];
-        window[audio_constructor] = function wrapper_and_original_fp (...args){
-            register_fp("webaudio", audio_constructor);
-            // Neue fkt muss wieder Instanzen vom Original erzeugen
-            return new fp_original_function(...args);
+    const audio_constructors = ["OfflineAudioContext", "AudioContext"];
+    for (audio_constructor of audio_constructors){
+        if (window[audio_constructor]){
+            const fp_original_function = window[audio_constructor];
+            window[audio_constructor] = function wrapper_and_original_fp (...args){
+                register_fp("webaudio", audio_constructor);
+                // Neue fkt muss wieder Instanzen vom Original erzeugen
+                return new fp_original_function(...args);
+            }
+            // Wieder vererbung von Funktionen der normalen Funktion holen
+            window[audio_constructor].prototype = fp_original_function.prototype; 
         }
-        // Wieder vererbung von Funktionen der normalen Funktion holen
-        window[audio_constructor].prototype = fp_original_function.prototype; 
     }
-
     // MP für weitere Restliche FKT
     const misc_targets = [
     [navigator.mediaDevices, "enumerateDevices"],
