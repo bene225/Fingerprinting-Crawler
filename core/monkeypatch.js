@@ -77,4 +77,23 @@
         // Wieder vererbung von Funktionen der normalen Funktion holen
         window[audio_constructor].prototype = fp_original_function.prototype; 
     }
+
+    // MP für weitere Restliche FKT
+    const misc_targets = [
+    [navigator.mediaDevices, "enumerateDevices"],
+    [Navigator.prototype,    "getBattery"],
+    [speechSynthesis,        "getVoices"],
+    [navigator.storage,      "estimate"]];
+    misc_targets.forEach(([api, method]) => {
+        if (method && api[method]){
+            const fp_original_function = api[method]
+            // Wrapper zu fp_o_f
+            api[method] = function wrapper_and_original_fp(...args){
+                register_fp(api.constructor.name, method);
+                return fp_original_function.apply(this, args);
+            }
+        }
+    })
+
+    // TODO: statisches Fingerprinting
 })();
