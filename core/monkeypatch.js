@@ -48,8 +48,9 @@
             // Neue fkt muss wieder Instanzen vom Original erzeugen
             return new fp_original_function(...args);
         }
+        // Wieder vererbung von Funktionen der normalen Funktion holen
+        window[audio_constructor].prototype = fp_original_function.prototype; 
     }
-    // Wieder vererbung von Funktionen der normalen Funktion holen
-    window[audio_constructor].prototype = fp_original_function.prototype;            
+               
 
 })();
