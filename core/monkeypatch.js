@@ -21,7 +21,21 @@
             const fp_original_function = HTMLCanvasElement.prototype[method];
             // Wrapper zu fp_o_f
             HTMLCanvasElement.prototype[method] = function wrapper_and_original_fp(...args){
-                register_fp("canvas" ,method);
+                register_fp("canvas", method);
+                return fp_original_function.apply(this, args);
+            }
+        }
+    })
+
+     // MP für Canvas2d
+    const canvas2d_methods = ["getImageData, isPointInPath, measureText"]; //Die beiden Test
+    // Ba Text auf welche Funktionen genau getestet wird schreiben getImageData usw. suchen
+    canvas2d_methods.forEach((method) => {
+        if (CanvasRenderingContext2D.prototype[method]){
+            const fp_original_function = CanvasRenderingContext2D.prototype[method];
+            // Wrapper zu fp_o_f
+            CanvasRenderingContext2D.prototype[method] = function wrapper_and_original_fp(...args){
+                register_fp("canvas2D", method);
                 return fp_original_function.apply(this, args);
             }
         }
