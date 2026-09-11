@@ -29,7 +29,6 @@
 
      // MP für Canvas2d
     const canvas2d_methods = ["getImageData, isPointInPath, measureText"]; //Die beiden Test
-    // Ba Text auf welche Funktionen genau getestet wird schreiben getImageData usw. suchen
     canvas2d_methods.forEach((method) => {
         if (CanvasRenderingContext2D.prototype[method]){
             const fp_original_function = CanvasRenderingContext2D.prototype[method];
@@ -40,6 +39,7 @@
             }
         }
     })
+    
     
     //MP für Audio 
     const audio_methods = ["getChannelData"];
@@ -65,6 +65,4 @@
         // Wieder vererbung von Funktionen der normalen Funktion holen
         window[audio_constructor].prototype = fp_original_function.prototype; 
     }
-               
-
 })();
