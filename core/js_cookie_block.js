@@ -43,7 +43,7 @@
                 return original_cookie_descriptor.set.call(this, val);
         },
         get: function(){
-            return original_cookie_descriptor.get.call(this)
+            return original_cookie_descriptor.get.call(this);
         }
     })
 })();
