@@ -67,7 +67,7 @@
     })
 
     const audio_constructors = ["OfflineAudioContext", "AudioContext"];
-    for (audio_constructor of audio_constructors){
+    for (const audio_constructor of audio_constructors){
         if (window[audio_constructor]){
             const fp_original_function = window[audio_constructor];
             window[audio_constructor] = function wrapper_and_original_fp (...args){
