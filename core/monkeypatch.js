@@ -40,6 +40,18 @@
         }
     })
     
+    // MP für WebGL
+    const WebGL_methods = ["getImageData, isPointInPath, measureText"]; //Die beiden Test
+    WebGL_methods.forEach((method) => {
+        if (WebGLRenderingContext.prototype[method]){
+            const fp_original_function = WebGLRenderingContext.prototype[method];
+            // Wrapper zu fp_o_f
+            WebGLRenderingContext.prototype[method] = function wrapper_and_original_fp(...args){
+                register_fp("WebGL", method);
+                return fp_original_function.apply(this, args);
+            }
+        }
+    })
     
     //MP für Audio 
     const audio_methods = ["getChannelData"];
