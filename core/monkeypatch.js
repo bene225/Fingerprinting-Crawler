@@ -117,6 +117,7 @@
     //Laperdix (welche FP relevant für BA)
     const static_properties = [
         [Navigator.prototype, "userAgent"],
+        [Navigator.prototype, "userAgentData"],
         [Navigator.prototype, "plugins"],
         [Navigator.prototype, "platform"],
         [Navigator.prototype, "cookieEnabled"],
@@ -125,7 +126,7 @@
         [Screen.prototype, "width"],
         [Screen.prototype, "height"],
         [Screen.prototype, "colorDepth"],
-        [Window.prototype,  "devicePixelRatio"]];
+        [Window,  "devicePixelRatio"]];
     static_properties.forEach(([proto, property]) => {
         const original_property_descriptor = Object.getOwnPropertyDescriptor(proto, property);
         if (!original_property_descriptor || !original_property_descriptor.get) return;
