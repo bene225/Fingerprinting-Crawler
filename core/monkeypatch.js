@@ -80,12 +80,12 @@
         }
     }
     // MP für weitere Restliche FKT
-    const misc_targets = [
-    [navigator.mediaDevices, "enumerateDevices"],
-    [Navigator.prototype,    "getBattery"],
-    [speechSynthesis,        "getVoices"],
-    [navigator.storage,      "estimate"]];
-    misc_targets.forEach(([api, method]) => {
+    const misc_methods = [
+        [navigator.mediaDevices, "enumerateDevices"],
+        [Navigator.prototype,    "getBattery"],
+        [speechSynthesis,        "getVoices"],
+        [navigator.storage,      "estimate"]];
+    misc_methods.forEach(([api, method]) => {
         if (method && api[method]){
             const fp_original_function = api[method]
             // Wrapper zu fp_o_f
@@ -97,4 +97,31 @@
     })
 
     // TODO: statisches Fingerprinting
+    //https://developer.mozilla.org/en-US/docs/Web/API/Navigator#instance_methods
+    //Laperdix (welche FP relevant für BA)
+    const static_properties = [
+        [Navigator.prototype, "userAgent"],
+        [Navigator.prototype, "plugins"],
+        [Navigator.prototype, "platform"],
+        [Navigator.prototype, "cookieEnabled"],
+        [Navigator.prototype, "doNotTrack"],
+        [Navigator.prototype, "language"]
+        [Screen.prototype, "width"],
+        [Screen.prototype, "height"],
+        [Screen.prototype, "colorDepth"],
+        [Window.prototype,  "devicePixelRatio"]];
+    static_properties.forEach(([proto, property]) => {
+        const original_property_descriptor = Object.getOwnPropertyDescriptor(proto, property);
+        if (!original_property_descriptor || !original_property_descriptor.get) return;
+        Object.defineProperty(proto, property, {
+            // Zu viel Bot Block enumerable = ture
+            // Falls während website Aufruf geändert wird configurable = true
+            get: function(){
+                register_fp(proto.constructor.name, property);
+                return original_property_descriptor.get.call(this);
+            }
+        })
+
+    })
+        
 })();
