@@ -3,8 +3,32 @@
     // Fügt 
     function register_fp(api,method){
         try {
-            // Aufruf der Einbinung injector/register_fp in das JS
-            window.register_fp(api, method, location.href);
+            //Fingerprinting Ursprung 1P/3P
+            const new_stack = new Error().stack || '';
+            const script_urls = new_stack.match(/https?:\/\/[^\s\):]+/g) || [];
+            // Url für 1P-Vergleich
+            const py_url = window._location_url;
+            let third_party = false;
+            if (!py_url) {
+                window.register_fp(api, method, location.href, "Keine py_url");
+                return; 
+            }
+            for (let script_url of script_urls){
+                try {
+                    const script_hostname = new URL(script_url).hostname;
+                    //Domain Matching (mit Subdomain)
+                    if (script_hostname !== py_url && !script_hostname.endsWith('.' + py_url)) {
+                        third_party = true;
+                        break;
+                    }
+                }
+                catch(e) {
+                    console.log("URL Fehlerhaft");
+                }
+            }
+
+            // Aufruf der Einbinung injector/register_fp in das JS (Python-BRÜCKE)
+            window.register_fp(api, method, location.href, third_party);
         }
         catch(exception){
             // Absutz Crawler verhindern
