@@ -39,9 +39,22 @@
             }
         }
     })
+
+    // MP für Local/session storage
+    const storage_methods = ["setItem", "getItem"]; 
+    storage_methods.forEach((method) => {
+        if (Storage.prototype[method]){
+            const fp_original_function = Storage.prototype[method];
+            // Wrapper zu fp_o_f
+            Storage.prototype[method] = function wrapper_and_original_fp(...args){
+                register_fp("local/session storage", method);
+                return fp_original_function.apply(this, args);
+            }
+        }
+    })
     
     // MP für WebGL
-    const WebGL_methods = ["getParameter", "getSupportedExtensions", "readPixels"]; //Die beiden Test
+    const WebGL_methods = ["getParameter", "getSupportedExtensions", "readPixels"]; 
     WebGL_methods.forEach((method) => {
         if (WebGLRenderingContext.prototype[method]){
             const fp_original_function = WebGLRenderingContext.prototype[method];
@@ -108,7 +121,7 @@
         [Navigator.prototype, "platform"],
         [Navigator.prototype, "cookieEnabled"],
         [Navigator.prototype, "doNotTrack"],
-        [Navigator.prototype, "language"]
+        [Navigator.prototype, "language"],
         [Screen.prototype, "width"],
         [Screen.prototype, "height"],
         [Screen.prototype, "colorDepth"],
