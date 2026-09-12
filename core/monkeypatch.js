@@ -150,7 +150,7 @@
         [Screen.prototype, "width"],
         [Screen.prototype, "height"],
         [Screen.prototype, "colorDepth"],
-        [Window,  "devicePixelRatio"]];
+        [window,  "devicePixelRatio"]];
     static_properties.forEach(([proto, property]) => {
         const original_property_descriptor = Object.getOwnPropertyDescriptor(proto, property);
         if (!original_property_descriptor || !original_property_descriptor.get) return;
