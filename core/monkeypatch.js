@@ -84,7 +84,10 @@
         [navigator.mediaDevices, "enumerateDevices"],
         [Navigator.prototype,    "getBattery"],
         [speechSynthesis,        "getVoices"],
-        [navigator.storage,      "estimate"]];
+        [navigator.storage,      "estimate"],
+        [Intl.DateTimeFormat.prototype, "resolvedOptions"], //timezone locale calendar numberingSystem
+    ]; 
+
     misc_methods.forEach(([api, method]) => {
         if (method && api[method]){
             const fp_original_function = api[method]
