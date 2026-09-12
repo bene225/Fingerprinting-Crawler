@@ -10,7 +10,7 @@ class DetectedFingerprint:
     api : str
     method : str
     url : str
-    third_party : bool
+    third_party : bool | str # TODO: evtl nacharbeiten hier
         
 
 # https://playwright.dev/python/docs/api/class-browsercontext

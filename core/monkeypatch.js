@@ -122,7 +122,8 @@
         [Navigator.prototype,    "getBattery"],
         [speechSynthesis,        "getVoices"],
         [navigator.storage,      "estimate"],
-        [Intl.DateTimeFormat.prototype, "resolvedOptions"], //timezone locale calendar numberingSystem
+        [Intl.DateTimeFormat.prototype, "resolvedOptions"],  //timezone locale calendar numberingSystem
+        [NavigatorUAData.prototype, "getHighEntropyValues"]
     ]; 
 
     misc_methods.forEach(([api, method]) => {
@@ -147,6 +148,7 @@
         [Navigator.prototype, "cookieEnabled"],
         [Navigator.prototype, "doNotTrack"],
         [Navigator.prototype, "language"],
+        [Navigator.prototype , "languages"],
         [Screen.prototype, "width"],
         [Screen.prototype, "height"],
         [Screen.prototype, "colorDepth"],
