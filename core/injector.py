@@ -2,7 +2,7 @@ from playwright.async_api import Page
 from os import path
 from dataclasses import dataclass
 import json
-from core.browser_controller import origin_domain
+from utils.origin_domain import origin_domain
 
 # Datenübergabe, TODO fertigstellen
 @dataclass

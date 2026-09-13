@@ -6,6 +6,7 @@ async def testcrawl():
         context = await bc.new_context("https://www.google.de")
         page = await context.new_page()
         visti_page = await page.goto("https://www.google.de")
+        await bc.clear_3p(context)
         await asyncio.sleep(3) 
         #print(await page.content())
         if visti_page:

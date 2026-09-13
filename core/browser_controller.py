@@ -1,6 +1,6 @@
 from playwright.async_api import  Playwright, Browser, BrowserContext, Route, Request, async_playwright
 from typing import Literal
-import tldextract
+from utils.origin_domain import origin_domain
 
 # Vorbereitung für Pydantic 
 BrowserType = Literal["chromium", "firefox"]
@@ -41,21 +41,28 @@ class BrowserController:
         # Bei Bedarf nur 1P
         if self._allow_3p == False:
             main_site = origin_domain(url)
+            thirdp_domains : set[str] = set()
+            # Set an Context binden KI Idee
+            context.thirdp_domains = thirdp_domains # type: ignore
             # route->3p->dann wieder alles was darf an route. lambda KI
-            await context.route("**/*", lambda route, request: _block_thirdparty_cookies(
-                route, request, main_site))
+            await context.route("**/*", lambda route, request: _detect_thirdparty_cookies(route, request, main_site, thirdp_domains))
         return context
+    
+    async def clear_3p(self, context : BrowserContext) -> None:
+        domains = getattr(context, "thirdp_domains", set())
+        for domain in domains:
+            await context.clear_cookies(domain=domain)
+
+async def _detect_thirdparty_cookies(route : Route, request : Request, main_site : str, thirdp_domains : set) -> None:
+    requested_site = origin_domain(request.url)
+    if (main_site != requested_site):
+        thirdp_domains.add(requested_site)
+    await route.continue_()
 
 
-# Bsp: blog.bmw.de => bmw.de
-# Erkennung des Hosts 
-def origin_domain(url_uncut : str) -> str:
-    url_parts = tldextract.extract(url_uncut)
-    hostname = url_parts.registered_domain
-    return hostname
-
+        
 # main_site = first_party, requested_site = einzelner request
-async def _block_thirdparty_cookies(route : Route, request : Request, main_site : str):
+"""async def _block_thirdparty_cookies(route : Route, request : Request, main_site : str):
     requested_site = origin_domain(request.url)
     first_party = requested_site == main_site
     # 1P erkennen und durchlassen
@@ -63,11 +70,17 @@ async def _block_thirdparty_cookies(route : Route, request : Request, main_site 
         await route.continue_()
         return
     
-    # RO -> Kopie erstellen
-    headers = request.headers
+    #COOKIES LESEN BLOCKIEREN
+    # RO -> Kopie erstellen mit dict sonst nur referenz
+    request_headers = dict(request.headers)
     # entferne Cookies-Auslesen von 3P 
-    # TODO setzen auch verhindern
-    headers.pop("cookie", None)
-    await route.continue_(headers = headers)
+    request_headers.pop("cookie", None)
+    # TODO Wird Cookies im Header immer klein geschrieben ???
     
-    
+    # COOKIES SCHREIBEN BLOCKIEREN
+    # Antwort vom Server abfangen vor Browser, C löschen TODO hier evtl Restrikton, weil die Header trotzdem ankommen
+    response = await route.fetch(headers=request_headers)
+    response_header = dict(response.headers)
+    response_header.pop("set-cookie", None)
+    await route.fulfill(response=response, headers=response_header)
+    """
