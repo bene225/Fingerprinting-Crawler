@@ -119,15 +119,14 @@
     // MP für weitere Restliche FKT
     const misc_methods = [
         [navigator.mediaDevices, "enumerateDevices"],
-        [Navigator.prototype,    "getBattery"],
-        [speechSynthesis,        "getVoices"],
+        [Navigator.prototype,    "getBattery"], //nicht in firefox
+        [window.speechSynthesis,        "getVoices"],
         [navigator.storage,      "estimate"],
         [Intl.DateTimeFormat.prototype, "resolvedOptions"],  //timezone locale calendar numberingSystem
-        [NavigatorUAData.prototype, "getHighEntropyValues"]
+        [window.NavigatorUAData?.prototype, "getHighEntropyValues"] //? Für Prüfung ob property überhaupt vorhanden. Diese Property nur bei chromium
     ]; 
-
     misc_methods.forEach(([api, method]) => {
-        if (method && api[method]){
+        if (api && method && api[method]){
             const fp_original_function = api[method]
             // Wrapper zu fp_o_f
             api[method] = function wrapper_and_original_fp(...args){
@@ -152,7 +151,8 @@
         [Screen.prototype, "width"],
         [Screen.prototype, "height"],
         [Screen.prototype, "colorDepth"],
-        [window,  "devicePixelRatio"]];
+        [window,  "devicePixelRatio"]
+    ];
     static_properties.forEach(([proto, property]) => {
         const original_property_descriptor = Object.getOwnPropertyDescriptor(proto, property);
         if (!original_property_descriptor || !original_property_descriptor.get) return;
