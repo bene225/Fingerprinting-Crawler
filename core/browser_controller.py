@@ -41,14 +41,28 @@ class BrowserController:
         # Bei Bedarf nur 1P
         if self._allow_3p == False:
             main_site = origin_domain(url)
+            thirdp_domains : set[str] = set()
+            # Set an Context binden KI Idee
+            context.thirdp_domains = thirdp_domains # type: ignore
             # route->3p->dann wieder alles was darf an route. lambda KI
-            await context.route("**/*", lambda route, request: _block_thirdparty_cookies(
-                route, request, main_site))
+            await context.route("**/*", lambda route, request: _detect_thirdparty_cookies(route, request, main_site, thirdp_domains))
         return context
+    
+    async def clear_3p(self, context : BrowserContext) -> None:
+        domains = getattr(context, "thirdp_domains", set())
+        for domain in domains:
+            await context.clear_cookies(domain=domain)
+
+async def _detect_thirdparty_cookies(route : Route, request : Request, main_site : str, thirdp_domains : set) -> None:
+    requested_site = origin_domain(request.url)
+    if (main_site != requested_site):
+        thirdp_domains.add(requested_site)
+    await route.continue_()
 
 
+        
 # main_site = first_party, requested_site = einzelner request
-async def _block_thirdparty_cookies(route : Route, request : Request, main_site : str):
+"""async def _block_thirdparty_cookies(route : Route, request : Request, main_site : str):
     requested_site = origin_domain(request.url)
     first_party = requested_site == main_site
     # 1P erkennen und durchlassen
@@ -69,4 +83,4 @@ async def _block_thirdparty_cookies(route : Route, request : Request, main_site 
     response_header = dict(response.headers)
     response_header.pop("set-cookie", None)
     await route.fulfill(response=response, headers=response_header)
-    
+    """
