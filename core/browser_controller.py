@@ -71,7 +71,7 @@ async def _block_thirdparty_cookies(route : Route, request : Request, main_site 
     # TODO Wird Cookies im Header immer klein geschrieben ???
     
     # COOKIES SCHREIBEN BLOCKIEREN
-    # Antwort vom Server abfangen vor Browser, C löschen
+    # Antwort vom Server abfangen vor Browser, C löschen TODO hier evtl Restrikton, weil die Header trotzdem ankommen
     response = await route.fetch(headers=request_headers)
     response_header = dict(response.headers)
     response_header.pop("set-cookie", None)
