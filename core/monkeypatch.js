@@ -143,12 +143,12 @@
     const static_properties = [
         [Navigator.prototype, "userAgent"],
         [Navigator.prototype, "userAgentData"],
-        [Navigator.prototype, "plugins"],
+        [Navigator.prototype, "plugins"], //heute weniger relevant
         [Navigator.prototype, "platform"],
         [Navigator.prototype, "cookieEnabled"],
         [Navigator.prototype, "doNotTrack"],
         [Navigator.prototype, "language"],
-        [Navigator.prototype , "languages"],
+        [Navigator.prototype , "languages"], //array
         [Screen.prototype, "width"],
         [Screen.prototype, "height"],
         [Screen.prototype, "colorDepth"],
