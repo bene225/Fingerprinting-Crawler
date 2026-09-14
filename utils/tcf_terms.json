@@ -1,0 +1,414 @@
+{
+  "knownSelectors": [
+    "#onetrust-accept-btn-handler",
+    "#accept-recommended-btn-handler",
+    ".onetrust-accept-btn-handler",
+    "#didomi-notice-agree-button",
+    ".qc-cmp-button[mode=\"primary\"]",
+    "#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll",
+    "#CybotCookiebotDialogBodyButtonAccept",
+    ".trustarc-agree-btn",
+    "#truste-consent-button",
+    ".sp_choice_type_11",
+    ".sp_choice_type_ACCEPT_ALL",
+    "#fides-accept-all-button",
+    ".uc-accept-button",
+    "#uc-btn-accept-banner",
+    "#uc-accept-button",
+    "[data-testid=\"uc-accept-all-button\"]",
+    ".cmplz-accept",
+    ".cmplz-btn.cmplz-accept",
+    ".fc-cta-consent",
+    ".cm-btn-success",
+    ".cm-btn-accept-all",
+    ".cm-btn-accept",
+    "#BorlabsCookieBoxButtonAccept",
+    "#hs-eu-confirmation-button",
+    "#cookie_action_close_header",
+    "#cn-accept-cookie",
+    ".cmpboxbtnyes",
+    ".osano-cm-accept-all",
+    ".cky-btn-accept",
+    "[data-tid=\"banner-accept\"]",
+    ".admiral-accept-button",
+    "[data-testid=\"accept-all-button\"]",
+    "button[aria-label*=\"Accept all\" i]",
+    ".rodo-popup-main-agree",
+    ".rodo-popup-agree",
+    ".iubenda-cs-accept-btn",
+    "#ppms_cm_agree-to-all",
+    ".ppms_cm_agree-to-all"
+  ],
+  "genericSelectors": [
+    "[id*='consent' i][id*='accept' i]",
+    "[id*='cookie' i][id*='accept' i]",
+    "[class*='consent' i][class*='accept' i]",
+    "[class*='cookie' i][class*='accept' i]",
+    "[class*='accept' i][class*='all' i]",
+    "[id*='accept' i][id*='all' i]",
+    "[id*='accept' i][id*='choices' i]",
+    "[id*='accept' i][id*='btn' i]",
+    "[id*='accept' i][id*='button' i]",
+    "[aria-label*='accept' i][aria-label*='cookie' i]",
+    "[aria-label*='accept all' i]",
+    "[aria-label*='allow all' i]",
+    "[id*='cmp' i][id*='yes' i]"
+  ],
+  "posTerms": {
+    "en": [
+      "allow all",
+      "allow cookies",
+      "agree",
+      "accept",
+      "consent",
+      "confirm",
+      "got it",
+      "ok",
+      "save and exit"
+    ],
+    "de": [
+      "aktivieren",
+      "akzeptiere alle",
+      "akzeptieren",
+      "alle auswählen",
+      "alle cookies",
+      "alle erlauben",
+      "annehmen",
+      "bestätigen",
+      "einverstanden",
+      "einwilligen",
+      "zulassen",
+      "zustimmen"
+    ],
+    "fr": [
+      "accepter",
+      "j'accepte",
+      "autoriser",
+      "continuer",
+      "d'accord"
+    ],
+    "es": [
+      "aceptar",
+      "acepto",
+      "permitir",
+      "de acuerdo"
+    ],
+    "it": [
+      "accetta",
+      "accetto",
+      "acconsento",
+      "va bene"
+    ],
+    "nl": [
+      "accepteren",
+      "akkoord",
+      "alle cookies",
+      "accepteer",
+      "toestemming"
+    ],
+    "pt": [
+      "aceitar",
+      "aceito",
+      "concordo",
+      "aceite tudo"
+    ],
+    "pl": [
+      "akceptuj wszystko",
+      "akceptuję",
+      "przejdź do serwisu",
+      "zgadzam się",
+      "zgoda"
+    ],
+    "sv": [
+      "acceptera",
+      "aksepter alle",
+      "godkänn",
+      "tillad alle",
+      "tillåt alla"
+    ],
+    "da": [
+      "acceptér",
+      "godkend"
+    ],
+    "no": [
+      "godta"
+    ],
+    "fi": [
+      "hyväksy kaikki",
+      "salli kaikki"
+    ]
+  },
+  "negTerms": {
+    "en": {
+      "negation": [
+        "no",
+        "not",
+        "without"
+      ],
+      "restriction": [
+        "only"
+      ],
+      "rejection": [
+        "reject",
+        "refuse",
+        "decline"
+      ],
+      "necessity": [
+        "necessary",
+        "essential"
+      ],
+      "selection": [
+        "selection",
+        "selected",
+        "settings",
+        "preferences"
+      ]
+    },
+    "de": {
+      "negation": [
+        "nein",
+        "nicht",
+        "ohne"
+      ],
+      "restriction": [
+        "nur"
+      ],
+      "rejection": [
+        "ablehnen",
+        "verweigern"
+      ],
+      "necessity": [
+        "notwendige",
+        "erforderlich"
+      ],
+      "selection": [
+        "auswahl",
+        "ausgewählt",
+        "einstellungen",
+        "präferenzen"
+      ]
+    },
+    "fr": {
+      "negation": [
+        "non",
+        "sans"
+      ],
+      "restriction": [
+        "seulement"
+      ],
+      "rejection": [
+        "rejeter",
+        "refuser"
+      ],
+      "necessity": [
+        "nécessaire"
+      ],
+      "selection": [
+        "sélection",
+        "paramètres",
+        "préférences",
+        "réglages"
+      ]
+    },
+    "es": {
+      "negation": [
+        "sin"
+      ],
+      "restriction": [
+        "solo"
+      ],
+      "rejection": [
+        "rechazar",
+        "denegar"
+      ],
+      "necessity": [
+        "necesarias",
+        "esenciales"
+      ],
+      "selection": [
+        "selección",
+        "ajustes",
+        "configuración",
+        "preferencias"
+      ]
+    },
+    "it": {
+      "negation": [
+        "non",
+        "senza"
+      ],
+      "restriction": [
+        "solo"
+      ],
+      "rejection": [
+        "rifiutare",
+        "negare"
+      ],
+      "necessity": [
+        "necessari",
+        "essenziali"
+      ],
+      "selection": [
+        "selezione",
+        "selezionati",
+        "impostazioni",
+        "preferenze"
+      ]
+    },
+    "nl": {
+      "negation": [
+        "niet",
+        "zonder"
+      ],
+      "restriction": [
+        "alleen"
+      ],
+      "rejection": [
+        "weigeren",
+        "afwijzen"
+      ],
+      "necessity": [
+        "noodzakelijke",
+        "essentiële"
+      ],
+      "selection": [
+        "keuzes",
+        "instellingen",
+        "voorkeuren"
+      ]
+    },
+    "pt": {
+      "negation": [
+        "não",
+        "sem"
+      ],
+      "restriction": [
+        "apenas"
+      ],
+      "rejection": [
+        "rejeitar",
+        "recusar"
+      ],
+      "necessity": [
+        "necessárias",
+        "essenciais"
+      ],
+      "selection": [
+        "escolhas",
+        "definições",
+        "configurações",
+        "preferências"
+      ]
+    },
+    "pl": {
+      "negation": [
+        "nie",
+        "bez"
+      ],
+      "restriction": [
+        "tylko"
+      ],
+      "rejection": [
+        "odrzucić",
+        "odmówić"
+      ],
+      "necessity": [
+        "niezbędne",
+        "istotne"
+      ],
+      "selection": [
+        "wybór",
+        "ustawienia",
+        "preferencje"
+      ]
+    },
+    "sv": {
+      "negation": [
+        "utan",
+        "inte"
+      ],
+      "restriction": [
+        "endast"
+      ],
+      "rejection": [
+        "avvisa",
+        "neka"
+      ],
+      "necessity": [
+        "nödvändiga",
+        "essentiella"
+      ],
+      "selection": [
+        "urval",
+        "inställningar",
+        "inställning",
+        "inställningars"
+      ]
+    },
+    "da": {
+      "negation": [
+        "uden"
+      ],
+      "restriction": [
+        "kun"
+      ],
+      "rejection": [
+        "afvise",
+        "nægte"
+      ],
+      "necessity": [
+        "nødvendige",
+        "essentielle"
+      ],
+      "selection": [
+        "valg",
+        "indstillinger",
+        "præferencer"
+      ]
+    },
+    "no": {
+      "negation": [
+        "ikke",
+        "uten"
+      ],
+      "restriction": [
+        "kun"
+      ],
+      "rejection": [
+        "avvise",
+        "nekte"
+      ],
+      "necessity": [
+        "nødvendige",
+        "essensielle"
+      ],
+      "selection": [
+        "valg",
+        "innstillinger",
+        "preferanser"
+      ]
+    },
+    "fi": {
+      "negation": [
+        "ei",
+        "ilman"
+      ],
+      "restriction": [
+        "vain"
+      ],
+      "rejection": [
+        "hylätä",
+        "kieltäytyä"
+      ],
+      "necessity": [
+        "välttämättömät",
+        "olennainen"
+      ],
+      "selection": [
+        "valinnat",
+        "asetukset",
+        "mieltymykset"
+      ]
+    }
+  }
+}
