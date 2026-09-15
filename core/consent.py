@@ -21,6 +21,11 @@ with open("utils/tcf_terms.json", "r", encoding="utf-8") as tcf_file:
     tcf_accept_all = tcf_accept_known + tcf_accept_generic + tcf_accept_chance_flat
 
 async def try_accept(page : Page) -> bool:
-    try:
-        
-        await page.get_by_text(Füllen).click()
+    for accept_word in tcf_accept_all:
+        try:
+            await page.get_by_role("button", name=accept_word).click(timeout=4000)
+            return True
+        except:
+            continue
+    # kein Wort passt
+    return False
