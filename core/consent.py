@@ -17,7 +17,6 @@ with open("utils/tcf_terms.json", "r", encoding="utf-8") as tcf_file:
     tcf_accept_chance = tcf_terms_data["posTerms"]
     for tcf_accept_language in tcf_accept_chance:
         tcf_accept_chance_flat = tcf_accept_chance_flat + tcf_accept_chance[tcf_accept_language]
-    print(tcf_accept_chance_flat)
 
 async def try_accept(page : Page) -> bool:
     try:
