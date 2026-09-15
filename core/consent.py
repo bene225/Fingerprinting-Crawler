@@ -17,7 +17,10 @@ with open("utils/tcf_terms.json", "r", encoding="utf-8") as tcf_file:
     tcf_accept_chance = tcf_terms_data["posTerms"]
     for tcf_accept_language in tcf_accept_chance:
         tcf_accept_chance_flat.extend(tcf_accept_chance[tcf_accept_language])
+    
+    tcf_accept_all = tcf_accept_known + tcf_accept_generic + tcf_accept_chance_flat
 
 async def try_accept(page : Page) -> bool:
     try:
+        
         await page.get_by_text(Füllen).click()
