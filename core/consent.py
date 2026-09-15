@@ -3,6 +3,7 @@ from playwright.async_api import async_playwright, Page
 import random
 import json
 
+
 # Wortliste von Maximilian Wittig übernommen
 # https://playwright.dev/docs/locators#locate-by-text
 
@@ -19,7 +20,7 @@ with open("utils/tcf_terms.json", "r", encoding="utf-8") as tcf_file:
     for tcf_accept_language in tcf_accept_chance:
         tcf_accept_chance_flat.extend(tcf_accept_chance[tcf_accept_language])
     
-     # TODO Wortlsite für Reject finden
+     # TODO Wortlsite für Reject finden (CONSENT O MATIC evtl)
      
     # TODO richtige Wörter für Ablehung 
     # Rate-Wörter aus Wortliste exportieren und Json plätten (ablehnen)
@@ -30,6 +31,58 @@ with open("utils/tcf_terms.json", "r", encoding="utf-8") as tcf_file:
     print(tcf_reject_chance_flat)
 
 
+    async def try_accept(page : Page) -> bool:
+        await page.wait_for_load_state("load")
+        # CSS-Akzeptoren
+        await asyncio.sleep((random.randint(1000, 3000) + 1500) / 1000)  # Sicherheit dass Button da und menschlichkeit
+        for accept_css in tcf_accept_css:
+            try:
+                await page.click(accept_css, timeout=300)
+                return True
+            except Exception:
+                continue
+        
+        # Alle buttons holen (Sprach-Akzeptoren)
+        buttons = await page.get_by_role("button").all()
+        for button in buttons:
+            text_button = await button.text_content()
+            if not text_button: continue
+            for tcf_text_accept in tcf_accept_chance_flat:
+                if tcf_text_accept.lower().strip() in text_button.lower().strip(): #Gerade noch kein Wert drin    == bei zu viele falses pos
+                    try:
+                        await button.click()
+                        return True
+                    except Exception:
+                        continue
+        return False
+    
+    
+    async def try_reject(page : Page) -> bool:
+            await page.wait_for_load_state("load")
+            # CSS-Rejektoren
+            await asyncio.sleep((random.randint(1000, 3000) + 1500) / 1000)  # Sicherheit dass Button da und menschlichkeit
+            for reject_css in tcf_reject_css: # TODO richtige Liste einfügen
+                try:
+                    await page.click(reject_css, timeout=300)
+                    return True
+                except Exception:
+                    continue
+            
+            # Alle buttons holen (Sprach-Akzeptoren)
+            buttons = await page.get_by_role("button").all()
+            for button in buttons:
+                text_button = await button.text_content()
+                if not text_button: continue
+                for tcf_text_reject in tcf_reject_chance_flat:
+                    if tcf_text_reject.lower().strip() in text_button.lower().strip(): #Gerade noch kein Wert drin    == bei zu viele falses pos
+                        try:
+                            await button.click()
+                            return True
+                        except Exception:
+                            continue
+            return False
+   
+            
 
 
 
