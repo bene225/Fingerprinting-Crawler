@@ -2,3 +2,5 @@
 docs/.obsidian
 
 core/__pycache__
+
+tests
