@@ -95,7 +95,7 @@ async def try_accept(page : Page) -> bool:
     return False
 
 
-async def try_reject(page : Page) -> bool:
+"""async def try_reject(page : Page) -> bool:
         await page.wait_for_load_state("load")
         # CSS-Rejektoren
         await asyncio.sleep((random.randint(1000, 3000) + 1500) / 1000)  # Sicherheit dass Button da und menschlichkeit
@@ -120,7 +120,7 @@ async def try_reject(page : Page) -> bool:
                         continue
         return False
 
-            
+   """         
 
 
 
