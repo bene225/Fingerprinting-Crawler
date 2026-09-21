@@ -1,14 +1,13 @@
 from playwright.async_api import  Playwright, Browser, BrowserContext, Route, Request, async_playwright
-from typing import Literal
 from utils.origin_domain import origin_domain
 
 # Vorbereitung für Pydantic 
-BrowserType = Literal["chromium", "firefox"]
+
 
 class BrowserController:
     
     # Übergeben von Config
-    def __init__(self, headless: bool = True, browser_type : BrowserType = "chromium", allow_3p : bool = True) -> None:
+    def __init__(self, headless: bool = True, browser_type : str = "chromium", allow_3p : bool = True) -> None:
         # _ : Variablen werden von Config verwaltet (da ändern). Ab hier dann nicht ändern.
         self._headless = headless
         self._browser_type = browser_type

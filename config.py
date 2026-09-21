@@ -1,12 +1,13 @@
 from  pydantic.dataclasses import dataclass
 from pydantic import FilePath, PositiveInt
-
+from typing import Literal
 
 @dataclass
 class CrawlConfig:
     path_to_output : FilePath
     path_to_webpages: FilePath
     crawl_name : str = "default_browser_behavior"
+    BrowserType = Literal["chromium", "firefox"]
     allow_3p : bool = True
     consent : bool = False
     headless : bool = False
