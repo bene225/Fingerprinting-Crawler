@@ -12,7 +12,7 @@ class CrawlConfig:
     consent : bool = False
     headless : bool = False # Check
     concurrent_session : PositiveInt = 1 # TODO Parallelität noch implementieren
-    loading_time = PositiveInt = 4 # TODO Wert noch in Funktion in Consent auslesen
+    loading_time : PositiveInt = 4 # TODO Wert noch in Funktion in Consent auslesen
     site_timeout : PositiveInt = 50 # TODO In Code einführen
     
     # Weitere Überlegungen user_agent, visit_time_after_consent, autom_restart, consent_polling+consent_tries (schon implentiert aber config schöner)
