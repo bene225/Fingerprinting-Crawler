@@ -5,12 +5,12 @@ from typing import Literal
 @dataclass
 class CrawlConfig:
     path_to_output : FilePath
-    path_to_webpages: FilePath
+    path_to_webpages: FilePath 
     crawl_name : str = "default_browser_behavior"
-    BrowserType : Literal["chromium", "firefox"] = "chromium"
-    allow_3p : bool = True
+    BrowserType : Literal["chromium", "firefox"] = "chromium" # Check
+    allow_3p : bool = True # Check
     consent : bool = False
-    headless : bool = False
+    headless : bool = False # Check
     concurrent_session : PositiveInt = 1 # TODO Parallelität noch implementieren
     loading_time = PositiveInt = 4 # TODO Wert noch in Funktion in Consent auslesen
     site_timeout : PositiveInt = 50 # TODO In Code einführen
