@@ -7,7 +7,7 @@ class CrawlConfig:
     path_to_output : FilePath
     path_to_webpages: FilePath
     crawl_name : str = "default_browser_behavior"
-    BrowserType = Literal["chromium", "firefox"]
+    BrowserType : Literal["chromium", "firefox"] = "chromium"
     allow_3p : bool = True
     consent : bool = False
     headless : bool = False
