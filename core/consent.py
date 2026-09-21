@@ -29,7 +29,6 @@ with open("utils/tcf_terms.json", "r", encoding="utf-8") as tcf_file:
     tcf_reject_chance = tcf_terms_data["negTerms"]
     for language in tcf_reject_chance:
         tcf_reject_chance_flat.extend(tcf_reject_chance[language]["rejection"])
-    print(tcf_reject_chance_flat)
 
     # block Liste für Wort-Akzeptoren
     tcf_accept_block = []
