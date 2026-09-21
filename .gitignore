@@ -1,6 +1,8 @@
 # Obsidian Einstellungen ignorieren
 docs/.obsidian
 
+__pycache__
 core/__pycache__
+
 
 tests
