@@ -8,7 +8,7 @@ class CrawlConfig:
     path_to_webpages: FilePath 
     crawl_name : str = "default_browser_behavior"
     BrowserType : Literal["chromium", "firefox"] = "chromium" # Check
-    allow_3p : bool = True # Check
+    allow_3p : bool = False # Check
     consent : bool = False
     headless : bool = False # Check
     concurrent_session : PositiveInt = 1 # TODO Parallelität noch implementieren
