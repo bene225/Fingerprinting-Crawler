@@ -1,26 +1,52 @@
 import asyncio
+
 from core.browser_controller import BrowserController
 from config import CrawlConfig
+from core.injector import Injector
+import core.injector
+import core.consent
 
 TEST_DOMAINS = [
     # Banner im Hauptdokument (CSS-Treffer)
-    "otto.de", "mediamarkt.de", "obi.de",
+    "https://otto.de", "https://mediamarkt.de", "https://obi.de",
     # Sourcepoint-Banner im Iframe
-    "spiegel.de", "zeit.de", "bild.de", "heise.de", "theguardian.com", "bbc.com",
+    "https://spiegel.de", "https://zeit.de", "https://bild.de", "https://heise.de", "https://theguardian.com", "https://bbc.com",
     # weitere deutsche Nachrichten- und Shopseiten
-    "t-online.de", "web.de", "tagesschau.de", "kicker.de", "chip.de", "focus.de",
-    "welt.de", "computerbase.de", "idealo.de", "check24.de", "kleinanzeigen.de", "thalia.de",
+    "https://t-online.de", "https://web.de", "https://tagesschau.de", "https://kicker.de", "https://chip.de", "https://focus.de",
+    "https://welt.de", "https://computerbase.de", "https://idealo.de", "https://check24.de", "https://kleinanzeigen.de", "https://thalia.de",
     # Kontrollseiten ohne Banner und ohne Tracker (Erwartung: Consent False, kaum Events)
-    "example.com", "wikipedia.org", "duckduckgo.com",
+    "https://example.com", "https://wikipedia.org", "https://duckduckgo.com",
     # bekannter Sonderfall: Bot-Fehlerseite (testet die Fehlerbehandlung)
-    "ebay.de",
+    "https://ebay.de",
     # Weiterleitung auf eine andere Domain (testet die Berechnung von main_site)
-    "youtu.be",
+    "https://youtu.be",
 ] #KI
 
 async def crawl ():
-    async with BrowserController(headless=CrawlConfig.headless, browser_type=CrawlConfig.BrowserType, allow_3p=CrawlConfig.allow_3p):
-        
+    async with BrowserController(headless=CrawlConfig.headless, browser_type=CrawlConfig.BrowserType, allow_3p=CrawlConfig.allow_3p) as bc:
+        for test_domain in TEST_DOMAINS:
+            context = await bc.new_context(test_domain)
+            page = await context.new_page()
+            
+            injector = Injector()
+            await injector.integrade_monkeypatch(page)
+            if bc._allow_3p == False:
+                await injector.integrade_js_cookie_block(test_domain, page)
+            
+            await page.goto(test_domain)
+            
+            if bc._allow_3p == False:
+                await bc.clear_3p(context)
+            
+            # TODO Variable consent steuerbar
+            await core.consent.try_accept(page)
+            
+            await asyncio.sleep(10)
+            await context.close()
+            print(injector.events)
+            
+            
+            
 
 
 async def testcrawl():
@@ -39,4 +65,4 @@ async def testcrawl():
         
         
 if __name__ == "__main__":
-    asyncio.run(testcrawl())
+    asyncio.run(crawl())
