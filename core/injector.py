@@ -27,10 +27,13 @@ class Injector:
         await page.add_init_script(mp_script)
         
     async def integrade_js_cookie_block(self, url_uncut : str, page : Page) -> None:
-        escaped_url = first_party_url_to_js(url_uncut)
         with open("core/js_cookie_block.js", encoding="utf-8") as js_cookie_block_file:
             js_cookie_block_script = js_cookie_block_file.read()
-            await page.add_init_script(f"window._location_url = {escaped_url};\n" + js_cookie_block_script)
+            await page.add_init_script(js_cookie_block_script)
+            
+    async def integrade_url_to_js(self, url_uncut : str, page : Page) -> None:
+        escaped_url = first_party_url_to_js(url_uncut)
+        await page.add_init_script(f"window._location_url = {escaped_url};\n")
     
     # Aufruf auf Website duch mp wenn Fp erkannt, dann zählen
     # location href aus der mp.js
