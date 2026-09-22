@@ -29,17 +29,21 @@ async def crawl ():
             page = await context.new_page()
             
             injector = Injector()
+            await injector.integrade_url_to_js(test_domain, page)
             await injector.integrade_monkeypatch(page)
             if bc._allow_3p == False:
                 await injector.integrade_js_cookie_block(test_domain, page)
             
             await page.goto(test_domain)
             
-            if bc._allow_3p == False:
-                await bc.clear_3p(context)
-            
+            n_tracker_vor_consent = len(injector.events)                        
             # TODO Variable consent steuerbar
             await core.consent.try_accept(page)
+            
+            n_tracker_nach_consent = len(injector.events)  
+            
+            if bc._allow_3p == False:
+                await bc.clear_3p(context)
             
             await asyncio.sleep(10)
             await context.close()
