@@ -24,31 +24,47 @@ TEST_DOMAINS = [
 
 async def crawl ():
     async with BrowserController(headless=CrawlConfig.headless, browser_type=CrawlConfig.BrowserType, allow_3p=CrawlConfig.allow_3p) as bc:
+    
+        # Hilfsfunktion für as.wait_for
+        async def single_crawl(test_domain):
+                context = None
+                try:
+                    context = await bc.new_context(test_domain)
+                    page = await context.new_page()
+                    injector = Injector()
+                    await injector.integrade_url_to_js(test_domain, page)
+                    await injector.integrade_monkeypatch(page)
+                    if bc._allow_3p == False:
+                        await injector.integrade_js_cookie_block(test_domain, page)
+                    await page.goto(test_domain)
+                    n_tracker_vor_consent = len(injector.events)                        
+                    # TODO Variable consent steuerbar
+                    await core.consent.try_accept(page)
+                    n_tracker_nach_consent = len(injector.events)  
+                    if bc._allow_3p == False:
+                        await bc.clear_3p(context)
+                    await asyncio.sleep(10)
+                    print(injector.events)
+        
+                except Exception as e:
+                    print("Fehler bei Durchlauf")
+                    print(e)
+        
+                finally:
+                    if context is not None:
+                            await context.close()
+        
+        
+        
+        
         for test_domain in TEST_DOMAINS:
-            context = await bc.new_context(test_domain)
-            page = await context.new_page()
-            
-            injector = Injector()
-            await injector.integrade_url_to_js(test_domain, page)
-            await injector.integrade_monkeypatch(page)
-            if bc._allow_3p == False:
-                await injector.integrade_js_cookie_block(test_domain, page)
-            
-            await page.goto(test_domain)
-            
-            n_tracker_vor_consent = len(injector.events)                        
-            # TODO Variable consent steuerbar
-            await core.consent.try_accept(page)
-            
-            n_tracker_nach_consent = len(injector.events)  
-            
-            if bc._allow_3p == False:
-                await bc.clear_3p(context)
-            
-            await asyncio.sleep(10)
-            await context.close()
-            print(injector.events)
-            
+            try:
+                await asyncio.wait_for(single_crawl(test_domain), timeout=20)
+            except TimeoutError:
+                print(f"Timeout bei: {test_domain}")
+    
+    
+    
             
             
 
