@@ -23,8 +23,8 @@ TEST_DOMAINS = [
     "https://youtu.be",
 ] #KI
 
-async def crawl ():
-    async with BrowserController(headless=CrawlConfig.headless, browser_type=CrawlConfig.BrowserType, allow_3p=CrawlConfig.allow_3p) as bc:
+async def crawl (config : CrawlConfig):
+    async with BrowserController(headless=config.headless, browser_type=config.BrowserType, allow_3p=config.allow_3p) as bc:
     
         # Hilfsfunktion für as.wait_for
         async def single_crawl(test_domain):
@@ -35,16 +35,16 @@ async def crawl ():
                     injector = Injector()
                     await injector.integrade_url_to_js(test_domain, page)
                     await injector.integrade_monkeypatch(page)
-                    if bc._allow_3p == False:
+                    if config.allow_3p == False:
                         await injector.integrade_js_cookie_block(test_domain, page)
                     await page.goto(test_domain)
                     n_tracker_vor_consent = len(injector.events)                        
-                    # TODO Variable consent steuerbar
-                    await core.consent.try_accept(page)
+                    if config.consent:
+                        await core.consent.try_accept(page)
                     n_tracker_nach_consent = len(injector.events)  
-                    if bc._allow_3p == False:
+                    if config.allow_3p == False:
                         await bc.clear_3p(context)
-                    await asyncio.sleep(10)
+                    await asyncio.sleep(config.loading_time)
                     print(injector.events)
         
                 except Exception as e:
@@ -60,7 +60,7 @@ async def crawl ():
         
         for test_domain in TEST_DOMAINS:
             try:
-                await asyncio.wait_for(single_crawl(test_domain), timeout=20)
+                await asyncio.wait_for(single_crawl(test_domain), timeout=config.site_timeout)
             except TimeoutError:
                 print(f"Timeout bei: {test_domain}")
     
@@ -70,34 +70,22 @@ async def crawl ():
             
 
 
-async def testcrawl():
-    async with BrowserController(headless = False, allow_3p = False) as bc:
-        context = await bc.new_context("https://www.google.de")
-        page = await context.new_page()
-        visti_page = await page.goto("https://www.google.de")
-        await bc.clear_3p(context)
-        await asyncio.sleep(3) 
-        #print(await page.content())
-        if visti_page:
-            print (await visti_page.request.all_headers())
-            print (await visti_page.all_headers())  
-        await context.close()
-        
+
         
         
 if __name__ == "__main__":
     
     # Einstellungen für den Crawler
     config = CrawlConfig(
-        path_to_output=Path("results/output"),
-        path_to_webpages=Path("input"),
-        #crawl_name=,
+        path_to_output=Path("results/output"), # Noch machen 
+        path_to_webpages=Path("input"), #Noch machen
+        #crawl_name=, # Noch machen, alle 3 Punkte hier mit DB
         BrowserType= "chromium",
         allow_3p= True,
         consent= True,
         headless= False,
-        concurrent_sessions= 2,
-        loading_time= 4,
+        concurrent_sessions= 2, # Noch machen
+        loading_time= 10,
         site_timeout= 20
     )
     

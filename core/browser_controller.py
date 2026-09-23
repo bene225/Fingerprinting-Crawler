@@ -7,7 +7,7 @@ from utils.origin_domain import origin_domain
 class BrowserController:
     
     # Übergeben von Config
-    def __init__(self, headless: bool = True, browser_type : str = "chromium", allow_3p : bool = True) -> None:
+    def __init__(self, headless: bool , browser_type : str, allow_3p : bool ) -> None:
         # _ : Variablen werden von Config verwaltet (da ändern). Ab hier dann nicht ändern.
         self._headless = headless
         self._browser_type = browser_type
