@@ -9,8 +9,9 @@
             // Url für 1P-Vergleich
             const py_url = window._location_url;
             let third_party = false;
+            let script_url_liveon = "";
             if (!py_url) {
-                window.register_fp(api, method, location.href, "Keine py_url");
+                window.register_fp(api, method, location.href, "Keine py_url", script_url_liveon);
                 return; 
             }
             for (let script_url of script_urls){
@@ -19,6 +20,7 @@
                     //Domain Matching (mit Subdomain)
                     if (script_hostname !== py_url && !script_hostname.endsWith('.' + py_url)) {
                         third_party = true;
+                        script_url_liveon = script_hostname;
                         break;
                     }
                 }
@@ -28,7 +30,7 @@
             }
 
             // Aufruf der Einbinung injector/register_fp in das JS (Python-BRÜCKE)
-            window.register_fp(api, method, location.href, third_party);
+            window.register_fp(api, method, location.href, third_party, script_url_liveon);
         }
         catch(exception){
             // Absutz Crawler verhindern

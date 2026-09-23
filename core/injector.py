@@ -11,6 +11,7 @@ class DetectedFingerprint:
     method : str
     url : str
     third_party : bool | str # TODO: evtl nacharbeiten hier
+    script_url : str 
         
 
 # https://playwright.dev/python/docs/api/class-browsercontext
@@ -37,9 +38,9 @@ class Injector:
     
     # Aufruf auf Website duch mp wenn Fp erkannt, dann zählen
     # location href aus der mp.js
-    async def _append_event(self, _, api, method, location_href, third_party) -> None:
-        self.events.append(DetectedFingerprint(api=api, method=method,url=location_href, third_party=third_party))
-        print(f"FP {api}.{method}  3P={third_party}  {location_href}") # Vorläufig
+    async def _append_event(self, _, api, method, location_href, third_party, script_url) -> None:
+        self.events.append(DetectedFingerprint(api=api, method=method, url=location_href, third_party=third_party, script_url=script_url))
+        print(f"FP {api}.{method}  3P={third_party}  {location_href} {script_url}") # Vorläufig
 
 def first_party_url_to_js(url_uncut :str) -> str:
     cutted_url = origin_domain(url_uncut=url_uncut)
