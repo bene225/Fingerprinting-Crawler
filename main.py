@@ -5,6 +5,7 @@ from config import CrawlConfig
 from core.injector import Injector
 import core.injector
 import core.consent
+from pathlib import Path
 
 TEST_DOMAINS = [
     # Banner im Hauptdokument (CSS-Treffer)
@@ -85,4 +86,19 @@ async def testcrawl():
         
         
 if __name__ == "__main__":
-    asyncio.run(crawl())
+    
+    # Einstellungen für den Crawler
+    config = CrawlConfig(
+        path_to_output=Path("results/output"),
+        path_to_webpages=Path("input"),
+        #crawl_name=,
+        BrowserType= "chromium",
+        allow_3p= True,
+        consent= True,
+        headless= False,
+        concurrent_sessions= 2,
+        loading_time= 4,
+        site_timeout= 20
+    )
+    
+    asyncio.run(crawl(config))

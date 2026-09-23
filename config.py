@@ -11,7 +11,7 @@ class CrawlConfig:
     allow_3p : bool = False # Check
     consent : bool = False
     headless : bool = False # Check
-    concurrent_session : PositiveInt = 1 # TODO Parallelität noch implementieren
+    concurrent_sessions : PositiveInt = 1 # TODO Parallelität noch implementieren
     loading_time : PositiveInt = 4 # TODO Wert noch in Funktion in Consent auslesen
     site_timeout : PositiveInt = 50 # TODO In Code einführen
     
