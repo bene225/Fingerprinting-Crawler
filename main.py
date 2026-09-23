@@ -3,7 +3,6 @@ import asyncio
 from core.browser_controller import BrowserController
 from config import CrawlConfig
 from core.injector import Injector
-import core.injector
 import core.consent
 from pathlib import Path
 
