@@ -6,3 +6,6 @@ core/__pycache__
 
 
 tests
+
+results/*
+
