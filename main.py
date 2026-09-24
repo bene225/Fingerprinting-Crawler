@@ -76,7 +76,7 @@ if __name__ == "__main__":
     
     # Einstellungen für den Crawler
     config = CrawlConfig(
-        path_to_output=Path("results/output"), # Noch machen 
+        path_to_output=Path("results/output.jsonl"), # Noch machen 
         path_to_webpages=Path("input"), #Noch machen
         #crawl_name=, # Noch machen, alle 3 Punkte hier mit DB
         BrowserType= "chromium",
