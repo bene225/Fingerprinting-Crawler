@@ -22,8 +22,8 @@ with open("utils/tcf_terms.json", "r", encoding="utf-8") as tcf_file:
     
     
     # TCF Strings für Ablehnen
-    tcf_reject_known = tcf_terms_data["knownRejectionSelectors"]
-    tcf_reject_generic = tcf_terms_data["genericRejectionSelectors"]
+    tcf_reject_known = tcf_terms_data["knownRejectSelectors"]
+    tcf_reject_generic = tcf_terms_data["genericRejectSelectors"]
     tcf_reject_css = tcf_reject_generic + tcf_reject_known
     
     # Rate-Wörter aus Wortliste exportieren und Json plätten (ablehnen)
