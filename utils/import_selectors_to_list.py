@@ -18,3 +18,5 @@ with open("utils/tcf_terms.json", "r", encoding="utf-8") as original_file:
 with open ("utils/tcf_terms.json" , "w", encoding="utf-8") as original_file:
     json.dump(original, original_file, indent=2, ensure_ascii=False)
     original_file.write("\n")
+      
+    # Erkennung der CSS Wörter mithilfe der Liste von Autoconsent
