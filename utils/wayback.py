@@ -1,10 +1,13 @@
 import json
+import re
 import time
 from datetime import datetime
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
 cdx_adress = "http://web.archive.org/cdx/search/cdx?"
+# Nur den hinteren Teil des Links behalten, da Wayback schreibt um 
+WAYBACK_URL = re.compile(r"^https?://web\.archive\.org/web/\d+[a-z_]*/(.+)$")
 
 def get_wayback_request (url : str, start : int, end: int) -> Request:
     # Collapse: Nicht genauer als Day, fl: Antwort
@@ -75,6 +78,13 @@ def choose_capture(response_list : list[dict], target_dates : list[str], max_day
 def build_wayback_url(capture : dict) -> str:
     # Normale Replay-URL (ohne id_), damit der Browser die archivierten Skripte nachlaedt
     return f"https://web.archive.org/web/{capture['timestamp']}/{capture['original']}"
+
+
+def original_url(wayback_url : str) -> str | None:
+    # .../web/20160101002715js_/https://tracker.com/x.js -> https://tracker.com/x.js
+    # None falls nichts archiviert
+    match = WAYBACK_URL.match(wayback_url)
+    return match.group(1) if match else None
 
 
 # Test
