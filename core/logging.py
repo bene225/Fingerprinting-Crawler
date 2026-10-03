@@ -13,6 +13,7 @@ def write_website(id : int, website : str, config : CrawlConfig, events : list) 
     crawl_result = {"id" : id, "website" : website, "events" : events_asdict}
     with open(config.path_to_output, "a", encoding="utf-8") as out_file:
                 out_file.write(dumps(crawl_result, default=str ) + "\n")
+                # TODO collect_stats einbinden
                 
 def resume_crawl(config : CrawlConfig) -> int:
     # Muss man resume?
