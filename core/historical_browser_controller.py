@@ -1,3 +1,4 @@
+from collections import Counter
 from core.browser_controller import BrowserController
 import utils.origin_domain
 import utils.wayback
@@ -23,6 +24,30 @@ class HistoricalBrowserController (BrowserController):
         # Liste an Context 
         context.blocked_live_requests = blocked_live_requests # type: ignore
         await context.route("**/*", lambda route, request: _allow_only_archive(route, request, blocked_live_requests))
+
+    # Kennzahlen dict. Aufruf vor context.close(). url = Original- oder Wayback-URL der Website
+    async def collect_historical_stats(self, context : BrowserContext, url : str) -> dict:
+        # Bei Wayback-URL erst Praefix abschneiden, sonst waere main_site archive.org und alles 3P
+        main_site = utils.origin_domain.origin_domain(utils.wayback.original_url(url) or url)
+        # Seitentitel, um Fehlerseiten des Archivs zu erkennen
+        title = await context.pages[0].title() if context.pages else ""
+
+        # Nur 3P, leere Domains verwerfen (req jeder einzeln. dann noch jeder einmalig, also wer)
+        requests_3p = [(domain, res_type) for domain, res_type in getattr(context, "all_requests", []) if domain and domain != main_site]
+        domains_3p = sorted({domain for domain, _ in requests_3p})
+        # Nur 3P-Skripte (Eingabe fuer Tracker Radar), sonst zaehlen Tracking-Pixel einer FP-Domain mit
+        script_domains_3p = sorted({domain for domain, res_type in requests_3p if res_type == "script"})
+
+        return {
+            "title": title,
+            "n_3p_requests": len(requests_3p),
+            "requests_per_type": dict(Counter(res_type for _, res_type in requests_3p)), # z.B. {"script": 12, "image": 30}
+            "n_3p_domains": len(domains_3p),
+            "domains_3p": domains_3p,
+            "n_script_domains_3p": len(script_domains_3p),
+            "script_domains_3p": script_domains_3p,
+            "n_blocked_live_requests": len(getattr(context, "blocked_live_requests", [])), # Qualitaet des Snapshots
+        }
 
 # Kein live web
 # archive.org (auch web-static., wayback-api.) durchlassen, alles andere abbrechen 
