@@ -66,6 +66,8 @@ class BrowserController:
         # Nur 3P, leere Domains verwerfen (req jeder einzeln. dann noch jeder einmalig, also wer)[Einbindungen]
         requests_3p = [(domain, res_type) for domain, res_type in getattr(context, "all_requests", []) if domain and domain != main_site]
         domains_3p = sorted({domain for domain, _ in requests_3p})
+        # Nur 3P-Skripte für Tracker Radar, vgl mit hist
+        script_domains_3p = sorted({domain for domain, res_type in requests_3p if res_type == "script"})
 
         # Nimm nur 3p Scripts, davon die Domain (wer hat wirklich fingerprinting betrieben) [echte Aufrufe]
         fp_sources = sorted({origin_domain(event.script_url) for event in events if event.script_url})
@@ -89,6 +91,8 @@ class BrowserController:
             "requests_per_type": dict(Counter(res_type for _, res_type in requests_3p)), # z.B. {"script": 12, "image": 30}
             "n_3p_domains": len(domains_3p),
             "domains_3p": domains_3p,
+            "n_script_domains_3p": len(script_domains_3p),
+            "script_domains_3p": script_domains_3p,
             "n_fp_sources": len(fp_sources),
             "fp_sources": fp_sources,
             "n_fp_calls": len(events),
