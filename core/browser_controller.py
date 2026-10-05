@@ -86,6 +86,7 @@ class BrowserController:
         cookie_sources_partitioned = sorted({site for site, c in cookies_3p if c.get("partitionKey")})
 
         return {
+            "hist_crawl": False,
             "title": title,
             "n_3p_requests": len(requests_3p),
             "requests_per_type": dict(Counter(res_type for _, res_type in requests_3p)), # z.B. {"script": 12, "image": 30}

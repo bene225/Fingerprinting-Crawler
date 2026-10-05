@@ -39,6 +39,7 @@ class HistoricalBrowserController (BrowserController):
         script_domains_3p = sorted({domain for domain, res_type in requests_3p if res_type == "script"})
 
         return {
+            "hist_crawl": True,
             "title": title,
             "n_3p_requests": len(requests_3p),
             "requests_per_type": dict(Counter(res_type for _, res_type in requests_3p)), # z.B. {"script": 12, "image": 30}
