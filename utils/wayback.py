@@ -36,7 +36,6 @@ def get_wayback_location(wayback_request : Request) -> list[dict]:
         for row in body:
             row_dict = {header[0] : row [0], header[1] : row [1], header[2] : row [2]}
             response_array.append(row_dict)  
-        print(response_array)
         return response_array
     except IndexError:
         print("Liste nicht da")
