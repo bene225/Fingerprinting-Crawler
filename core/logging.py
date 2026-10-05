@@ -8,12 +8,13 @@ def write_config(config : CrawlConfig) -> None:
         with open(config.path_to_output, "a", encoding="utf-8") as out_file:
             out_file.write(dumps(config_asdict, default=str ) + "\n")
         
-def write_website(id : int, website : str, config : CrawlConfig, events : list) -> None:
+# stats = Rueckgabe von collect_stats, zwei Momentaufnahmen (nach enthaelt vor)
+def write_website(id : int, website : str, config : CrawlConfig, events : list, stats_vor_consent : dict, stats_nach_consent : dict) -> None:
     events_asdict = [asdict(event) for event in events]
-    crawl_result = {"id" : id, "website" : website, "events" : events_asdict}
+    # events ans Ende, damit die Zeile vorne lesbar bleibt
+    crawl_result = {"id" : id, "website" : website, "stats_vor_consent" : stats_vor_consent, "stats_nach_consent" : stats_nach_consent, "events" : events_asdict}
     with open(config.path_to_output, "a", encoding="utf-8") as out_file:
                 out_file.write(dumps(crawl_result, default=str ) + "\n")
-                # TODO collect_stats einbinden
                 
 def resume_crawl(config : CrawlConfig) -> int:
     # Muss man resume?
