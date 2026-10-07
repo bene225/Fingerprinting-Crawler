@@ -6,9 +6,12 @@ from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
 cdx_adress = "http://web.archive.org/cdx/search/cdx?"
-# Nur den hinteren Teil des Links behalten, da Wayback schreibt um 
+# Nur den hinteren Teil des Links behalten, da Wayback schreibt um (Tracking) original_url
 WAYBACK_URL = re.compile(r"^https?://web\.archive\.org/web/\d+[a-z_]*/(.+)$")
 
+# CDX 
+
+# Request für CDX aufbauen
 def get_wayback_request (url : str, start : int, end: int) -> Request:
     # Collapse: Nicht genauer als Day, fl: Antwort
     cdx_request = urlencode([("url", url),("from", str(start)),("to", str(end)),("output", "json"),("filter", "statuscode:200"),("filter", "mimetype:text/html"),("collapse", "timestamp:8"),("fl", "timestamp,original,digest")])
@@ -16,7 +19,9 @@ def get_wayback_request (url : str, start : int, end: int) -> Request:
     return wayback_request
 
 
-def get_wayback_location(wayback_request : Request) -> list[dict]:
+
+# None = CDX nicht erreichbar, [] = keine Snapshots
+def get_wayback_location(wayback_request : Request) -> list[dict] | None:
     time.sleep(3) # merhmalige Ausführung bei der Api (Last)
     for i in range(4):
         print(f"Try:{i}")
@@ -25,10 +30,13 @@ def get_wayback_location(wayback_request : Request) -> list[dict]:
                 response_string = json.loads(response.read().decode())
                 break
         except Exception:
-            time.sleep(4*i)
-    else: return []
+            # Wachsende Pause 
+            time.sleep(10*(i+2))
+    else:
+        print("CDX nicht erreichbar")
+        return None
        
-    # Verarbeiten
+    # Formatieren für durchsuchen
     try:
         header = response_string[0]
         body = response_string[1:]
@@ -44,29 +52,28 @@ def get_wayback_location(wayback_request : Request) -> list[dict]:
         print("Format Json")
         return []
     
-
+    
+# Für Snapshot suche
 def _distance_days(timestamp : str, target_date : datetime) -> int:
     return abs((datetime.strptime(timestamp[:8], "%Y%m%d") - target_date).days)
 
 
-def choose_capture(response_list : list[dict], target_dates : list[str], max_days_gap : int) -> list[dict]:
-    # Sortieren nach Datum 
-    response_sorted = sorted(response_list, key=lambda ts: ts["timestamp"])
 
+def choose_capture(response_list : list[dict], target_dates : list[str], max_days_gap : int) -> list[dict]:
     # Für jeden Stichtag nächstes Datum
     captures = []
     already_selected_timestamps = set()
-    if not response_sorted:
+    if not response_list:
         return []
     for single_target_date in target_dates:
         target_date_formatted = datetime.strptime(single_target_date, "%Y%m%d")
         # Nächsten Zeitpunkt finden
-        best_snapshot = min(response_sorted, key=lambda row: _distance_days(row["timestamp"], target_date_formatted))
+        best_snapshot = min(response_list, key=lambda row: _distance_days(row["timestamp"], target_date_formatted))
         # Für Lücke
         if _distance_days(best_snapshot["timestamp"], target_date_formatted) > max_days_gap:
             print(f"Kein Snapshot gefunden: Abstand max:{max_days_gap}Tage von: {single_target_date}")
             continue
-        # Einmalige Snapshots -> nur für ein Stichtag mit sel timestamps
+        # Einmalige Snapshots -> nur für ein Stichtag mit selben timestamps
         if best_snapshot["timestamp"] in already_selected_timestamps:
             continue
         already_selected_timestamps.add(best_snapshot["timestamp"])
@@ -74,8 +81,10 @@ def choose_capture(response_list : list[dict], target_dates : list[str], max_day
     return captures
 
 
+# Wayback
+
 def build_wayback_url(capture : dict) -> str:
-    # Normale Replay-URL (ohne id_), damit der Browser die archivierten Skripte nachlaedt
+    # Normale Replay-URL (ohne id_)
     return f"https://web.archive.org/web/{capture['timestamp']}/{capture['original']}"
 
 
@@ -86,10 +95,11 @@ def original_url(wayback_url : str) -> str | None:
     return match.group(1) if match else None
 
 
-# Test
+"""# Test
 if __name__ == "__main__":
     request = get_wayback_request("spiegel.de", 20150101, 20261231)
     response = get_wayback_location(request)
-    for capture in choose_capture(response, ["20160101", "20180101", "20200101", "20220101", "20240101", "20260101"], 60):
+    # None (nicht erreichbar) wie leere Liste behandeln
+    for capture in choose_capture(response or [], ["20160101", "20180101", "20200101", "20220101", "20240101", "20260101"], 60):
         print(capture["stichtag"], build_wayback_url(capture))
-    
+""" 
