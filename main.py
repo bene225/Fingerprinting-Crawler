@@ -63,7 +63,7 @@ async def crawl (config : CrawlConfig, sites : list[str]):
                 stats_after_consent = None
                 if config.consent:
                     # Für vgl mit danach cookies bei TCF
-                    consent_entries_before = await core.consent.consent_entries(page)
+                    consent_entries_before = await core.consent.consent_entries_before(page)
                     consent_ok = await core.consent.try_accept(page, config.consent_tries, config.consent_polling)
                     # Verweildauer nach Consent
                     await asyncio.sleep(config.visit_time_after_consent)
