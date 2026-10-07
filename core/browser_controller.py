@@ -1,5 +1,5 @@
 from collections import Counter
-from playwright.async_api import  Playwright, Browser, BrowserContext, Route, Request, async_playwright
+from playwright.async_api import  Playwright, Browser, BrowserContext, Page, Route, Request, async_playwright
 from utils.origin_domain import origin_domain
 
 # Vorbereitung für Pydantic 
@@ -14,7 +14,7 @@ class BrowserController:
         self._browser_type = browser_type
         self._allow_3p = allow_3p
         
-        # Playwright Start braucht Zeit await. Nicht im Kontruktor erlaubt. => Überagbe von Playwright und Browser nicht sofort
+        # Playwright Start braucht Zeit await. Nicht im Konstruktor erlaubt. => Überagbe von Playwright und Browser nicht sofort
         self._playwright : Playwright | None = None
         self._browser : Browser | None = None
     
@@ -34,40 +34,34 @@ class BrowserController:
             
     # new context hier immer aufrufen für isolierten Test 
     async def new_context(self, url : str) -> BrowserContext:
-        # 
         if self._browser is None:
             raise RuntimeError("Async with zuerst aufrufen")
         context = await self._browser.new_context()
-        # Bei Bedarf nur 1P
-        if self._allow_3p == False:
-            main_site = origin_domain(url)
-            thirdp_domains : set[str] = set()
-            # Set an Context binden KI Idee
-            context.thirdp_domains = thirdp_domains # type: ignore
-            # route->3p->dann wieder alles was darf an route. lambda KI
-            await context.route("**/*", lambda route, request: _detect_thirdparty_cookies(route, request, main_site, thirdp_domains))
-        # Loggin von "request", alle an context anhängen 
-        all_requests : list[tuple[str, str]] = []
-        context.all_requests = all_requests # type: ignore
+        # Loggin von "request", alle an context anhängen
+        all_requests : list[tuple[str, str]] = [] # all_requests = alle anforderungen domains und Art (Wayback)
+        context.all_requests = all_requests # type: ignore passt 
         context.on("request", lambda request: all_requests.append((origin_domain(request.url), request.resource_type)))
         return context
     
-    async def clear_3p(self, context : BrowserContext) -> None:
-        domains = getattr(context, "thirdp_domains", set())
-        for domain in domains:
-            await context.clear_cookies(domain=domain)
+    # Bei allow_3p False blockt Browser 3P-Cookies CDP
+    # Muss vor goto stehen Chips erlaubt
+    async def new_page(self, context : BrowserContext) -> Page:
+        page = await context.new_page()
+        if self._allow_3p == False:
+            cdp = await context.new_cdp_session(page)
+            await cdp.send("Network.enable")
+            await cdp.send("Network.setCookieControls", {"enableThirdPartyCookieRestriction": True})
+        return page
 
-    # Kennzahlen dict. Aufruf vor context.close() 
+
+    # Kennzahlen in dict. Aufruf vor context.close() 
     async def collect_stats(self, context : BrowserContext, url : str, events : list) -> dict:
         main_site = origin_domain(url)
         # Seitentitel, (für Fehler)
         title = await context.pages[0].title() if context.pages else ""
 
-        # Nur 3P, leere Domains verwerfen (req jeder einzeln. dann noch jeder einmalig, also wer)[Einbindungen]
-        requests_3p = [(domain, res_type) for domain, res_type in getattr(context, "all_requests", []) if domain and domain != main_site]
-        domains_3p = sorted({domain for domain, _ in requests_3p})
-        # Nur 3P-Skripte für Tracker Radar, vgl mit hist
-        script_domains_3p = sorted({domain for domain, res_type in requests_3p if res_type == "script"})
+        # 3P-Einbindungen: WB+Live Test gleich
+        request_fields = request_stats(getattr(context, "all_requests", []), main_site)
 
         # Nimm nur 3p Scripts, davon die Domain (wer hat wirklich fingerprinting betrieben) [echte Aufrufe]
         fp_sources = sorted({origin_domain(event.script_url) for event in events if event.script_url})
@@ -88,12 +82,7 @@ class BrowserController:
         return {
             "hist_crawl": False,
             "title": title,
-            "n_3p_requests": len(requests_3p),
-            "requests_per_type": dict(Counter(res_type for _, res_type in requests_3p)), # z.B. {"script": 12, "image": 30}
-            "n_3p_domains": len(domains_3p),
-            "domains_3p": domains_3p,
-            "n_script_domains_3p": len(script_domains_3p),
-            "script_domains_3p": script_domains_3p,
+            **request_fields,
             "n_fp_sources": len(fp_sources),
             "fp_sources": fp_sources,
             "n_fp_calls": len(events),
@@ -114,14 +103,25 @@ class BrowserController:
             "cookie_sources_partitioned": cookie_sources_partitioned,
         }
 
-async def _detect_thirdparty_cookies(route : Route, request : Request, main_site : str, thirdp_domains : set) -> None:
-    requested_site = origin_domain(request.url)
-    if (main_site != requested_site):
-        thirdp_domains.add(requested_site)
-    await route.continue_()
+# Live+Wayback für Domain Einbinungen
+def request_stats(all_requests : list, main_site : str) -> dict:
+    # Nur 3P, leere Domains verwerfen (data:/blob:, IP-Adressen) Domain schon zugeschnitten
+    requests_3p = [(domain, res_type) for domain, res_type in all_requests if domain and domain != main_site]
+    # Alle ein mal
+    domains_3p = sorted({domain for domain, _ in requests_3p})
+    # Nur 3P-Skripte (Eingabe für Tracker Radar), nur script einbindungen 
+    script_domains_3p = sorted({domain for domain, res_type in requests_3p if res_type == "script"})
+    return {
+        "n_3p_requests": len(requests_3p),
+        "requests_per_type": dict(Counter(res_type for _, res_type in requests_3p)), # z.B. {"script": 12, "image": 30}
+        "n_3p_domains": len(domains_3p),
+        "domains_3p": domains_3p,
+        "n_script_domains_3p": len(script_domains_3p),
+        "script_domains_3p": script_domains_3p,
+    }
 
 
-        
+# Verworfen: Set-Cookie per route.fetch entfernen speichert Cookie trotzdem (tests/cookie_block_probe.py) -> CDP in new_page
 # main_site = first_party, requested_site = einzelner request
 """async def _block_thirdparty_cookies(route : Route, request : Request, main_site : str):
     requested_site = origin_domain(request.url)
