@@ -174,7 +174,7 @@ if __name__ == "__main__":
         headless= False,
         loading_time= 10,
         visit_time_after_consent= 10,
-        site_timeout= 90
+        site_timeout= 90,
         js_cookie_block= False,
     )
     # FF1 Snapshots: gleiche Messung, Stichtage + heute
