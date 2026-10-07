@@ -1,5 +1,4 @@
-from collections import Counter
-from core.browser_controller import BrowserController
+from core.browser_controller import BrowserController, request_stats
 import utils.origin_domain
 import utils.wayback
 from playwright.async_api import  Playwright, Browser, BrowserContext, Route, Request, async_playwright
@@ -18,7 +17,7 @@ class HistoricalBrowserController (BrowserController):
         context.on("request", lambda request: _append_archived(request, all_requests))
         return context
 
-     
+    # Geblockte Live Req mitschreiben
     async def _log_live_req(self, context : BrowserContext) -> None:
         blocked_live_requests : list[str] = []
         # Liste an Context 
@@ -27,27 +26,21 @@ class HistoricalBrowserController (BrowserController):
 
     # Kennzahlen dict. Aufruf vor context.close(). url = Original- oder Wayback-URL der Website
     async def collect_historical_stats(self, context : BrowserContext, url : str) -> dict:
-        # Bei Wayback-URL erst Praefix abschneiden, sonst waere main_site archive.org und alles 3P
+        # Bei Wayback-URL erst Praefix abschneiden, sonst alles 3P wg anfang wb
         main_site = utils.origin_domain.origin_domain(utils.wayback.original_url(url) or url)
         # Seitentitel, um Fehlerseiten des Archivs zu erkennen
         title = await context.pages[0].title() if context.pages else ""
 
-        # Nur 3P, leere Domains verwerfen (req jeder einzeln. dann noch jeder einmalig, also wer)
-        requests_3p = [(domain, res_type) for domain, res_type in getattr(context, "all_requests", []) if domain and domain != main_site]
-        domains_3p = sorted({domain for domain, _ in requests_3p})
-        # Nur 3P-Skripte (Eingabe fuer Tracker Radar), sonst zaehlen Tracking-Pixel einer FP-Domain mit
-        script_domains_3p = sorted({domain for domain, res_type in requests_3p if res_type == "script"})
+        # 3P-Einbindungen: gemeinsame Funktion mit live (BrowserController), damit identisch berechnet
+        request_fields = request_stats(getattr(context, "all_requests", []), main_site)
 
         return {
             "hist_crawl": True,
             "title": title,
-            "n_3p_requests": len(requests_3p),
-            "requests_per_type": dict(Counter(res_type for _, res_type in requests_3p)), # z.B. {"script": 12, "image": 30}
-            "n_3p_domains": len(domains_3p),
-            "domains_3p": domains_3p,
-            "n_script_domains_3p": len(script_domains_3p),
-            "script_domains_3p": script_domains_3p,
-            "n_blocked_live_requests": len(getattr(context, "blocked_live_requests", [])), # Qualitaet des Snapshots
+            **request_fields,
+            "n_blocked_live_requests": len(getattr(context, "blocked_live_requests", [])), # Nicht umgeschriebenes
+            # Escape-Domains getrennt, um ihren Anteil zu zeigen (sind oben mitgezaehlt)
+            "blocked_live_domains": sorted({utils.origin_domain.origin_domain(url) for url in getattr(context, "blocked_live_requests", [])} - {""}),
         }
 
 # Kein live web
@@ -60,12 +53,12 @@ async def _allow_only_archive(route : Route, request : Request, blocked_live_req
         blocked_live_requests.append(request.url)
         await route.abort()
 
+# Lamba für 
 # Archivierte 3p einbindungen mitzählen
-# None = Toolbar, wombat.js; archive.org = Toolbar
+# Keine Archiv-URL = Escape ins Live-Web: wird geblockt, Domain zählt
+# archive.org niciht
 def _append_archived(request : Request, all_requests : list) -> None:
     url = utils.wayback.original_url(request.url)
-    if url is None:
-        return
-    domain = utils.origin_domain.origin_domain(url)
+    domain = utils.origin_domain.origin_domain(url or request.url)
     if domain != "archive.org":
         all_requests.append((domain, request.resource_type))
