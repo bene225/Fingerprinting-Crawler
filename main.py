@@ -88,15 +88,23 @@ async def crawl (config : CrawlConfig, sites : list[str]):
     core.logging.write_config(config)
     # Resume: nur erfolgreiche Websites mit Internet ueberspringen, ids weiterzaehlen
     done = core.logging.done_crawls(config)
-    site_id = core.logging.resume_crawl(config)
+    # Wiederholungen behalten ihre alte id, hinten dran
+    old_ids = core.logging.known_ids(config)
+    next_id = core.logging.resume_crawl(config)
     # Offene Websites, damit es nach einem Browser-Neustart an der gleichen Stelle weitergeht
     todo = [test_domain for test_domain in sites if (test_domain, None) not in done]
     # Wie oft eine Website den Browser schon mitgenommen hat (gegen Endlos-Neustart)
     killed_browser = Counter()
+    # Browser kann auch zulaufen ohne zu sterben (Fall id 305-339): Fehler in Folge zaehlen
+    errors_in_row = 0
     # Seite neustatr nochmal
     async with BrowserController(headless=config.headless, browser_type=config.BrowserType, allow_3p=config.allow_3p) as bc:
         while todo:
             test_domain = todo[0]
+            site_id = old_ids.get((test_domain, None))
+            if site_id is None:
+                site_id = next_id
+                next_id += 1
             try:
                 await asyncio.wait_for(single_crawl(bc, config, test_domain, site_id), timeout=config.site_timeout)
             # Fehler + Timeout in die Ergebnisse, um gezielt nochmal zu crawlen
@@ -104,19 +112,29 @@ async def crawl (config : CrawlConfig, sites : list[str]):
                 # Treiber-/Browserprozess tot: ohne Neustart scheitert der ganze Rest des Laufs
                 if bc.is_dead(e):
                     print(f"Browser tot bei {test_domain}: {e!r}")
-                    # Website hat den Browser zu oft mitgenommen -> als Fehler ablegen und ueberspringen
+                    # Endgültiger Fehler
                     if killed_browser[test_domain] >= config.browser_restart_tries:
                         core.logging.write_error(site_id, test_domain, config, repr(e), check_internet())
+                        old_ids.setdefault((test_domain, None), site_id)
                         todo.pop(0)
-                        site_id += 1
                     else:
                         killed_browser[test_domain] += 1
                     await bc.restart()
+                    errors_in_row = 0
                     continue
                 print(f"Fehler bei {test_domain}: {e!r}")
                 core.logging.write_error(site_id, test_domain, config, repr(e), check_internet())
+                # id festhalten, damit ein spaeterer Lauf dieselbe Zeile wiederholt
+                old_ids.setdefault((test_domain, None), site_id)
+                errors_in_row += 1
+            else:
+                errors_in_row = 0
             todo.pop(0)
-            site_id += 1
+            # Vorrsorglicher neustart
+            if errors_in_row >= config.max_errors_in_row:
+                print(f"{errors_in_row} Fehler in Folge -> Browser neu starten")
+                await bc.restart()
+                errors_in_row = 0
 
 
 #Pipeline zu aufruf

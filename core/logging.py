@@ -73,6 +73,29 @@ def done_crawls(config : CrawlConfig) -> set[tuple[str, str | None]]:
                 done.add((line_dict["website"], stichtag))
     return done
 
+# Bei Fehler id nochmal dann über compact beide zusammen 
+def known_ids(config : CrawlConfig) -> dict[tuple[str, str | None], int]:
+    ids : dict[tuple[str, str | None], int] = {}
+    if not Path(config.path_to_output).exists():
+        return ids
+    with open(config.path_to_output, "r", encoding="utf-8") as in_file:
+        for line in in_file:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                line_dict = loads(line)
+            except JSONDecodeError:
+                continue
+            # Config-Zeile hat kein success
+            if "success" not in line_dict or "id" not in line_dict:
+                continue
+            stichtag = line_dict.get("stichtag") or (line_dict.get("stats_vor_consent") or {}).get("stichtag")
+            # Erster Treffer gewinnt = die urspruengliche Position
+            ids.setdefault((line_dict["website"], stichtag), line_dict["id"])
+    return ids
+
+
 def resume_crawl(config : CrawlConfig) -> int:
     # Muss man resume?
     if not Path(config.path_to_output).exists():
