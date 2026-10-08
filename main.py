@@ -1,5 +1,6 @@
 import asyncio
 import csv
+from collections import Counter
 from datetime import datetime
 
 from core.browser_controller import BrowserController
@@ -35,66 +36,86 @@ def read_sites(path : Path, max_rank : int) -> list[str]:
         return [row["origin"] for row in csv.DictReader(in_file) if int(row["rank"]) <= max_rank]
 
 
-async def crawl (config : CrawlConfig, sites : list[str]):
-    async with BrowserController(headless=config.headless, browser_type=config.BrowserType, allow_3p=config.allow_3p) as bc:
-    
-        # Hilfsfunktion für as.wait_for
-        async def single_crawl(test_domain, site_id):
-            context = None
-            try:
-                context = await bc.new_context(test_domain)
-                page = await bc.new_page(context)
-                injector = Injector()
-                await injector.integrade_url_to_js(test_domain, page)
-                await injector.integrade_monkeypatch(page)
-                # JS-Block getrennt vom CDP-Block (CDP in bc)
-                if config.js_cookie_block:
-                    await injector.integrade_js_cookie_block(test_domain, page)
-                response = await page.goto(test_domain, timeout=config.load_timeout * 1000)
-                # Zeit lassen für laden
-                await asyncio.sleep(config.loading_time)
-                # snap stats
-                stats_before_consent = await bc.collect_stats(context, test_domain, list(injector.events))
-                # Statuscode Bot Fehler 
-                stats_before_consent["status"] = response.status if response else None
-                # Screenshot vor Consent zum Pruefen von Hand, Dateiname in den Namen
-                stats_before_consent["screenshot"] = await core.logging.write_screenshot(page, config)
-                # Ohne Consent nur ein Messpunkt
-                stats_after_consent = None
-                if config.consent:
-                    # Für vgl mit danach cookies bei TCF
-                    consent_entries_before = await core.consent.consent_entries_before(page)
-                    consent_ok = await core.consent.try_accept(page, config.consent_tries, config.consent_polling)
-                    # Verweildauer nach Consent
-                    await asyncio.sleep(config.visit_time_after_consent)
-                    stats_after_consent = await bc.collect_stats(context, test_domain, list(injector.events))
-                    # Screenshot banner 
-                    stats_after_consent["consent_ok"] = consent_ok
-                    # Tcf Status nciht ganz genau
-                    stats_after_consent["consent_check"] = await core.consent.consent_check(page, consent_entries_before)
-                    stats_after_consent["screenshot"] = await core.logging.write_screenshot(page, config)
-                core.logging.write_website(site_id, test_domain, config, injector.events, stats_before_consent, stats_after_consent, check_internet())
-                print(f"{test_domain}: FP vor Consent={stats_before_consent['n_fp_calls']}")
+# Hilfsfunktion für as.wait_for
+async def single_crawl(bc : BrowserController, config : CrawlConfig, test_domain : str, site_id : int):
+    context = None
+    try:
+        context = await bc.new_context(test_domain)
+        page = await bc.new_page(context)
+        injector = Injector()
+        await injector.integrade_url_to_js(test_domain, page)
+        await injector.integrade_monkeypatch(page)
+        # JS-Block getrennt vom CDP-Block (CDP in bc)
+        if config.js_cookie_block:
+            await injector.integrade_js_cookie_block(test_domain, page)
+        response = await page.goto(test_domain, timeout=config.load_timeout * 1000)
+        # Zeit lassen für laden
+        await asyncio.sleep(config.loading_time)
+        # snap stats
+        stats_before_consent = await bc.collect_stats(context, test_domain, list(injector.events))
+        # Statuscode Bot Fehler
+        stats_before_consent["status"] = response.status if response else None
+        # Screenshot vor Consent zum Pruefen von Hand, Dateiname in den Namen
+        stats_before_consent["screenshot"] = await core.logging.write_screenshot(page, config)
+        # Ohne Consent nur ein Messpunkt
+        stats_after_consent = None
+        if config.consent:
+            # Für vgl mit danach cookies bei TCF
+            consent_entries_before = await core.consent.consent_entries_before(page)
+            consent_ok = await core.consent.try_accept(page, config.consent_tries, config.consent_polling)
+            # Verweildauer nach Consent
+            await asyncio.sleep(config.visit_time_after_consent)
+            stats_after_consent = await bc.collect_stats(context, test_domain, list(injector.events))
+            # Screenshot banner
+            stats_after_consent["consent_ok"] = consent_ok
+            # Tcf Status nciht ganz genau
+            stats_after_consent["consent_check"] = await core.consent.consent_check(page, consent_entries_before)
+            stats_after_consent["screenshot"] = await core.logging.write_screenshot(page, config)
+        core.logging.write_website(site_id, test_domain, config, injector.events, stats_before_consent, stats_after_consent, check_internet())
+        print(f"{test_domain}: FP vor Consent={stats_before_consent['n_fp_calls']}")
 
-            finally:
-                if context is not None:
-                        await context.close()
-        
-                
-        # config schreiben, mitzähle nfür abbruch
-        core.logging.write_config(config)
-        # Resume: nur erfolgreiche Websites mit Internet ueberspringen, ids weiterzaehlen
-        done = core.logging.done_crawls(config)
-        site_id = core.logging.resume_crawl(config)
-        for test_domain in sites:
-            if (test_domain, None) in done:
-                continue
+    finally:
+        if context is not None:
+            # Bei totem Browser scheitert close() selbst, der echte Fehler soll sichtbar bleiben
             try:
-                await asyncio.wait_for(single_crawl(test_domain, site_id), timeout=config.site_timeout)
+                await context.close()
+            except Exception:
+                pass
+
+
+async def crawl (config : CrawlConfig, sites : list[str]):
+    # config schreiben, mitzähle nfür abbruch
+    core.logging.write_config(config)
+    # Resume: nur erfolgreiche Websites mit Internet ueberspringen, ids weiterzaehlen
+    done = core.logging.done_crawls(config)
+    site_id = core.logging.resume_crawl(config)
+    # Offene Websites, damit es nach einem Browser-Neustart an der gleichen Stelle weitergeht
+    todo = [test_domain for test_domain in sites if (test_domain, None) not in done]
+    # Wie oft eine Website den Browser schon mitgenommen hat (gegen Endlos-Neustart)
+    killed_browser = Counter()
+    # Seite neustatr nochmal
+    async with BrowserController(headless=config.headless, browser_type=config.BrowserType, allow_3p=config.allow_3p) as bc:
+        while todo:
+            test_domain = todo[0]
+            try:
+                await asyncio.wait_for(single_crawl(bc, config, test_domain, site_id), timeout=config.site_timeout)
             # Fehler + Timeout in die Ergebnisse, um gezielt nochmal zu crawlen
             except Exception as e:
+                # Treiber-/Browserprozess tot: ohne Neustart scheitert der ganze Rest des Laufs
+                if bc.is_dead(e):
+                    print(f"Browser tot bei {test_domain}: {e!r}")
+                    # Website hat den Browser zu oft mitgenommen -> als Fehler ablegen und ueberspringen
+                    if killed_browser[test_domain] >= config.browser_restart_tries:
+                        core.logging.write_error(site_id, test_domain, config, repr(e), check_internet())
+                        todo.pop(0)
+                        site_id += 1
+                    else:
+                        killed_browser[test_domain] += 1
+                    await bc.restart()
+                    continue
                 print(f"Fehler bei {test_domain}: {e!r}")
                 core.logging.write_error(site_id, test_domain, config, repr(e), check_internet())
+            todo.pop(0)
             site_id += 1
 
 
@@ -118,7 +139,11 @@ async def visit_snapshot(hbc, config, site, capture, row_id):
         core.logging.write_website(row_id, site, config, [], stats, None, check_internet())
     finally:
         if context is not None:
-            await context.close()
+            # Bei totem Browser scheitert close() selbst, der echte Fehler soll sichtbar bleiben
+            try:
+                await context.close()
+            except Exception:
+                pass
 
 
 async def crawl_historical(config : CrawlConfig, sites : list[str]):
@@ -152,10 +177,20 @@ async def crawl_historical(config : CrawlConfig, sites : list[str]):
                 # Diesen Stichtag schon erfolgreich -> nur fehlende/fehlgeschlagene nachholen
                 if (site, capture["stichtag"]) in done:
                     continue
-                try:
-                    await asyncio.wait_for(visit_snapshot(hbc, config, site, capture, row_id), timeout=config.site_timeout)
-                except Exception as e:
-                    core.logging.write_error(row_id, site, config, repr(e), check_internet(), capture["stichtag"])
+                # Versuch 0 darf den Browser neu starten, falls er mitten im Snapshot stirbt
+                for attempt in range(config.browser_restart_tries + 1):
+                    try:
+                        await asyncio.wait_for(visit_snapshot(hbc, config, site, capture, row_id), timeout=config.site_timeout)
+                        break
+                    except Exception as e:
+                        # Treiber-/Browserprozess tot: ohne Neustart scheitert der ganze Rest des Laufs
+                        if hbc.is_dead(e):
+                            print(f"Browser tot bei {site} {capture['stichtag']}: {e!r}")
+                            await hbc.restart()
+                            if attempt < config.browser_restart_tries:
+                                continue
+                        core.logging.write_error(row_id, site, config, repr(e), check_internet(), capture["stichtag"])
+                        break
                 row_id += 1
                 await asyncio.sleep(config.wayback_pause) # Wayback schonen
 

@@ -27,11 +27,35 @@ class BrowserController:
     
     # Ressourcenverwaltung, schließt den Browser wieder (with)
     async def __aexit__(self, exc_type, exc, tb) -> None:
-        if self._browser:
-            await self._browser.close()
-        if self._playwright : 
-            await self._playwright.stop()
-            
+        # Bei totem Treiber scheitert close()/stop() selbst. Darf den Neustart in crawl() nicht abbrechen
+        try:
+            if self._browser:
+                await self._browser.close()
+        except Exception:
+            pass
+        try:
+            if self._playwright :
+                await self._playwright.stop()
+        except Exception:
+            pass
+
+    # Stirbt der Treiberprozess, kommt das "close"-Event von Playwright nie an und is_connected()
+    # bleibt True (getestet) + Fehler
+    DEAD_MARKERS = ("connection closed", "pipe closed")
+
+    # Lebt noch?
+    def is_dead(self, error : Exception) -> bool:
+        if self._browser is None or not self._browser.is_connected():
+            return True
+        error_message = str(error).lower()
+        return any(marker in error_message for marker in self.DEAD_MARKERS)
+
+    # Toten Browser weg
+    async def restart(self) -> None:
+        await self.__aexit__(None, None, None)
+        await self.__aenter__()
+
+
     # new context hier immer aufrufen für isolierten Test 
     async def new_context(self, url : str) -> BrowserContext:
         if self._browser is None:
