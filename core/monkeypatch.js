@@ -4,8 +4,19 @@
     function register_fp(api,method){
         try {
             //Fingerprinting Ursprung 1P/3P
-            const new_stack = new Error().stack || '';
-            const script_urls = new_stack.match(/https?:\/\/[^\s\):]+/g) || [];
+            // Nur beim historischen Crawl (window._wayback, vom Injector gesetzt), live bleibt alles wie vorher
+            const wayback = window._wayback === true;
+            // Wayback: Praefix web.archive.org/web/<Zeit><Modus>/ abschneiden, sonst steht bei jedem Skript web.archive.org
+            // und die Original-URL wird am ':' abgeschnitten
+            const raw_stack = new Error().stack || '';
+            const new_stack = wayback ? raw_stack.replace(/https?:\/\/web\.archive\.org\/web\/\d+[a-z_]*\//g, '') : raw_stack;
+            const all_urls = new_stack.match(/https?:\/\/[^\s\):]+/g) || [];
+            // Wayback: Skripte der Oberflaeche (wombat.js, ruffle.js) gehoeren nicht zur archivierten Seite
+            const script_urls = wayback ? all_urls.filter(url => !/^https?:\/\/([^\/]+\.)?archive\.org\//.test(url)) : all_urls;
+            // Stack besteht nur aus Wayback-Oberflaeche -> kein Aufruf der Seite, nicht zaehlen
+            if (wayback && all_urls.length > 0 && script_urls.length === 0) {
+                return;
+            }
             // Url für 1P-Vergleich
             const py_url = window._location_url;
             let third_party = false;

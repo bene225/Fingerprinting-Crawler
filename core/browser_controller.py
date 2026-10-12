@@ -1,4 +1,5 @@
 from collections import Counter
+from typing import Self
 from playwright.async_api import  Playwright, Browser, BrowserContext, Page, Route, Request, async_playwright
 from utils.origin_domain import origin_domain
 
@@ -19,7 +20,7 @@ class BrowserController:
         self._browser : Browser | None = None
     
     #Hier wird Browser gestartet    
-    async def __aenter__(self) -> BrowserController: # -> BC wird erst hier fertig 
+    async def __aenter__(self) -> Self: # Self = je nach Klasse BC oder HistoricalBC (sonst kennt die IDE die Methoden der Unterklasse nicht) 
         self._playwright = await async_playwright().start()
         # Gewählter Browser aus BrowserType
         self._browser = await getattr(self._playwright,self._browser_type).launch(headless = self._headless)
@@ -43,6 +44,27 @@ class BrowserController:
         context.on("request", lambda request: all_requests.append((origin_domain(request.url), request.resource_type)))
         return context
     
+    # Browser noch verbunden? Sonst scheitert jede weitere Seite sofort
+    def is_alive(self) -> bool:
+        return self._browser is not None and self._browser.is_connected()
+
+    # Kurzer Test, ob die Website live laedt (Status unter 400 und HTML). Eigener Context, keine Messung
+    async def site_loads(self, url : str, timeout : int) -> bool:
+        if self._browser is None:
+            raise RuntimeError("Async with zuerst aufrufen")
+        context = await self._browser.new_context()
+        try:
+            page = await context.new_page()
+            response = await page.goto(url, wait_until="domcontentloaded", timeout=timeout * 1000)
+            return response is not None and response.status < 400 and "html" in response.headers.get("content-type", "")
+        except Exception:
+            # Browser abgestuerzt ist kein Fehler der Website: weiterreichen, sonst wird sie zu Unrecht verworfen
+            if not self.is_alive():
+                raise
+            return False
+        finally:
+            await context.close()
+
     # Bei allow_3p False blockt Browser 3P-Cookies CDP
     # Muss vor goto stehen Chips erlaubt
     async def new_page(self, context : BrowserContext) -> Page:
@@ -63,11 +85,8 @@ class BrowserController:
         # 3P-Einbindungen: WB+Live Test gleich
         request_fields = request_stats(getattr(context, "all_requests", []), main_site)
 
-        # Nimm nur 3p Scripts, davon die Domain (wer hat wirklich fingerprinting betrieben) [echte Aufrufe]
-        fp_sources = sorted({origin_domain(event.script_url) for event in events if event.script_url})
-        # FP-Aufrufe nach Herkunft: third_party aus monkeypatch.js (True/False, "Keine py_url" = unbekannt)
-        fp_events_1p = [event for event in events if event.third_party is False]
-        fp_events_3p = [event for event in events if event.third_party is True]
+        # FP-Aufrufe (echte Aufrufe aus monkeypatch.js): gemeinsame Funktion mit Wayback
+        fp_fields = fp_stats(events)
 
         # Cookies: httpOnly = per HTTP gesetzt, Rest = per HTTP oder JS
         cookies = await context.cookies()
@@ -83,16 +102,7 @@ class BrowserController:
             "hist_crawl": False,
             "title": title,
             **request_fields,
-            "n_fp_sources": len(fp_sources),
-            "fp_sources": fp_sources,
-            "n_fp_calls": len(events),
-            "fp_calls_per_api": dict(Counter(event.api for event in events)), # z.B. {"canvas": 12, "WebGL": 30}
-            "fp_calls_per_method": dict(Counter(f"{event.api}.{event.method}" for event in events)), # z.B. {"canvas.toDataURL": 4}
-            "n_fp_calls_1p": len(fp_events_1p),
-            "n_fp_calls_3p": len(fp_events_3p),
-            "n_fp_calls_unbekannt": len(events) - len(fp_events_1p) - len(fp_events_3p),
-            "fp_calls_per_api_1p": dict(Counter(event.api for event in fp_events_1p)),
-            "fp_calls_per_api_3p": dict(Counter(event.api for event in fp_events_3p)),
+            **fp_fields,
             "n_cookies": len(cookies),
             "n_cookies_1p": len(cookies_1p),
             "n_cookies_3p": len(cookies_3p),
@@ -118,6 +128,28 @@ def request_stats(all_requests : list, main_site : str) -> dict:
         "domains_3p": domains_3p,
         "n_script_domains_3p": len(script_domains_3p),
         "script_domains_3p": script_domains_3p,
+    }
+
+
+# Gemeinsam fuer live und Wayback: FP-Aufrufe aus dem Monkeypatch identisch berechnet
+# events = Liste von DetectedFingerprint (injector.py)
+def fp_stats(events : list) -> dict:
+    # Nimm nur 3p Scripts, davon die Domain (wer hat wirklich fingerprinting betrieben) [echte Aufrufe]
+    fp_sources = sorted({origin_domain(event.script_url) for event in events if event.script_url})
+    # FP-Aufrufe nach Herkunft: third_party aus monkeypatch.js (True/False, "Keine py_url" = unbekannt)
+    fp_events_1p = [event for event in events if event.third_party is False]
+    fp_events_3p = [event for event in events if event.third_party is True]
+    return {
+        "n_fp_sources": len(fp_sources),
+        "fp_sources": fp_sources,
+        "n_fp_calls": len(events),
+        "fp_calls_per_api": dict(Counter(event.api for event in events)), # z.B. {"canvas": 12, "WebGL": 30}
+        "fp_calls_per_method": dict(Counter(f"{event.api}.{event.method}" for event in events)), # z.B. {"canvas.toDataURL": 4}
+        "n_fp_calls_1p": len(fp_events_1p),
+        "n_fp_calls_3p": len(fp_events_3p),
+        "n_fp_calls_unbekannt": len(events) - len(fp_events_1p) - len(fp_events_3p),
+        "fp_calls_per_api_1p": dict(Counter(event.api for event in fp_events_1p)),
+        "fp_calls_per_api_3p": dict(Counter(event.api for event in fp_events_3p)),
     }
 
 
