@@ -13,6 +13,7 @@ import core.logging
 from pathlib import Path
 from core.logging import short_error
 from utils.check_internet import check_internet
+from utils.crawl_utils import progress_line
 from utils.origin_domain import origin_domain
 from utils.tranco_worker import read_sites_tranco
 from utils.wayback import find_captures, build_wayback_url, archive_reachable, original_url
@@ -32,14 +33,6 @@ TEST_DOMAINS = [
     # Weiterleitung auf eine andere Domain (testet die Berechnung von main_site)
     "https://youtu.be",
 ] 
-
-
-# Balken + Restzeit fuer die Konsole. processed = in diesem Lauf bearbeitete Websites (beim Fortsetzen uebersprungene zaehlen nicht)
-def progress_line(position : int, total : int, start : float, processed : int) -> str:
-    elapsed = time.time() - start
-    remaining = elapsed / processed * (total - position) if processed else 0
-    filled = 20 * position // total
-    return f"[{'#' * filled}{'-' * (20 - filled)}] {position}/{total} ({100 * position // total} %) | {elapsed / 3600:.1f} h gelaufen, noch ca. {remaining / 3600:.1f} h"
 
 
 # Fehlertexte, bei denen Wayback bremst oder Verbindungen ablehnt

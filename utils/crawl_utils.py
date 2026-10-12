@@ -1,7 +1,7 @@
-
+# Balken + Restzeit fuer die Konsole. processed = in diesem Lauf bearbeitete Websites (beim Fortsetzen uebersprungene zaehlen nicht)
 import time
 
-# Balken + Restzeit fuer die Konsole. processed = in diesem Lauf bearbeitete Websites (beim Fortsetzen uebersprungene zaehlen nicht)
+
 def progress_line(position : int, total : int, start : float, processed : int) -> str:
     elapsed = time.time() - start
     remaining = elapsed / processed * (total - position) if processed else 0
