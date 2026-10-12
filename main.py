@@ -13,6 +13,7 @@ import core.logging
 from pathlib import Path
 from core.logging import short_error
 from utils.check_internet import check_internet
+from utils.check_internet import wait_for_internet
 from utils.crawl_utils import progress_line
 from utils.origin_domain import origin_domain
 from utils.tranco_worker import read_sites_tranco
@@ -46,18 +47,13 @@ def landing_fields(page_url : str, requested_url : str) -> dict:
 
 
 # Wayback hat Teile abgelehnt (429, Verbindung abgelehnt): Skripte fehlen still, die Messung waere zu niedrig -> Fehler, wird wiederholt
+# Wenn ein Skript mit 429 -> Fehler
 def check_complete(stats : dict) -> None:
     if stats["n_archive_429"] or stats["n_archive_conn_errors"]:
         raise RuntimeError(f"Wayback drosselt ({stats['n_archive_429']} x HTTP 429, {stats['n_archive_conn_errors']} x Verbindung abgelehnt/abgebrochen)")
 
 
 # Kein Internet (z.B. WLAN weg): warten, sonst landen alle folgenden Seiten als Fehler im Ergebnis
-async def wait_for_internet():
-    while not check_internet():
-        print("Kein Internet, naechster Versuch in 30 s")
-        await asyncio.sleep(30)
-
-
 # Bei Absturz (Browser tot, unerwarteter Fehler) neu starten. Fertige Seiten werden uebersprungen, der Crawl macht dort weiter.
 # passes: nach einem Durchlauf nochmal ueber die Liste, damit Fehlerzeilen (z.B. aus einer Drosselung) noch in derselben Nacht wiederholt werden
 def run_with_restart(crawl_function, config : CrawlConfig, sites : list[str], attempts : int = 20, wait : int = 60, passes : int = 3):
