@@ -8,6 +8,7 @@ from itertools import islice, zip_longest
 
 def read_sites_tranco(config : CrawlConfig) -> list[str]:
     # Tranco (rank,domain ohne Kopfzeile) in logarithmische Rangbereiche teilen (1-1000, 1001-10000, ...), aus jedem gleich viele Seiten
+    # Enthaelt auch Infrastruktur-Domains (z.B. googleapis.com), die als Fehler/leer in den Daten landen
     with open(config.path_to_webpages, encoding="utf-8") as in_file:
         domains = [row[1] for row in islice(csv.reader(in_file), config.rank_bands[-1])]
     bands = []
