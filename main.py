@@ -11,6 +11,7 @@ from core.injector import Injector
 import core.consent
 import core.logging
 from pathlib import Path
+from core.logging import short_error
 from utils.check_internet import check_internet
 from utils.origin_domain import origin_domain
 from utils.tranco_worker import read_sites_tranco
@@ -43,11 +44,6 @@ def progress_line(position : int, total : int, start : float, processed : int) -
 
 # Fehlertexte, bei denen Wayback bremst oder Verbindungen ablehnt
 BLOCK_SIGNS = ("Wayback drosselt", "HTTP 429", "ERR_CONNECTION_REFUSED", "ERR_CONNECTION_RESET", "ERR_CONNECTION_CLOSED", "ERR_CONNECTION_TIMED_OUT", "ERR_EMPTY_RESPONSE")
-
-
-# Erste Zeile der Fehlermeldung (Playwright haengt sonst das ganze Call-Log an)
-def short_error(error : Exception) -> str:
-    return (str(error).splitlines() or [type(error).__name__])[0][:150]
 
 
 # Wohin hat die Seite wirklich geladen? Bei Weiterleitung auf eine andere Domain (z.B. uebernommene Firma) gelten deren eigene Skripte als 3P -> zum Filtern

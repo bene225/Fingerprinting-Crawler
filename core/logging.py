@@ -101,3 +101,8 @@ def resume_crawl(config : CrawlConfig) -> int:
             except JSONDecodeError:
                 continue
         return last_id + 1
+
+
+# Erste Zeile der Fehlermeldung (Playwright haengt sonst das ganze Call-Log an)
+def short_error(error : Exception) -> str:
+    return (str(error).splitlines() or [type(error).__name__])[0][:150]
