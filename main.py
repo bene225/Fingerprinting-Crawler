@@ -15,19 +15,13 @@ from core.logging import short_error
 from utils.check_internet import check_internet
 from utils.check_internet import wait_for_internet
 from utils.crawl_utils import progress_line
-from utils.origin_domain import origin_domain
+from utils.crawl_utils import landing_fields
 from utils.tranco_worker import read_sites_tranco
-from utils.wayback import find_captures, build_wayback_url, archive_reachable, original_url
+from utils.wayback import find_captures, build_wayback_url, archive_reachable
 
 
 # Fehlertexte, bei denen Wayback bremst oder Verbindungen ablehnt
 BLOCK_SIGNS = ("Wayback drosselt", "HTTP 429", "ERR_CONNECTION_REFUSED", "ERR_CONNECTION_RESET", "ERR_CONNECTION_CLOSED", "ERR_CONNECTION_TIMED_OUT", "ERR_EMPTY_RESPONSE")
-
-
-# Wohin hat die Seite wirklich geladen? Bei Weiterleitung auf eine andere Domain (z.B. uebernommene Firma) gelten deren eigene Skripte als 3P -> zum Filtern
-def landing_fields(page_url : str, requested_url : str) -> dict:
-    final_url = original_url(page_url) or page_url # Wayback-Praefix entfernen
-    return {"final_url": final_url, "cross_domain_redirect": origin_domain(final_url) != origin_domain(requested_url)}
 
 
 # Wayback hat Teile abgelehnt (429, Verbindung abgelehnt): Skripte fehlen still, die Messung waere zu niedrig -> Fehler, wird wiederholt
