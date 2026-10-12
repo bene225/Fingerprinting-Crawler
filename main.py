@@ -33,13 +33,6 @@ TEST_DOMAINS = [
 ] 
 
 
-
-def read_sites(path : Path, max_rank : int) -> list[str]:
-    # Rank Stufen 1000, 5000 (Nicht in Config, da 1000 Sinnvoll) CRUX Liste in Stufen
-    with open(path, encoding="utf-8") as in_file:
-        return [row["origin"] for row in csv.DictReader(in_file) if int(row["rank"]) <= max_rank]
-
-
 # Balken + Restzeit fuer die Konsole. processed = in diesem Lauf bearbeitete Websites (beim Fortsetzen uebersprungene zaehlen nicht)
 def progress_line(position : int, total : int, start : float, processed : int) -> str:
     elapsed = time.time() - start
