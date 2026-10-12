@@ -22,7 +22,7 @@ if __name__ == "__main__":
     # Tranco-Liste: gleich viele Websites aus jedem logarithmischen Rangbereich (rank_bands in der Config). Gleiche Werte fuer Live und Archiv
     # batch_size spaeter erhoehen: es kommen nur die weiteren Websites dazu, fertige werden beim Fortsetzen uebersprungen
     webpages = Path("utils/tranco_647LX.csv")
-    batch : dict[str, Any] = dict(batch_size= 500, batch_seed= 1)
+    batch : dict[str, Any] = dict(batch_size= 1000, batch_seed= 1)
 
     # FF1 Live-Punkt: vor und nach Consent gemessen, nichts blocken
     live_config = CrawlConfig(
