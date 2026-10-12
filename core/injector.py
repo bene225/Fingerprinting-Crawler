@@ -35,6 +35,10 @@ class Injector:
     async def integrade_url_to_js(self, url_uncut : str, page : Page) -> None:
         escaped_url = first_party_url_to_js(url_uncut)
         await page.add_init_script(f"window._location_url = {escaped_url};\n")
+
+    # Nur historischer Crawl: Macht marker an den Context um Präfix richtig zuschneiden
+    async def integrade_wayback_mode(self, page : Page) -> None:
+        await page.add_init_script("window._wayback = true;\n")
     
     # Aufruf auf Website duch mp wenn Fp erkannt, dann zählen
     # location href aus der mp.js
