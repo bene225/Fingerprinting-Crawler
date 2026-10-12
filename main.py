@@ -1,9 +1,7 @@
 import argparse
 import asyncio
 import csv
-import random
 import time
-from itertools import islice, zip_longest
 from typing import Any
 
 from core.browser_controller import BrowserController
@@ -15,6 +13,7 @@ import core.logging
 from pathlib import Path
 from utils.check_internet import check_internet
 from utils.origin_domain import origin_domain
+from utils.tranco_worker import read_sites_tranco
 from utils.wayback import find_captures, build_wayback_url, archive_reachable, original_url
 
 TEST_DOMAINS = [
@@ -39,24 +38,6 @@ def read_sites(path : Path, max_rank : int) -> list[str]:
     # Rank Stufen 1000, 5000 (Nicht in Config, da 1000 Sinnvoll) CRUX Liste in Stufen
     with open(path, encoding="utf-8") as in_file:
         return [row["origin"] for row in csv.DictReader(in_file) if int(row["rank"]) <= max_rank]
-
-
-def read_sites_tranco(config : CrawlConfig) -> list[str]:
-    # Tranco (rank,domain ohne Kopfzeile) in logarithmische Rangbereiche teilen (1-1000, 1001-10000, ...), aus jedem gleich viele Seiten
-    # Enthaelt auch Infrastruktur-Domains (z.B. googleapis.com), die als Fehler/leer in den Daten landen
-    with open(config.path_to_webpages, encoding="utf-8") as in_file:
-        domains = [row[1] for row in islice(csv.reader(in_file), config.rank_bands[-1])]
-    bands = []
-    lower = 0
-    for upper in config.rank_bands:
-        band = domains[lower:upper]
-        # Feste Zufallsreihenfolge pro Bereich (gleicher Startwert = gleiche Seiten): mehr Seiten = es kommen nur weitere dazu
-        random.Random(f"{config.batch_seed}-{upper}").shuffle(band)
-        bands.append(band)
-        lower = upper
-    # Reihum je eine Seite pro Bereich: auch ein vorzeitiger Abbruch hat alle Bereiche gleich stark
-    sites = [domain for one_round in zip_longest(*bands) for domain in one_round if domain]
-    return [f"https://{domain}" for domain in sites[:config.batch_size]]
 
 
 # Balken + Restzeit fuer die Konsole. processed = in diesem Lauf bearbeitete Websites (beim Fortsetzen uebersprungene zaehlen nicht)
