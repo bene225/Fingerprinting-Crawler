@@ -19,22 +19,6 @@ from utils.origin_domain import origin_domain
 from utils.tranco_worker import read_sites_tranco
 from utils.wayback import find_captures, build_wayback_url, archive_reachable, original_url
 
-TEST_DOMAINS = [
-    # Banner im Hauptdokument (CSS-Treffer)
-    "https://otto.de", "https://mediamarkt.de", "https://obi.de",
-    # Sourcepoint-Banner im Iframe
-    "https://spiegel.de", "https://zeit.de", "https://bild.de", "https://heise.de", "https://theguardian.com", "https://bbc.com",
-    # weitere deutsche Nachrichten- und Shopseiten
-    "https://t-online.de", "https://web.de", "https://tagesschau.de", "https://kicker.de", "https://chip.de", "https://focus.de",
-    "https://welt.de", "https://computerbase.de", "https://idealo.de", "https://check24.de", "https://kleinanzeigen.de", "https://thalia.de",
-    # Kontrollseiten ohne Banner und ohne Tracker (Erwartung: Consent False, kaum Events)
-    "https://example.com", "https://wikipedia.org", "https://duckduckgo.com",
-    # bekannter Sonderfall: Bot-Fehlerseite (testet die Fehlerbehandlung)
-    "https://ebay.de",
-    # Weiterleitung auf eine andere Domain (testet die Berechnung von main_site)
-    "https://youtu.be",
-] 
-
 
 # Fehlertexte, bei denen Wayback bremst oder Verbindungen ablehnt
 BLOCK_SIGNS = ("Wayback drosselt", "HTTP 429", "ERR_CONNECTION_REFUSED", "ERR_CONNECTION_RESET", "ERR_CONNECTION_CLOSED", "ERR_CONNECTION_TIMED_OUT", "ERR_EMPTY_RESPONSE")
