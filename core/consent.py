@@ -42,7 +42,11 @@ with open("utils/tcf_terms.json", "r", encoding="utf-8") as tcf_file:
 
 async def try_accept(page : Page, tries : int = 20, polling : float = 0.5) -> bool:
 
-    await page.wait_for_load_state("load")
+    # Laedt die Seite noch (Archiv: haengende Ressource), trotzdem nach dem Banner suchen statt die Messung zu verwerfen
+    try:
+        await page.wait_for_load_state("load", timeout=10000)
+    except Exception:
+        pass
     # CSS-Akzeptoren für normales Banner
     await asyncio.sleep((random.randint(100, 300) + 150) / 1000)  # Sicherheit dass Button da und menschlichkeit
 
