@@ -1,64 +1,22 @@
-import json
 import re
 import time
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
-from urllib.parse import urlencode
-from urllib.request import Request, urlopen
+from urllib.error import HTTPError
+from urllib.parse import urljoin
+from urllib.request import HTTPRedirectHandler, Request, build_opener
 
-cdx_adress = "http://web.archive.org/cdx/search/cdx?"
+USER_AGENT = "Research für Bachelor Arbeit(Uni Regensburg). Kontakt: benedikt.hartl@stud.uni-regensburg.de"
 # Nur den hinteren Teil des Links behalten, da Wayback schreibt um (Tracking) original_url
 WAYBACK_URL = re.compile(r"^https?://web\.archive\.org/web/\d+[a-z_]*/(.+)$")
+# Aufnahmezeitpunkt (14 Ziffern) der ausgelieferten Kopie in der Archiv-Adresse
+WAYBACK_TIMESTAMP = re.compile(r"^https?://web\.archive\.org/web/(\d{14})[a-z_]*/")
 
-# CDX 
-
-# Request für CDX aufbauen
-def get_wayback_request (url : str, start : int, end: int) -> Request:
-    # Collapse: Nicht genauer als Day, fl: Antwort
-    cdx_request = urlencode([("url", url),("from", str(start)),("to", str(end)),("output", "json"),("filter", "statuscode:200"),("filter", "mimetype:text/html"),("collapse", "timestamp:8"),("fl", "timestamp,original,digest")])
-    wayback_request = Request(cdx_adress+cdx_request, headers={"User-Agent" : "Research für Bachelor Arbeit(Uni Regensburg). Kontakt: benedikt.hart@stud.uni-regensburg.de"})
-    return wayback_request
-
-
-
-# None = CDX nicht erreichbar, [] = keine Snapshots
-def get_wayback_location(wayback_request : Request) -> list[dict] | None:
-    time.sleep(3) # merhmalige Ausführung bei der Api (Last)
-    for i in range(4):
-        print(f"Try:{i}")
-        try:
-            with urlopen(wayback_request, timeout=70) as response:
-                response_string = json.loads(response.read().decode())
-                break
-        except Exception:
-            # Wachsende Pause 
-            time.sleep(10*(i+2))
-    else:
-        print("CDX nicht erreichbar")
-        return None
-       
-    # Formatieren für durchsuchen
-    try:
-        header = response_string[0]
-        body = response_string[1:]
-        response_array = []
-        for row in body:
-            row_dict = {header[0] : row [0], header[1] : row [1], header[2] : row [2]}
-            response_array.append(row_dict)  
-        return response_array
-    except IndexError:
-        print("Liste nicht da")
-        return []
-    except json.JSONDecodeError:
-        print("Format Json")
-        return []
-    
-    
-# Für Snapshot suche
+# Für Snapshot suche -> Tage Abstand
 def _distance_days(timestamp : str, target_date : datetime) -> int:
     return abs((datetime.strptime(timestamp[:8], "%Y%m%d") - target_date).days)
 
-
-
+# Snapshots innerhalb der Bedingingen wählen und nicht doppelt, bekommt Array von nearest_sn
 def choose_capture(response_list : list[dict], target_dates : list[str], max_days_gap : int) -> list[dict]:
     # Für jeden Stichtag nächstes Datum
     captures = []
@@ -81,8 +39,62 @@ def choose_capture(response_list : list[dict], target_dates : list[str], max_day
     return captures
 
 
-# Wayback
+# Weiterleitung nicht folgen, nur das Ziel (Header Location) lesen
+class _NoRedirect(HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        return None
 
+_replay_opener = build_opener(_NoRedirect)
+
+
+# Naechste Kopie zu einem Datum: Die Replay-Adresse web.archive.org/web/<Datum>/<Seite> leitet direkt auf sie weiter (schnell, ohne CDX)
+# None = nie archiviert (oder gesperrt), Fehler = Wayback nicht erreichbar
+# Ruf tnicht afuf, sondern Wayback nichts hat verwiest es auf nächste Kopie. Header wird dann wieterverwendt (kein CDX mehr)
+# Link zu nächstem Datum
+def nearest_capture(site : str, target_date : str) -> dict | None:
+    request = Request(f"https://web.archive.org/web/{target_date}/{site}", method="HEAD", headers={"User-Agent" : USER_AGENT})
+    for _ in range(2):
+        try:
+            _replay_opener.open(request, timeout=20)
+            # Statt weiterleiten fFehler werfen und neue Loc auslesen
+        except HTTPError as error:
+            location = urljoin(request.full_url, error.headers.get("Location") or "")
+            if error.code in (301, 302, 307, 308) and capture_timestamp(location):
+                return {"timestamp" : capture_timestamp(location), "original" : original_url(location)}
+            if error.code in (403, 404, 410, 451):
+                return None
+            # 429: sofort aufgeben, der Aufrufer pausiert (nach 429 weiterfragen kann zu einer IP-Sperre fuehren)
+            if error.code == 429:
+                break
+        except Exception:
+            pass
+        time.sleep(5) # Zeitueberschreitung oder 5xx: einmal nochmal
+    raise RuntimeError(f"Wayback nicht erreichbar: {site} {target_date}")
+
+
+# Snapshots einer Website zu den Stichtagen (Abstand höchstens max_days_gap). None = Wayback nicht erreichbar
+# Verknüopfen choose und find und parallelisierung
+def find_captures(site : str, target_dates : list[str], max_days_gap : int) -> list[dict] | None:
+    try:
+        # Drei Abfragen gleichzeitig (Archiv schonen)
+        with ThreadPoolExecutor(max_workers=3) as pool:
+            nearest = list(pool.map(lambda target_date: nearest_capture(site, target_date), target_dates))
+    except RuntimeError as e:
+        print(e)
+        return None
+    # Je Stichtag die nächste Kopie, zu weit entfernte und doppelte fallen weg
+    return choose_capture([capture for capture in nearest if capture], target_dates, max_days_gap)
+
+
+# Testabfrage an WB Sperre?
+def archive_reachable() -> bool:
+    try:
+        nearest_capture("https://example.com", "20200101")
+        return True
+    except RuntimeError:
+        return False
+
+# Link für die messende Abfrage
 def build_wayback_url(capture : dict) -> str:
     # Normale Replay-URL (ohne id_)
     return f"https://web.archive.org/web/{capture['timestamp']}/{capture['original']}"
@@ -95,11 +107,19 @@ def original_url(wayback_url : str) -> str | None:
     return match.group(1) if match else None
 
 
+def capture_timestamp(wayback_url : str) -> str | None:
+    # .../web/20191223122052js_/https://tracker.com/x.js -> 20191223122052 (wann das Archiv diese Kopie aufgenommen hat)
+    match = WAYBACK_TIMESTAMP.match(wayback_url)
+    return match.group(1) if match else None
+
+
+def capture_gap_days(copy_timestamp : str, snapshot_timestamp : str) -> int:
+    # Ganze Tage, positiv = Kopie neuer als der Snapshot, negativ = älter
+    return (datetime.strptime(copy_timestamp[:8], "%Y%m%d") - datetime.strptime(snapshot_timestamp[:8], "%Y%m%d")).days
+
+
 """# Test
 if __name__ == "__main__":
-    request = get_wayback_request("spiegel.de", 20150101, 20261231)
-    response = get_wayback_location(request)
-    # None (nicht erreichbar) wie leere Liste behandeln
-    for capture in choose_capture(response or [], ["20160101", "20180101", "20200101", "20220101", "20240101", "20260101"], 60):
+    for capture in find_captures("https://spiegel.de", ["20160101", "20200101", "20240101", "20261009"], 120) or []:
         print(capture["stichtag"], build_wayback_url(capture))
-""" 
+"""
