@@ -16,6 +16,7 @@ from utils.check_internet import check_internet
 from utils.check_internet import wait_for_internet
 from utils.crawl_utils import progress_line
 from utils.crawl_utils import landing_fields
+from utils.crawl_utils import run_with_restart
 from utils.tranco_worker import read_sites_tranco
 from utils.wayback import find_captures, build_wayback_url, archive_reachable
 
@@ -30,21 +31,6 @@ def check_complete(stats : dict) -> None:
     if stats["n_archive_429"] or stats["n_archive_conn_errors"]:
         raise RuntimeError(f"Wayback drosselt ({stats['n_archive_429']} x HTTP 429, {stats['n_archive_conn_errors']} x Verbindung abgelehnt/abgebrochen)")
 
-
-# Kein Internet (z.B. WLAN weg): warten, sonst landen alle folgenden Seiten als Fehler im Ergebnis
-# Bei Absturz (Browser tot, unerwarteter Fehler) neu starten. Fertige Seiten werden uebersprungen, der Crawl macht dort weiter.
-# passes: nach einem Durchlauf nochmal ueber die Liste, damit Fehlerzeilen (z.B. aus einer Drosselung) noch in derselben Nacht wiederholt werden
-def run_with_restart(crawl_function, config : CrawlConfig, sites : list[str], attempts : int = 20, wait : int = 60, passes : int = 3):
-    finished = 0
-    failures = 0
-    while finished < passes and failures < attempts:
-        try:
-            asyncio.run(crawl_function(config, sites))
-            finished += 1
-        except Exception as e:
-            failures += 1
-            print(f"Crawl abgestuerzt (Versuch {failures} von {attempts}): {short_error(e)}. Neustart in {wait} s")
-            time.sleep(wait)
 
 
 async def crawl (config : CrawlConfig, sites : list[str]):
