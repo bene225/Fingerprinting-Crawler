@@ -17,19 +17,19 @@ def write_website(id : int, website : str, config : CrawlConfig, events : list, 
     # Umformung Dataclass -> dict
     events_asdict = [asdict(event) for event in events]
     # events (groß) ans Ende, damit die Zeile vorne lesbar bleibt
-    crawl_result = {"id" : id, "website" : website, "success" : True, "internet_ok" : internet_ok, "stats_vor_consent" : stats_vor_consent, "stats_nach_consent" : stats_nach_consent, "events" : events_asdict}
+    crawl_result = {"id" : id, "website" : website, "crawl_name" : config.crawl_name, "crawl_time" : datetime.now().isoformat(timespec="seconds"), "success" : True, "internet_ok" : internet_ok, "stats_vor_consent" : stats_vor_consent, "stats_nach_consent" : stats_nach_consent, "events" : events_asdict}
     with open(config.path_to_output, "a", encoding="utf-8") as out_file:
                 out_file.write(dumps(crawl_result, default=str ) + "\n")
 
 # Fehlgeschlagene Website (oder Snapshot) mitschreiben, um sie gezielt nochmal zu crawlen
 def write_error(id : int, website : str, config : CrawlConfig, error : str, internet_ok : bool, stichtag : str | None = None) -> None:
-    error_result = {"id" : id, "website" : website, "success" : False, "internet_ok" : internet_ok, "error" : error}
+    error_result = {"id" : id, "website" : website, "crawl_name" : config.crawl_name, "crawl_time" : datetime.now().isoformat(timespec="seconds"), "success" : False, "internet_ok" : internet_ok, "error" : error}
     if stichtag is not None:
         error_result["stichtag"] = stichtag
     with open(config.path_to_output, "a", encoding="utf-8") as out_file:
                 out_file.write(dumps(error_result, default=str ) + "\n")
 
-# Screenshot zum Pruefen von Hand (Bot-Sperren, Fehlerseiten). Ordner = crawl_name neben der Ausgabe
+# Screenshot zum Prüfen von Hand (Bot-Sperren, Fehlerseiten). Ordner = crawl_name neben der Ausgabe
 # Rueckgabe: Dateiname fuer die JSONL-Zeile, None falls fehlgeschlagen
 async def write_screenshot(page : Page, config : CrawlConfig) -> str | None:
     folder = Path(config.path_to_output).parent / config.crawl_name
@@ -45,14 +45,21 @@ async def write_screenshot(page : Page, config : CrawlConfig) -> str | None:
         return None
     return file_name
 
-# Stichtag ohne passenden Snapshot: gueltiges Ergebnis, kein Fehler -> bei Resume nicht nochmal CDX fragen
+# Stichtag ohne passenden Snapshot: gueltiges Ergebnis, kein Fehler 
 def write_no_snapshot(id : int, website : str, config : CrawlConfig, stichtag : str, internet_ok : bool) -> None:
-    no_snapshot_result = {"id" : id, "website" : website, "success" : True, "internet_ok" : internet_ok, "stichtag" : stichtag, "no_snapshot" : True}
+    no_snapshot_result = {"id" : id, "website" : website, "crawl_name" : config.crawl_name, "crawl_time" : datetime.now().isoformat(timespec="seconds"), "success" : True, "internet_ok" : internet_ok, "stichtag" : stichtag, "no_snapshot" : True}
     with open(config.path_to_output, "a", encoding="utf-8") as out_file:
                 out_file.write(dumps(no_snapshot_result, default=str ) + "\n")
 
-# wichtig für resume: erledigte (Website, Stichtag), Stichtag None bei Live
-# Nur success UND internet_ok zaehlt, alles andere wird nochmal gemacht
+# Website ohne Archiv-Crawl, weil sie live nicht lädt (success True + ohne Stichtag: Fortsetzen prüft sie nicht nochmal)
+def write_skipped(id : int, website : str, config : CrawlConfig, reason : str, internet_ok : bool) -> None:
+    skipped_result = {"id" : id, "website" : website, "crawl_name" : config.crawl_name, "crawl_time" : datetime.now().isoformat(timespec="seconds"), "success" : True, "internet_ok" : internet_ok, "skipped" : reason}
+    with open(config.path_to_output, "a", encoding="utf-8") as out_file:
+                out_file.write(dumps(skipped_result, default=str ) + "\n")
+
+# Nur Fehler nochmal 
+# wichtig für resume: erledigte (Website, Stichtag), Stichtag None bei Live (Liest alles ein und ordnet nach sucess oder ¬succes)
+# Nur success UND internet_ok zählt, alles andere wird nochmal gemacht
 def done_crawls(config : CrawlConfig) -> set[tuple[str, str | None]]:
     done = set()
     if not Path(config.path_to_output).exists():
@@ -74,7 +81,7 @@ def done_crawls(config : CrawlConfig) -> set[tuple[str, str | None]]:
     return done
 
 def resume_crawl(config : CrawlConfig) -> int:
-    # Muss man resume?
+    # ID an der höchsten wieder anknüpfen
     if not Path(config.path_to_output).exists():
         return 0
     
@@ -89,7 +96,8 @@ def resume_crawl(config : CrawlConfig) -> int:
                 continue
             try:
                 line_dict = loads(line)
-                last_id = line_dict.get("id", last_id)
+                # Hoechste id (nicht letzte Zeile): parallele Snapshots schreiben nicht in id-Reihenfolge
+                last_id = max(last_id, line_dict.get("id", -1))
             except JSONDecodeError:
                 continue
         return last_id + 1
