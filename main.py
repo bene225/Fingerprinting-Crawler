@@ -4,7 +4,7 @@ from typing import Any
 
 from core.historical import crawl_historical
 from config import CrawlConfig
-from core.live import crawl
+from core.live import crawl, crawl_block
 from pathlib import Path
 from utils.crawl_utils import run_with_restart
 from utils.tranco_worker import read_sites_tranco
@@ -16,6 +16,7 @@ if __name__ == "__main__":
     run = parser.add_mutually_exclusive_group(required=True)
     run.add_argument("--live", action="store_true", help="FF1 Live-Crawl (vor und nach Consent)")
     run.add_argument("--hist", action="store_true", help="FF1 Archiv-Crawl (Wayback)")
+    run.add_argument("--block", action="store_true", help="FF2 Cookie-Block: alles erlaubt / nur CDP / alles geblockt (je vor und nach Consent)")
     args = parser.parse_args()
 
     # Tranco-Liste: gleich viele Websites aus jedem logarithmischen Rangbereich (rank_bands in der Config). Gleiche Werte fuer Live und Archiv
@@ -62,8 +63,24 @@ if __name__ == "__main__":
         **batch
     )
 
+    # FF2 Cookie-Block: gleiche Messung wie FF1 live, je Modus eigene Datei ff2_<modus>.jsonl (allow_3p/js_cookie_block setzt BLOCK_MODES in core/live.py)
+    block_config = CrawlConfig(
+        path_to_output=Path("results/Forschungsfrage 2/ff2.jsonl"),
+        path_to_webpages=webpages,
+        crawl_name= "ff2",
+        consent= True,
+        consent_tries= 4,
+        headless= False,
+        loading_time= 10,
+        visit_time_after_consent= 10,
+        site_timeout= 90,
+        **batch
+    )
+
     sites = read_sites_tranco(live_config)
     if args.live:
         run_with_restart(crawl, live_config, sites)
-    else:
+    elif args.hist:
         run_with_restart(crawl_historical, hist_config, sites)
+    else:
+        run_with_restart(crawl_block, block_config, sites)

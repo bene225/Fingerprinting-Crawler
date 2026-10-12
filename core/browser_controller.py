@@ -67,9 +67,10 @@ class BrowserController:
 
     # Bei allow_3p False blockt Browser 3P-Cookies CDP
     # Muss vor goto stehen Chips erlaubt
-    async def new_page(self, context : BrowserContext) -> Page:
+    # allow_3p je Seite (FF2-Modi in einem Browser). None = Wert des Controllers (FF1 unverändert)
+    async def new_page(self, context : BrowserContext, allow_3p : bool | None = None) -> Page:
         page = await context.new_page()
-        if self._allow_3p == False:
+        if (self._allow_3p if allow_3p is None else allow_3p) == False:
             cdp = await context.new_cdp_session(page)
             await cdp.send("Network.enable")
             await cdp.send("Network.setCookieControls", {"enableThirdPartyCookieRestriction": True})
