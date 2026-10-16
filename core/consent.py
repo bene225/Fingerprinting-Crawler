@@ -102,9 +102,13 @@ async def try_accept(page : Page, tries : int = 20, polling : float = 0.5) -> bo
 
 
 async def try_reject(page : Page, tries : int = 20, polling : float = 0.5) -> bool:
-    await page.wait_for_load_state("load")
+    # Wie try_accept (Laden darf haengen, gleiche Wartezeit): Zustimmen und Ablehnen brauchen gleich lang (FF3)
+    try:
+        await page.wait_for_load_state("load", timeout=10000)
+    except Exception:
+        pass
     # CSS-Rejektoren
-    await asyncio.sleep((random.randint(1000, 3000) + 1500) / 1000)
+    await asyncio.sleep((random.randint(100, 300) + 150) / 1000)
 
      # Polling
     for times_tried in range (tries):

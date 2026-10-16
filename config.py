@@ -16,6 +16,9 @@ class CrawlConfig:
     consent : bool = False # Zustimmen
     consent_tries : PositiveInt = 20 # Wie oft nach dem Banner gesucht wird
     consent_polling : PositiveFloat = 0.5 # Sekunden Pause zwischen den Versuchen
+    # FF3
+    consent_action : Literal["accept", "reject", "none"] = "accept" # FF3: zustimmen, ablehnen oder Banner nicht anfassen (FF1/FF2: zustimmen)
+    consent_window : PositiveInt | None = None # FF3: feste Zeit fuer Bannersuche + Klick, Messung nach Consent dadurch in allen Modi gleich spaet. None = direkt weiter (FF1/FF2)
     headless : bool = False # Headful besser für rendern von Website und user_agent
     loading_time : PositiveInt = 10 # Zeit nach dem Laden bis zur Messung vor Consent (Wayback: bis zur Messung)
     visit_time_after_consent : PositiveInt = 10 # Verweildauer 
