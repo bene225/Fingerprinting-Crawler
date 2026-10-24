@@ -1,3 +1,4 @@
+# Nur Felder zur Wortliste für Consent hinzufügen
 import json
 
 with open("crux_negation_selectors/discovered_selectors.json", "r", encoding="utf-8") as additional_rejectors_file:

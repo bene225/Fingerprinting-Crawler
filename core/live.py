@@ -48,10 +48,9 @@ async def crawl (config : CrawlConfig, sites : list[str]):
                     # Verweildauer nach Consent
                     await asyncio.sleep(config.visit_time_after_consent)
                     stats_after_consent = await bc.collect_stats(context, test_domain, list(injector.events))
-                    # Screenshot banner 
                     stats_after_consent |= landing_fields(page.url, test_domain)
                     stats_after_consent["consent_ok"] = consent_ok
-                    # Tcf Status nciht ganz genau
+                    # Tcf Status nicht ganz genau
                     stats_after_consent["consent_check"] = await core.consent.consent_check(page, consent_entries_before)
                     stats_after_consent["screenshot"] = await core.logging.write_screenshot(page, config)
                 core.logging.write_website(site_id, test_domain, config, injector.events, stats_before_consent, stats_after_consent, check_internet())
@@ -62,7 +61,7 @@ async def crawl (config : CrawlConfig, sites : list[str]):
                         await context.close()
 
 
-        # config schreiben, mitzähle nfür abbruch
+        # config schreiben, mitzählen für abbruch
         core.logging.write_config(config)
         # Resume: nur erfolgreiche Websites mit Internet ueberspringen, ids weiterzaehlen
         done = core.logging.done_crawls(config)

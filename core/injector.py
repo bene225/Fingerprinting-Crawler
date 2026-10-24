@@ -4,20 +4,21 @@ from dataclasses import dataclass
 import json
 from utils.origin_domain import origin_domain
 
-# Datenübergabe, TODO fertigstellen
 @dataclass
 class DetectedFingerprint:
     api : str
     method : str
     url : str
-    third_party : bool | str # TODO: evtl nacharbeiten hier
+    third_party : bool | str 
     script_url : str 
         
+# PY -> JS in Browser
+
 
 # https://playwright.dev/python/docs/api/class-browsercontext
 class Injector:
     def __init__(self) -> None:
-        self.events : list[DetectedFingerprint] = []
+        self.events : list[DetectedFingerprint] = [] # Aufrufe Liste
     
     async def integrade_monkeypatch(self, page : Page) -> None:
         # app_ev durch Browser aufrufbar machen 
@@ -32,6 +33,7 @@ class Injector:
             js_cookie_block_script = js_cookie_block_file.read()
             await page.add_init_script(js_cookie_block_script)
             
+    # URL an JS Methoden        
     async def integrade_url_to_js(self, url_uncut : str, page : Page) -> None:
         escaped_url = first_party_url_to_js(url_uncut)
         await page.add_init_script(f"window._location_url = {escaped_url};\n")
@@ -44,8 +46,8 @@ class Injector:
     # location href aus der mp.js
     async def _append_event(self, _, api, method, location_href, third_party, script_url) -> None:
         self.events.append(DetectedFingerprint(api=api, method=method, url=location_href, third_party=third_party, script_url=script_url))
-       # print(f"FP {api}.{method}  3P={third_party}  {location_href} {script_url}") # Vorläufig
 
+# Bearbeiten URL
 def first_party_url_to_js(url_uncut :str) -> str:
     cutted_url = origin_domain(url_uncut=url_uncut)
     escaped_url = json.dumps(cutted_url)

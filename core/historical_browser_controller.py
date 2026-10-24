@@ -3,7 +3,7 @@ import time
 from core.browser_controller import BrowserController, request_stats, fp_stats
 import utils.origin_domain
 import utils.wayback
-from playwright.async_api import  Playwright, Browser, BrowserContext, Route, Request, async_playwright
+from playwright.async_api import  BrowserContext, Route, Request
 
 
 # Hoechstens rate Anfragen pro Sekunde an Wayback, egal wie viele Seiten gleichzeitig laden (eine Seite allein schickt Spitzen von >100/s)
@@ -179,9 +179,6 @@ async def _allow_only_archive(route : Route, request : Request, blocked_live_req
     except Exception:
         pass # Seite oder Context schon geschlossen
 
-# Lamba für 
-# Archivierte 3p einbindungen mitzählen
-# Keine Archiv-URL = Escape ins Live-Web: wird geblockt, Domain zählt
 # archive.org niciht
 # Aufnahmezeitpunkt der Skript-Kopie steht in der Archiv-Adresse. Bei Weiterleitung auf die naechste Kopie kommt eine
 # Anfrage mit neuem Zeitstempel, die letzte gilt

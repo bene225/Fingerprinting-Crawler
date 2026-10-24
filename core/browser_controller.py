@@ -155,26 +155,3 @@ def fp_stats(events : list) -> dict:
 
 
 # Verworfen: Set-Cookie per route.fetch entfernen speichert Cookie trotzdem (tests/cookie_block_probe.py) -> CDP in new_page
-# main_site = first_party, requested_site = einzelner request
-"""async def _block_thirdparty_cookies(route : Route, request : Request, main_site : str):
-    requested_site = origin_domain(request.url)
-    first_party = requested_site == main_site
-    # 1P erkennen und durchlassen
-    if first_party:
-        await route.continue_()
-        return
-    
-    #COOKIES LESEN BLOCKIEREN
-    # RO -> Kopie erstellen mit dict sonst nur referenz
-    request_headers = dict(request.headers)
-    # entferne Cookies-Auslesen von 3P 
-    request_headers.pop("cookie", None)
-    # TODO Wird Cookies im Header immer klein geschrieben ???
-    
-    # COOKIES SCHREIBEN BLOCKIEREN
-    # Antwort vom Server abfangen vor Browser, C löschen TODO hier evtl Restrikton, weil die Header trotzdem ankommen
-    response = await route.fetch(headers=request_headers)
-    response_header = dict(response.headers)
-    response_header.pop("set-cookie", None)
-    await route.fulfill(response=response, headers=response_header)
-    """

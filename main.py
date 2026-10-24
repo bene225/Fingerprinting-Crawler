@@ -1,5 +1,4 @@
 import argparse
-import csv
 from typing import Any
 
 from core.historical import crawl_historical
@@ -95,6 +94,8 @@ if __name__ == "__main__":
         site_timeout= 120, # 90 wie FF2 + Zeitfenster
         **batch
     )
+    # Restliche Args in der Config
+
 
     sites = read_sites_tranco(live_config)
     if args.live:

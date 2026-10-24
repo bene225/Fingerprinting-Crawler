@@ -1,4 +1,3 @@
-# Fehlertexte, bei denen Wayback bremst oder Verbindungen ablehnt
 import core.consent
 from core.injector import Injector
 import core.logging

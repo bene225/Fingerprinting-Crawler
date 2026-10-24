@@ -1,6 +1,5 @@
-// Immer aufrufen
+// Patch der Schnittstellen
 (() => {
-    // Fügt 
     function register_fp(api,method){
         try {
             //Fingerprinting Ursprung 1P/3P
@@ -149,9 +148,9 @@
         }
     })
 
-    // TODO: statisches Fingerprinting
+ 
     //https://developer.mozilla.org/en-US/docs/Web/API/Navigator#instance_methods
-    //Laperdix (welche FP relevant für BA)
+
     const static_properties = [
         [Navigator.prototype, "userAgent"],
         [Navigator.prototype, "userAgentData"],

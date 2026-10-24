@@ -39,9 +39,4 @@ class CrawlConfig:
     archive_light : bool = True # Bilder, Schriften, Videos aus dem Archiv nicht laden (ca. 2/3 weniger Anfragen). WG Sperrung
     parallel_snapshots : PositiveInt = 5 # Snapshots EINER Website gleichzeitig (Archiv). Bei vielen Fehlerzeilen mit HTTP 429 verringern
     load_check_timeout : PositiveInt = 15 # Vorab-Pruefung, ob die Website live laedt (Sekunden). Laedt sie nicht, kein Archiv-Crawl
-    # Weitere Überlegungen user_agent, autom_restart
-    
-    
-    
-    
     

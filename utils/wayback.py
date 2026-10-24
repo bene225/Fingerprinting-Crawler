@@ -49,7 +49,7 @@ _replay_opener = build_opener(_NoRedirect)
 
 # Naechste Kopie zu einem Datum: Die Replay-Adresse web.archive.org/web/<Datum>/<Seite> leitet direkt auf sie weiter (schnell, ohne CDX)
 # None = nie archiviert (oder gesperrt), Fehler = Wayback nicht erreichbar
-# Ruf tnicht afuf, sondern Wayback nichts hat verwiest es auf nächste Kopie. Header wird dann wieterverwendt (kein CDX mehr)
+# Ruft nicht auf, sondern Wayback nichts hat verweist es auf nächste Kopie. Header wird dann wieterverwendt (kein CDX mehr)
 # Link zu nächstem Datum
 def nearest_capture(site : str, target_date : str) -> dict | None:
     request = Request(f"https://web.archive.org/web/{target_date}/{site}", method="HEAD", headers={"User-Agent" : USER_AGENT})
@@ -117,9 +117,3 @@ def capture_gap_days(copy_timestamp : str, snapshot_timestamp : str) -> int:
     # Ganze Tage, positiv = Kopie neuer als der Snapshot, negativ = älter
     return (datetime.strptime(copy_timestamp[:8], "%Y%m%d") - datetime.strptime(snapshot_timestamp[:8], "%Y%m%d")).days
 
-
-"""# Test
-if __name__ == "__main__":
-    for capture in find_captures("https://spiegel.de", ["20160101", "20200101", "20240101", "20261009"], 120) or []:
-        print(capture["stichtag"], build_wayback_url(capture))
-"""

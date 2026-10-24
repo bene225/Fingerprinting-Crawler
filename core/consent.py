@@ -1,5 +1,5 @@
 import asyncio
-from playwright.async_api import async_playwright, Page
+from playwright.async_api import  Page
 import random
 import json
 import re
@@ -89,7 +89,7 @@ async def try_accept(page : Page, tries : int = 20, polling : float = 0.5) -> bo
                             if tcf_accept_block_set & text_button_word:
                                 continue    
                             for tcf_text_accept in tcf_accept_chance_flat:
-                                if tcf_text_accept.lower().strip() in text_button.lower().strip(): #Gerade noch kein Wert drin    == bei zu viele falses pos
+                                if tcf_text_accept.lower().strip() in text_button.lower().strip(): 
                                         if not await button.is_visible():
                                             continue
                                         await button.click(timeout=2000)
@@ -155,11 +155,7 @@ async def try_reject(page : Page, tries : int = 20, polling : float = 0.5) -> bo
 
     return False
 
-# TODO Testen auf Context
-# TODO Tetsen au Erfolg
 
-
-# Bestätigung nicht perfekt 
 # Namen, unter denen Consent-Tools speichern (TCF euconsent-v2, OneTrust, Cookiebot, Usercentrics, Sourcepoint, Didomi, Borlabs, Klaro)
 CONSENT_KEYS = re.compile(r"consent|optanon|cookiebot|usercentrics|uc_settings|didomi|borlabs|klaro|cmp", re.IGNORECASE)
 
