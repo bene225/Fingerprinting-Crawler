@@ -1,25 +1,3 @@
-"""
-consent_rejector.py – findet und klickt den "Ablehnen"-Button von Cookie-Bannern.
-
-Zwei Verwendungen:
-  1) Als Discovery-Crawler über die CrUX-Top-Liste Deutschland (oder --source tranco):
-        uv run consent_rejector.py --top 2000 --concurrency 4 --retries 1 --screenshots
-     -> results/results.csv            (eine Zeile pro Domain, Spalte "outcome":
-                                        rejected | no_banner | blocked | unreachable | click_failed | error;
-                                        bei Fehlern zeigen "stage" + "error_type", wo er entstanden ist)
-     -> results/discovered_selectors.json  (Domain -> CSS-Selektor des Reject-Buttons)
-  2) Als Bibliothek in deinem Crawler (z. B. banner_handler.py):
-        from consent_rejector import RuleSet, reject_consent
-        rules = RuleSet.load("reject_rules.json")
-        result = await reject_consent(page, rules)
-
-Strategie (in dieser Reihenfolge, erste erfolgreiche gewinnt):
-  Stufe 1 "rule":    ~900 Regeln aus DuckDuckGo autoconsent (CMP- und seitenspezifisch)
-  Stufe 2 "generic": generische CSS-Selektoren (id/class/data-* enthält reject/decline/…)
-  Stufe 3 "text":    Text-Matching mit mehrsprachiger Wortliste, erzeugt einen CSS-Selektor
-
-Abhängigkeiten: playwright  (uv add playwright && uv run playwright install chromium)
-"""
 from __future__ import annotations
 
 import argparse

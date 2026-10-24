@@ -54,7 +54,7 @@ Die erste Zeile jeder Ergebnisdatei enthält zusätzlich alle Einstellungen des 
 ## Quellen
 
 - Selektoren und Wortliste zum Zustimmen (`utils/tcf_terms.json`): Maximilian Wittig, unverändert übernommen.
-- Selektoren zum Ablehnen: abgeleitet aus den Klick-Regeln von DuckDuckGo autoconsent (https://github.com/duckduckgo/autoconsent, MPL-2.0). Der Vorlauf auf 2000 Websites (Anhang B) liegt im Branch `ki`, `utils/import_selectors_to_list.py` hat sein Ergebnis in `tcf_terms.json` übernommen.
+- Selektoren zum Ablehnen: abgeleitet aus den Klick-Regeln von DuckDuckGo autoconsent (https://github.com/duckduckgo/autoconsent, MPL-2.0). Der Vorlauf auf 2000 
 
 ---
 Diese README wurde mithilfe von KI (Claude) erstellt.
