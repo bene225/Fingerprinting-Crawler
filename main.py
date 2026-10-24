@@ -28,7 +28,7 @@ if __name__ == "__main__":
 
     # FF1 Live-Punkt: vor und nach Consent gemessen, nichts blocken
     live_config = CrawlConfig(
-        path_to_output=Path("results/ff1_live.jsonl"),
+        path_to_output=Path("results/Forschungsfrage 1/ff1_live.jsonl"),
         path_to_webpages=webpages,
         crawl_name= "ff1",
         allow_3p= True,
@@ -43,7 +43,7 @@ if __name__ == "__main__":
     )
     # FF1 Snapshots: gleiche Messung (Monkeypatch, Consent), Stichtage alle 2 Jahre + Brueckenpunkt
     hist_config = CrawlConfig(
-        path_to_output=Path("results/ff1_hist.jsonl"),
+        path_to_output=Path("results/Forschungsfrage 1/ff1_hist.jsonl"),
         path_to_webpages=webpages,
         crawl_name= "ff1",
         allow_3p= True,

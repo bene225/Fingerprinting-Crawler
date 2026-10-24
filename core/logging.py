@@ -9,6 +9,8 @@ import re
 # Anfang des Crawlers -> Einstellungen werden an den Anfang von Results geschrieben
 def write_config(config : CrawlConfig) -> None:
         config_asdict = asdict(config)
+        # Ergebnisordner anlegen, falls er fehlt (results/ ist nicht im Repo)
+        Path(config.path_to_output).parent.mkdir(parents=True, exist_ok=True)
         with open(config.path_to_output, "a", encoding="utf-8") as out_file:
             out_file.write(dumps(config_asdict, default=str ) + "\n")
         
