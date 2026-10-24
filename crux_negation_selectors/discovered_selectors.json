@@ -1,0 +1,3838 @@
+{
+  "https://apps.datev.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://banking.postbank.de": {
+    "selector": "[data-testid='uc-deny-all-button']",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://coinmaster.com": {
+    "selector": "body > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2):not([id]) > div:not([id]) > div:not([id]) > div:not([id]) > div:not([id]) > div:nth-child(2):not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id])",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "facebook",
+    "banner_gone": true
+  },
+  "https://cookidoo.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://de.cam4.eu": {
+    "selector": "div.FRFxv > button.DicDC.SCZfE:nth-of-type(1)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alle ablehnen\"",
+    "banner_gone": true
+  },
+  "https://de.flightaware.com": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://de.holy.com": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://de.pinterest.com": {
+    "selector": "div.ADXRXN.i1hWBD:nth-of-type(3) > div.H2DtUH.c1Gamg > div.oRZ5_s:nth-of-type(1) > button.G0yGFD.ap8aAM",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alle ablehnen\"",
+    "banner_gone": true
+  },
+  "https://de.redtube.com": {
+    "selector": "#cookie_consent_wrapper #consent_accept_essential -> #cookie_consent_min_wrapper #close_minimized_banner",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "aylo-cookie-banner",
+    "banner_gone": true
+  },
+  "https://discord.com": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://e621.net": {
+    "selector": "button[id*='decline' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": false
+  },
+  "https://faphouse.com": {
+    "selector": "button[id*='reject' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://fritz.com": {
+    "selector": "button[id*='deny' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://game8.co": {
+    "selector": "a.cmpboxbtn.cmpboxbtnno",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alles ablehnen\"",
+    "banner_gone": true
+  },
+  "https://geizhals.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://icrush.de": {
+    "selector": ".cky-consent-container [data-cky-tag=reject-button]",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookieyes",
+    "banner_gone": true
+  },
+  "https://jysk.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://m.asialadies.de": {
+    "selector": "button[class*='decline' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://m.joybuy.de": {
+    "selector": "button.MuiButtonBase-root.MuiButton-root:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alle ablehnen\"",
+    "banner_gone": true
+  },
+  "https://mein.ionos.de": {
+    "selector": "button.link.undefined:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://mobil.dasoertliche.de": {
+    "selector": "a.cmpboxbtn.cmpboxbtnno",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://nnz-online.de": {
+    "selector": "button[aria-label*='ablehnen' i]",
+    "frame_url": "https://cdn.privacy-mgmt.com/index.html?hasCsp=true&message_id=904979&consentUUID=null&consent_origin=https%3A%2F%2Fcdn.privacy-mgmt.com%2Fconsent%2Ftcfv2&preload_message=true&version=v1",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://ok.ru": {
+    "selector": ".cookies-agreement-notification .cb_setup -> [name=button_save_choice]",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "ok",
+    "banner_gone": true
+  },
+  "https://open.spotify.com": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://outlook.live.com": {
+    "selector": "button._1XuCi2WhiqeWRUVp3pnFG3.erL690_8JwUW-R4bJRcfl:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://quizworld.de": {
+    "selector": ".cmpboxbtnno",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "consentmanager.net",
+    "banner_gone": true
+  },
+  "https://shop.retoura.de": {
+    "selector": "button[aria-label*='ablehnen' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://shopify.com": {
+    "selector": "body:not([id]) > div#dux-privacy > div:nth-child(1):not([id]) > div:nth-child(2):not([id]) > div:nth-child(1):not([id]) > button:nth-child(1):not([id])",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "auto_GB_shopify.com_0",
+    "banner_gone": false
+  },
+  "https://steamcommunity.com": {
+    "selector": "#rejectAllButton",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "steampowered.com",
+    "banner_gone": true
+  },
+  "https://store.steampowered.com": {
+    "selector": "#rejectAllButton",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "steampowered.com",
+    "banner_gone": true
+  },
+  "https://store.supercell.com": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://sudoku.com": {
+    "selector": "#truste-consent-required",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "trustarc-top",
+    "banner_gone": true
+  },
+  "https://taz.de": {
+    "selector": ".sp_choice_type_13",
+    "frame_url": "https://cdn.privacy-mgmt.com/index.html?hasCsp=true&message_id=1510674&consentUUID=null&consent_origin=https%3A%2F%2Fcdn.privacy-mgmt.com%2Fconsent%2Ftcfv2&preload_message=true&version=v1",
+    "method": "rule",
+    "rule_name": "sourcepoint-frame",
+    "banner_gone": true
+  },
+  "https://thehalara.de": {
+    "selector": "button[id*='reject' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": false
+  },
+  "https://toom.de": {
+    "selector": "[data-testid='uc-deny-all-button']",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://weather.com": {
+    "selector": ".sp_choice_type_13",
+    "frame_url": "https://cdn.privacy-mgmt.com/index.html?hasCsp=true&message_id=1233278&consentUUID=null&consent_origin=https%3A%2F%2Fcdn.privacy-mgmt.com%2Fconsent%2Ftcfv2&preload_message=true&version=v1&consentLanguage=de",
+    "method": "rule",
+    "rule_name": "sourcepoint-frame",
+    "banner_gone": true
+  },
+  "https://wise.com": {
+    "selector": "#twcc__decline-button",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "twcc",
+    "banner_gone": true
+  },
+  "https://www.1001spiele.de": {
+    "selector": "#onetrust-pc-btn-handler -> #onetrust-consent-sdk input.category-switch-handler:checked -> .save-preference-btn-handler,.js-consent-save",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.20min.ch": {
+    "selector": ".ot-pc-refuse-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.90min.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.airbnb.de": {
+    "selector": "div.atm_gi_1pzushe.atm_jb_8wlvj5__oggzyc:nth-of-type(2) > button.l1lx1n3h.atm_npmupv_14b5rvc_10saat9",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"nur notwendige\"",
+    "banner_gone": true
+  },
+  "https://www.aldi-nord.de": {
+    "selector": "[data-testid='uc-deny-all-button']",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.aldi-sued.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.aliexpress.com": {
+    "selector": "#gdpr-new-container button:nth-of-type(2)",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "aliexpress",
+    "banner_gone": true
+  },
+  "https://www.amazon.de": {
+    "selector": "#sp-cc-rejectall-link",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "amazon.com",
+    "banner_gone": true
+  },
+  "https://www.anpfiff.info": {
+    "selector": ".cmpboxbtnsave",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "consentmanager.net",
+    "banner_gone": true
+  },
+  "https://www.aok.de": {
+    "selector": "button.button.-primary:nth-of-type(3)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"optionale cookies ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.aol.de": {
+    "selector": "#didomi-notice-disagree-button,.didomi-continue-without-agreeing",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "didomi",
+    "banner_gone": true
+  },
+  "https://www.arbeitsagentur.de": {
+    "selector": "bahf-cookie-disclaimer-dpl3 >> #bahf-cookie-disclaimer-modal .ba-btn-contrast",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "arbeitsagentur",
+    "banner_gone": true
+  },
+  "https://www.audible.de": {
+    "selector": "#truste-consent-required",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "trustarc-top",
+    "banner_gone": true
+  },
+  "https://www.autoscout24.de": {
+    "selector": "button[class*='decline' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.bahnhof.de": {
+    "selector": "button[id*='deny' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.baldur-garten.de": {
+    "selector": "button[id*='deny' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.bandel-online.de": {
+    "selector": "a.cmpboxbtn.cmpboxbtnno",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alles ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.barmer.de": {
+    "selector": "#no_consent",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"nur erforderliche\"",
+    "banner_gone": true
+  },
+  "https://www.baur.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.bbc.com": {
+    "selector": ".sp_choice_type_13",
+    "frame_url": "https://cdn.privacy-mgmt.com/index.html?hasCsp=true&message_id=1489022&consentUUID=null&consent_origin=https%3A%2F%2Fcdn.privacy-mgmt.com%2Fconsent%2Ftcfv2&preload_message=true&version=v1",
+    "method": "rule",
+    "rule_name": "sourcepoint-frame",
+    "banner_gone": true
+  },
+  "https://www.bergfex.de": {
+    "selector": ".sp_choice_type_13",
+    "frame_url": "https://cdn.privacy-mgmt.com/index.html?hasCsp=true&message_id=1384352&consentUUID=null&consent_origin=https%3A%2F%2Fcdn.privacy-mgmt.com%2Fconsent%2Ftcfv2&preload_message=true&version=v1",
+    "method": "rule",
+    "rule_name": "sourcepoint-frame",
+    "banner_gone": true
+  },
+  "https://www.bergfreunde.de": {
+    "selector": "#onetrust-pc-btn-handler -> #onetrust-consent-sdk input.category-switch-handler:checked -> .save-preference-btn-handler,.js-consent-save",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.berliner-sparkasse.de": {
+    "selector": "a.secondary:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.bestsecret.com": {
+    "selector": "button[id*='deny' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.bfv.de": {
+    "selector": "[data-testid='uc-deny-all-button']",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.bike-components.de": {
+    "selector": "button[data-test=\"auto-cookie-banner-basic\"]",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"nur notwendige cookies\"",
+    "banner_gone": true
+  },
+  "https://www.billiger.de": {
+    "selector": "a.cmpboxbtn.cmpboxbtnno",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"optionale cookies ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.bing.com": {
+    "selector": "#bnp_btn_reject > a",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.blick.ch": {
+    "selector": "#onetrust-pc-btn-handler -> .save-preference-btn-handler,.js-consent-save",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.boersennews.de": {
+    "selector": ".sp_choice_type_13",
+    "frame_url": "https://cdn.privacy-mgmt.com/index.html?message_id=1259197&consentUUID=undefined&preload_message=true&hasCsp=true&version=v1&consent_origin=https%3A%2F%2Fcdn.privacy-mgmt.com%2Fconsent%2Ftcfv2&mms_origin=https%3A%2F%2Fcdn.privacy-mgmt.com%2Fmms%2Fv2",
+    "method": "rule",
+    "rule_name": "sourcepoint-frame",
+    "banner_gone": true
+  },
+  "https://www.booking.com": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.booklooker.de": {
+    "selector": "a.cmpboxbtn.cmpboxbtnno",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.breuninger.com": {
+    "selector": ".ot-pc-refuse-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.buchstaben.com": {
+    "selector": "#sn-b-custom -> #sn-b-save",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "snigel",
+    "banner_gone": true
+  },
+  "https://www.campingwagner.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.check24.de": {
+    "selector": ".c24-cookie-consent-wrapper .c24-cookie-consent-functional",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "check24",
+    "banner_gone": true
+  },
+  "https://www.cinemaxx.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.cinestar.de": {
+    "selector": ".sp_choice_type_13",
+    "frame_url": "https://cdn.privacy-mgmt.com/index.html?hasCsp=true&message_id=1329300&consentUUID=null&consent_origin=https%3A%2F%2Fcdn.privacy-mgmt.com%2Fconsent%2Ftcfv2&preload_message=true&version=v1",
+    "method": "rule",
+    "rule_name": "sourcepoint-frame",
+    "banner_gone": true
+  },
+  "https://www.condor.com": {
+    "selector": "[data-testid='uc-deny-all-button']",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.consorsbank.de": {
+    "selector": "#essentialcookiesbutton",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"nur notwendige cookies\"",
+    "banner_gone": true
+  },
+  "https://www.dastelefonbuch.de": {
+    "selector": "a.cmpboxbtn.cmpboxbtnno",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.deepl.com": {
+    "selector": "#cookie-banner-strict-accept-selected",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.deichmann.com": {
+    "selector": "a.cmpboxbtn.cmpboxbtnno",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alles ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.der-betze-brennt.de": {
+    "selector": ".cmpboxbtnsave",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "consentmanager.net",
+    "banner_gone": true
+  },
+  "https://www.dfbnet.org": {
+    "selector": "[data-testid='uc-deny-all-button']",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.dhl.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.die-glocke.de": {
+    "selector": "button[aria-label*='ablehnen' i]",
+    "frame_url": "https://cdn.privacy-mgmt.com/index.html?hasCsp=true&message_id=1331590&consentUUID=null&consent_origin=https%3A%2F%2Fcdn.privacy-mgmt.com%2Fconsent%2Ftcfv2&preload_message=true&version=v1",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.disneyplus.com": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.dpd.com": {
+    "selector": ".cmpboxbtnno",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "consentmanager.net",
+    "banner_gone": true
+  },
+  "https://www.dw.com": {
+    "selector": "a.cmpboxbtn.cmpboxbtnno",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"reject\"",
+    "banner_gone": true
+  },
+  "https://www.e-hoi.de": {
+    "selector": "button[class*='decline' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.emp.de": {
+    "selector": "#js-cookie-banner-close-disagree",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alle ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.ernstings-family.de": {
+    "selector": "body > div#tc-privacy-wrapper > div:nth-child(2)#popin_tc_privacy > div:nth-child(2)#popin_tc_privacy_container_button > button:nth-child(3)#popin_tc_privacy_button_3",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "auto_DE_ernstings-family.de_xqf",
+    "banner_gone": true
+  },
+  "https://www.eurosport.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.facebook.com": {
+    "selector": "body > div:not([id]) > div:nth-child(1):not([id]) > div:not([id]) > div:nth-child(2):not([id]) > div:not([id]) > div:not([id]) > div:not([id]) > div:not([id]) > div:nth-child(2):not([id]) > div:not([id]) > div:nth-child(1):not([id]) > div:nth-child(2):not([id])",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "facebook",
+    "banner_gone": true
+  },
+  "https://www.fielmann.de": {
+    "selector": ".cmpboxbtnno",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "consentmanager.net",
+    "banner_gone": true
+  },
+  "https://www.finya.de": {
+    "selector": "a.cookie-consent-banner__buttons__button:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alle ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.flashscore.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.freenet.de": {
+    "selector": ".sp_choice_type_13",
+    "frame_url": "https://cmp.freenet.de/index.html?hasCsp=true&message_id=1426925&consentUUID=null&consent_origin=https%3A%2F%2Fcmp.freenet.de%2Fconsent%2Ftcfv2&preload_message=true&version=v1",
+    "method": "rule",
+    "rule_name": "sourcepoint-frame",
+    "banner_gone": true
+  },
+  "https://www.fussball.de": {
+    "selector": "[data-testid='uc-deny-all-button']",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.gameduell.de": {
+    "selector": "div.t-text.t-text--center > a",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alle ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.gelbeseiten.de": {
+    "selector": "a.cmpboxbtn.cmpboxbtnno",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.geocaching.com": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://www.gismeteo.ru": {
+    "selector": ".fc-cta-do-not-consent,.fc-cta-manage-options",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "funding-choices",
+    "banner_gone": true
+  },
+  "https://www.globus-baumarkt.de": {
+    "selector": "[data-testid*='reject' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.gold.de": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://www.goldpreis.de": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://www.google.com": {
+    "selector": ".HTjtHe#xe7COe button#W0wltc",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "google.com",
+    "banner_gone": true
+  },
+  "https://www.google.de": {
+    "selector": ".HTjtHe#xe7COe button#W0wltc",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "google.com",
+    "banner_gone": true
+  },
+  "https://www.haberler.com": {
+    "selector": ".fc-cta-do-not-consent,.fc-cta-manage-options",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "funding-choices",
+    "banner_gone": true
+  },
+  "https://www.heine.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.heizoel24.de": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://www.howrse.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.ikea.com": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.instagram.com": {
+    "selector": "xpath///button[contains(., 'Отклонить необязательные файлы cookie') or contains(., 'Decline optional cookies') or contains(., 'Refuser les cookies optionnels') or contains(., 'Hylkää valinnaiset evästeet') or contains(., 'Afvis valgfrie cookies') or contains(., 'Odmietnuť nepovinné cookies') or contains(., 'Απόρριψη προαιρετικών cookies') or contains(., 'Neka valfria cookies') or contains(., 'Optionale Cookies ablehnen') or contains(., 'Rifiuta cookie facoltativi') or contains(., 'Odbij neobavezne kolačiće') or contains(., 'Avvis valgfrie informasjonskapsler') or contains(., 'İsteğe bağlı çerezleri reddet') or contains(., 'Recusar cookies opcionais') or contains(., 'Optionele cookies afwijzen') or contains(., 'Rechazar cookies opcionales') or contains(., 'Odrzuć opcjonalne pliki cookie') or contains(., 'Отхвърляне на бисквитките по избор') or contains(., 'Odmítnout volitelné soubory cookie') or contains(., 'Refuză modulele cookie opţionale') or contains(., 'A nem kötelező cookie-k elutasítása')]",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "instagram",
+    "banner_gone": true
+  },
+  "https://www.instant-gaming.com": {
+    "selector": "body > div#cookies-banner > div:not([id]) > div:nth-child(3):not([id]) > div:nth-child(2):not([id]) > button:nth-child(2):not([id])",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "auto_CH_instant-gaming.com_8j3",
+    "banner_gone": true
+  },
+  "https://www.jameda.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.jpc.de": {
+    "selector": "button.consent-simple--save.btn",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"nur notwendige cookies\"",
+    "banner_gone": true
+  },
+  "https://www.kaufmich.com": {
+    "selector": "#cookiescript_reject",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookie-script",
+    "banner_gone": true
+  },
+  "https://www.kik.de": {
+    "selector": "[data-testid='uc-deny-all-button']",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.kingmods.net": {
+    "selector": "button.fast-cmp-button-secondary",
+    "frame_url": "about:blank",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.kleinanzeigen.de": {
+    "selector": "button[aria-label*='ablehnen' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": false
+  },
+  "https://www.ladies-forum.de": {
+    "selector": "button[class*='decline' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.ladies.de": {
+    "selector": "button[class*='decline' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.lebensfreunde.de": {
+    "selector": ".sp_choice_type_13",
+    "frame_url": "https://cdn.privacy-mgmt.com/index.html?hasCsp=true&message_id=1185440&consentUUID=null&consent_origin=https%3A%2F%2Fcdn.privacy-mgmt.com%2Fconsent%2Ftcfv2&preload_message=true&version=v1",
+    "method": "rule",
+    "rule_name": "sourcepoint-frame",
+    "banner_gone": true
+  },
+  "https://www.leichtathletik.de": {
+    "selector": "a.cmpboxbtn.cmpboxbtnno",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alle ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.lidl.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.linkedin.com": {
+    "selector": ".artdeco-global-alert[type=COOKIE_CONSENT] button[action-type=DENY]",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "linkedin.com",
+    "banner_gone": true
+  },
+  "https://www.lotto-bw.de": {
+    "selector": "[data-testid='uc-deny-all-button']",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.lotto-hessen.de": {
+    "selector": "div.et-consent-button-container:nth-of-type(6) > div > button:nth-of-type(1)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.lotto.de": {
+    "selector": "button[id*='reject' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.ls-tc.de": {
+    "selector": "button[class*='reject' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.ltur.com": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.mediamarkt.de": {
+    "selector": "button[data-test^=pwa-consent-layer-deny-all]",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "mediamarkt.de",
+    "banner_gone": true
+  },
+  "https://www.meinschiff.com": {
+    "selector": "#privacy_pref_optout",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.microsoft.com": {
+    "selector": "button._1XuCi2WhiqeWRUVp3pnFG3.erL690_8JwUW-R4bJRcfl:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.msn.com": {
+    "selector": "#cmp-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "msn",
+    "banner_gone": true
+  },
+  "https://www.mueller.de": {
+    "selector": "a.uc-deny-all",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.myheritage.de": {
+    "selector": "button[aria-label=\"Nur\\ notwendige\\ akzeptieren\"]",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"nur notwendige akzeptieren\"",
+    "banner_gone": true
+  },
+  "https://www.nennung-online.de": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://www.netflix.com": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.nike.com": {
+    "selector": "button[class*='decline' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.nintendo.com": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.northdata.de": {
+    "selector": "a.cmpboxbtn.cmpboxbtnno",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alles ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.novoline.de": {
+    "selector": "button[id*='deny' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.o2online.de": {
+    "selector": "[data-testid='uc-deny-all-button']",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.oberberg-aktuell.de": {
+    "selector": ".klaro .cn-decline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "klaro",
+    "banner_gone": true
+  },
+  "https://www.obi.de": {
+    "selector": "button[id*='deny' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.onet.pl": {
+    "selector": ".cmp-popup_popup .cmp-intro_rejectAll -> .cmp-popup_popup .cmp-details_rejectAll",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "dreamlab-cmp",
+    "banner_gone": true
+  },
+  "https://www.otto.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.payback.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.paypal.com": {
+    "selector": "#bannerDeclineButton",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "paypal.com",
+    "banner_gone": true
+  },
+  "https://www.pcwelt.de": {
+    "selector": "button[class*='reject' i]",
+    "frame_url": "https://cmp2.pcwelt.de/index.html?hasCsp=true&message_id=1515274&consentUUID=null&consent_origin=https%3A%2F%2Fcmp2.pcwelt.de%2Fconsent%2Ftcfv2&preload_message=true&version=v1",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.peterhahn.de": {
+    "selector": "a.uc-deny-all:nth-of-type(1)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.pharmazeutische-zeitung.de": {
+    "selector": ".cmpboxbtnno",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "consentmanager.net",
+    "banner_gone": true
+  },
+  "https://www.poco.de": {
+    "selector": "a.cmpboxbtn.cmpboxbtnno",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"weiter ohne einwilligung\"",
+    "banner_gone": true
+  },
+  "https://www.poppen.de": {
+    "selector": "#cookiescript_reject",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookie-script",
+    "banner_gone": true
+  },
+  "https://www.pornhub.com": {
+    "selector": "#cookieBanner [data-label=accept_essential]",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "pornhub.com",
+    "banner_gone": true
+  },
+  "https://www.pornpics.com": {
+    "selector": "#cookie-form .reject",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "pornpics.de",
+    "banner_gone": true
+  },
+  "https://www.pornpics.de": {
+    "selector": "#cookie-form .reject",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "pornpics.de",
+    "banner_gone": true
+  },
+  "https://www.presseportal.de": {
+    "selector": "div[aria-label=\"Reject\\ all\\ consents\"]",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"nur notwendige\"",
+    "banner_gone": true
+  },
+  "https://www.primevideo.com": {
+    "selector": "button[data-testid=\"critical-notification-v2-button-1\"]",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.reserved.com": {
+    "selector": "#UCFullButtonNecessary",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.rezeptwelt.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.roblox.com": {
+    "selector": ".cookie-banner-wrapper button.btn-secondary-lg",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "roblox",
+    "banner_gone": true
+  },
+  "https://www.roller.de": {
+    "selector": "button[aria-label*='ablehnen' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.rossmann.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.rtl.de": {
+    "selector": "button[aria-label*='ablehnen' i]",
+    "frame_url": "https://sourcepoint.rtl.de/index.html?hasCsp=true&message_id=1494090&consentUUID=null&consent_origin=https%3A%2F%2Fsourcepoint.rtl.de%2Fconsent%2Ftcfv2&preload_message=true&version=v1",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.ruhrnachrichten.de": {
+    "selector": "a.cmpboxbtn.cmpboxbtnno",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alles ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.ryanair.com": {
+    "selector": "#cookie-popup-with-overlay [data-ref='cookie.no-thanks']",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "ryanair",
+    "banner_gone": true
+  },
+  "https://www.samsung.com": {
+    "selector": "#truste-consent-required",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "trustarc-top",
+    "banner_gone": true
+  },
+  "https://www.schuhcenter.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.sharkninja.de": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://www.sinsay.com": {
+    "selector": "#UCFullButtonNecessary",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.skylinewebcams.com": {
+    "selector": ".fc-cta-do-not-consent,.fc-cta-manage-options",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "funding-choices",
+    "banner_gone": true
+  },
+  "https://www.sonderpreis-baumarkt.de": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://www.speedweek.com": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": false
+  },
+  "https://www.sport.de": {
+    "selector": "button[aria-label*='ablehnen' i]",
+    "frame_url": "https://sourcepoint.sport.de/index.html?hasCsp=true&message_id=1494116&consentUUID=null&consent_origin=https%3A%2F%2Fsourcepoint.sport.de%2Fconsent%2Ftcfv2&preload_message=true&version=v1",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.sportspar.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.stayfriends.de": {
+    "selector": ".sp_choice_type_13",
+    "frame_url": "https://cdn.privacy-mgmt.com/index.html?hasCsp=true&message_id=1185426&consentUUID=null&consent_origin=https%3A%2F%2Fcdn.privacy-mgmt.com%2Fconsent%2Ftcfv2&preload_message=true&version=v1",
+    "method": "rule",
+    "rule_name": "sourcepoint-frame",
+    "banner_gone": true
+  },
+  "https://www.strato.de": {
+    "selector": "button.consentSettings -> button#consentSubmit",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "strato.de",
+    "banner_gone": true
+  },
+  "https://www.tedi.com": {
+    "selector": "[data-omcookie-panel-save=min]",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "om",
+    "banner_gone": true
+  },
+  "https://www.tedox.de": {
+    "selector": "[data-testid='uc-deny-all-button']",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.telekom.de": {
+    "selector": "button[id*='reject' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.temu.com": {
+    "selector": "div[aria-label=\"Alle\\ Einstellungen\\ ablehnen\"]",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alle ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.tennis.de": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://www.theguardian.com": {
+    "selector": "button[aria-label*='reject' i]",
+    "frame_url": "https://sourcepoint.theguardian.com/index.html?hasCsp=true&message_id=1482251&consentUUID=null&consent_origin=https%3A%2F%2Fsourcepoint.theguardian.com%2Fconsent%2Ftcfv2&preload_message=true&version=v1",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.thomann.de": {
+    "selector": ".js-decline-all-cookies",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookie-consent-spice",
+    "banner_gone": false
+  },
+  "https://www.tiktok.com": {
+    "selector": "button:nth-of-type(1)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"optionale cookies ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.timeanddate.de": {
+    "selector": "button[id*='deny' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.twitch.tv": {
+    "selector": "[data-a-target=\"consent-banner\"] button:not([data-a-target])",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "twitch.tv",
+    "banner_gone": true
+  },
+  "https://www.uci-kinowelt.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.unisportstore.de": {
+    "selector": "button[class*='decline' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.vevor.de": {
+    "selector": "a.btn.reject_all:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alle ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.vidaxl.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.vinted.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.vodafone.de": {
+    "selector": ".dip-consent-btn[tabindex=\"2\"]",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "vodafone.de",
+    "banner_gone": true
+  },
+  "https://www.vogue.de": {
+    "selector": "#fides-banner .fides-reject-all-button",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "fides",
+    "banner_gone": false
+  },
+  "https://www.volkswagen.de": {
+    "selector": "#ensSave,#modalSaveButton,#bannerSave",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "Ensighten",
+    "banner_gone": true
+  },
+  "https://www.wattpad.com": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.wetter.de": {
+    "selector": "button[aria-label*='ablehnen' i]",
+    "frame_url": "https://sourcepoint.wetter.de/index.html?hasCsp=true&message_id=1501438&consentUUID=null&consent_origin=https%3A%2F%2Fsourcepoint.wetter.de%2Fconsent%2Ftcfv2&preload_message=true&version=v1",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.witt-weiden.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.you-porn.com": {
+    "selector": "#cookie_consent_wrapper #consent_accept_essential -> #cookie_consent_min_wrapper #close_minimized_banner",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "aylo-cookie-banner",
+    "banner_gone": true
+  },
+  "https://www.youporn.com": {
+    "selector": "#cookie_consent_wrapper #consent_accept_essential -> #cookie_consent_min_wrapper #close_minimized_banner",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "aylo-cookie-banner",
+    "banner_gone": true
+  },
+  "https://www.youtube.com": {
+    "selector": "ytd-consent-bump-v2-lightbox .eom-buttons .eom-button-row:first-child ytd-button-renderer:first-child #button,ytd-consent-bump-v2-lightbox .eom-buttons .eom-button-row:first-child ytd-button-renderer:first-child button",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "youtube-desktop",
+    "banner_gone": true
+  },
+  "https://www.zalando-lounge.de": {
+    "selector": "[data-testid='uc-deny-all-button']",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.zalando.de": {
+    "selector": "[data-testid='uc-deny-all-button']",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.zdf.de": {
+    "selector": "button[data-testid=\"cmp-revoke-all\"]",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.zdfheute.de": {
+    "selector": "button[data-testid=\"cmp-revoke-all\"]",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.zooplus.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://xhaccess.com": {
+    "selector": "div:nth-of-type(3) > button.root-f87d5.withSlot-f87d5:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"reject\"",
+    "banner_gone": true
+  },
+  "https://xhamster.com": {
+    "selector": "[data-role=\"cookies-modal\"] [class*=experimentalButtons] button:nth-of-type(2)",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "xhamster-eu",
+    "banner_gone": true
+  },
+  "https://xhamster.desi": {
+    "selector": "div:nth-of-type(3) > button.root-f87d5.withSlot-f87d5:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"reject\"",
+    "banner_gone": true
+  },
+  "https://xhamster1.desi": {
+    "selector": "div:nth-of-type(3) > button.root-f87d5.withSlot-f87d5:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"reject\"",
+    "banner_gone": true
+  },
+  "https://xhamster19.com": {
+    "selector": "div:nth-of-type(3) > button.root-f87d5.withSlot-f87d5:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"reject\"",
+    "banner_gone": true
+  },
+  "https://xhamster46.desi": {
+    "selector": "div:nth-of-type(3) > button.root-f87d5.withSlot-f87d5:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"reject\"",
+    "banner_gone": true
+  },
+  "https://zelesta.de": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "http://www.holy-war.de": {
+    "selector": ".fc-cta-do-not-consent,.fc-cta-manage-options -> .fc-preference-consent:checked,.fc-preference-legitimate-interest:checked -> .fc-confirm-choices",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "funding-choices",
+    "banner_gone": true
+  },
+  "https://21run.com": {
+    "selector": "button[id*='reject' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://24.hu": {
+    "selector": ".qc-cmp2-summary-buttons > button[mode=\"secondary\"]:nth-of-type(1) -> .qc-cmp2-buttons-desktop > button[mode=primary]",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "quantcast",
+    "banner_gone": true
+  },
+  "https://account.kaufland.com": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://adme.media": {
+    "selector": "#onetrust-pc-btn-handler -> .save-preference-btn-handler,.js-consent-save",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://authenticate.riotgames.com": {
+    "selector": ".osano-cm-denyAll,.osano-cm-deny",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "osano",
+    "banner_gone": true
+  },
+  "https://auto.bazos.sk": {
+    "selector": ".cc-nb-reject",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "termsfeed",
+    "banner_gone": true
+  },
+  "https://can-doc.de": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://candy.ai": {
+    "selector": "#cookiescript_reject",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookie-script",
+    "banner_gone": true
+  },
+  "https://cardgames.io": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://constantin.film": {
+    "selector": "a[aria-label=\"Ohne\\ Cookies\\ fortfahren\"]",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alle ablehnen\"",
+    "banner_gone": true
+  },
+  "https://copero.com.ar": {
+    "selector": ".fc-cta-do-not-consent,.fc-cta-manage-options",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "funding-choices",
+    "banner_gone": true
+  },
+  "https://de.finalfantasyxiv.com": {
+    "selector": ".osano-cm-denyAll,.osano-cm-deny",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "osano",
+    "banner_gone": true
+  },
+  "https://de.passenger-clothing.com": {
+    "selector": "#pandectes-banner .cc-settings -> .pd-cp-ui-rejectAll -> .pd-cp-ui-save",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "pandectes",
+    "banner_gone": true
+  },
+  "https://de.shein.com": {
+    "selector": "body > div[class*=_shein_privacy] > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(3)",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "shein.com",
+    "banner_gone": true
+  },
+  "https://de.tranny.one": {
+    "selector": ".cky-consent-container [data-cky-tag=reject-button]",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookieyes",
+    "banner_gone": true
+  },
+  "https://de.triumph.com": {
+    "selector": "#onetrust-pc-btn-handler -> #onetrust-consent-sdk input.category-switch-handler:checked -> .save-preference-btn-handler,.js-consent-save",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://de0.forgeofempires.com": {
+    "selector": "button[id*='decline' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://dedoles.de": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://deinetorte.de": {
+    "selector": "#shopify-pc__banner__btn-decline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "shopify",
+    "banner_gone": true
+  },
+  "https://deutsch-vorbereitung.com": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://deutschlandticket.de": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://diesme-forum.de": {
+    "selector": "button[class*='decline' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://esmark.de": {
+    "selector": "button[id*='decline' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://esut.de": {
+    "selector": ".cmplz-cookiebanner .cmplz-deny",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "Complianz banner",
+    "banner_gone": true
+  },
+  "https://eu.stanley1913.com": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://fddb.info": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://flexikon.doccheck.com": {
+    "selector": "[data-testid*='reject' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://freecash.com": {
+    "selector": ".ch2-open-settings-btn, .ch2-open-personal-data-btn -> .ch2-deny-all-btn",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiehub",
+    "banner_gone": true
+  },
+  "https://fritz.win": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://gelenk-klinik.de": {
+    "selector": ".eu-cookie-compliance-banner .decline-button, .eu-cookie-compliance-banner .accept-necessary, .eu-cookie-compliance-save-preferences-button",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "eu-cookie-compliance-banner",
+    "banner_gone": true
+  },
+  "https://gesund.bund.de": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://got-bag.com": {
+    "selector": ".cky-consent-container [data-cky-tag=reject-button]",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookieyes",
+    "banner_gone": true
+  },
+  "https://herzmarkt24.de": {
+    "selector": "#shopify-pc__banner__btn-decline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "shopify",
+    "banner_gone": true
+  },
+  "https://hvg.hu": {
+    "selector": ".qc-cmp2-summary-buttons > button[mode=\"secondary\"]:nth-of-type(1) -> .qc-cmp2-buttons-desktop > button[mode=primary]",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "quantcast",
+    "banner_gone": true
+  },
+  "https://jobbmintatv.pro": {
+    "selector": "#disagree-btn",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "quantcast",
+    "banner_gone": true
+  },
+  "https://katholisch.de": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://kleineskraftwerk.de": {
+    "selector": "#shopify-pc__banner__btn-decline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "shopify",
+    "banner_gone": true
+  },
+  "https://lessgames.com": {
+    "selector": ".fc-cta-do-not-consent,.fc-cta-manage-options",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "funding-choices",
+    "banner_gone": true
+  },
+  "https://lieblingsgarn.de": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://lindehobby.de": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://linkvertise.com": {
+    "selector": "#disagree-btn",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "quantcast",
+    "banner_gone": true
+  },
+  "https://little-dutch.com": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://login.personio.com": {
+    "selector": "button[id*='deny' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://m.3d-galleru.ru": {
+    "selector": ".fc-cta-do-not-consent,.fc-cta-manage-options",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "funding-choices",
+    "banner_gone": true
+  },
+  "https://m.avladies.de": {
+    "selector": "button[class*='decline' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://m.flashscore.fr": {
+    "selector": ".fc-cta-do-not-consent,.fc-cta-manage-options",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "funding-choices",
+    "banner_gone": true
+  },
+  "https://m.skelbiu.lt": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://mail.one.com": {
+    "selector": "button.gv-button.gv-button-secondary:nth-of-type(1)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"only necessary\"",
+    "banner_gone": true
+  },
+  "https://marketplace.secondlife.com": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://mega-holz.de": {
+    "selector": ".cmplz-cookiebanner .cmplz-deny",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "Complianz banner",
+    "banner_gone": true
+  },
+  "https://mein-kraeuterkeller.de": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://meine-flohmarkt-termine.de": {
+    "selector": "div[aria-label=\"Reject\\ all\\ consents\"]",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alles ablehnen\"",
+    "banner_gone": true
+  },
+  "https://mittelhessen-gedenkt.de": {
+    "selector": ".cc-deny",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "Complianz opt-out",
+    "banner_gone": false
+  },
+  "https://ms-aktuell.de": {
+    "selector": ".brlbs-btn-accept-only-essential,a[data-cookie-refuse]",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "borlabs",
+    "banner_gone": true
+  },
+  "https://my.paysafecard.com": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://my.sevdesk.de": {
+    "selector": "button.button-module_button__vt-XR.button-module_variant-default__gwNAG:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"nur notwendige\"",
+    "banner_gone": true
+  },
+  "https://myablefy.com": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://mytips.com": {
+    "selector": "button[class*='decline' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://naturtreu.de": {
+    "selector": "#pandectes-banner .cc-settings -> .pd-cp-ui-rejectAll -> .pd-cp-ui-save",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "pandectes",
+    "banner_gone": false
+  },
+  "https://nh24.de": {
+    "selector": ".brlbs-btn-accept-only-essential,a[data-cookie-refuse]",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "borlabs",
+    "banner_gone": true
+  },
+  "https://nius.de": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://nova.rs": {
+    "selector": ".ot-pc-refuse-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://omaze.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://onepagebooking.com": {
+    "selector": ".brlbs-btn-accept-only-essential,a[data-cookie-refuse]",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "borlabs",
+    "banner_gone": false
+  },
+  "https://poe.ninja": {
+    "selector": "#ez-manage-settings -> #ez-cookie-dialog input[type=checkbox]:checked -> #ez-save-settings",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "EZoic",
+    "banner_gone": true
+  },
+  "https://pokemongo.com": {
+    "selector": "div.ark-cookiebar-buttons > button:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://prospektewoche.de": {
+    "selector": ".cky-consent-container [data-cky-tag=reject-button]",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookieyes",
+    "banner_gone": true
+  },
+  "https://prowin.net": {
+    "selector": "#cookies-accept-none",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"unpublished alles ablehnen\"",
+    "banner_gone": true
+  },
+  "https://pztuning24.de": {
+    "selector": "#consent-banner-btn-close",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://saarbruecker-zeitung.trauer.de": {
+    "selector": ".ot-pc-refuse-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://schueler.click-learn.info": {
+    "selector": "button[class*='decline' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://shop.doterra.com": {
+    "selector": "#truste-consent-required",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "trustarc-top",
+    "banner_gone": true
+  },
+  "https://shop.fck.de": {
+    "selector": "button[class*='deny' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://shop.mango.com": {
+    "selector": "button.base-module__n4uPiq__button.textActionM-module__w6_vta__className:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"nur notwendige cookies\"",
+    "banner_gone": true
+  },
+  "https://shop.zoo-leipzig.de": {
+    "selector": "button[id*='reject' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://solago.de": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://solitaired.com": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://some.porn": {
+    "selector": "button[id*='deny' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://starpets.gg": {
+    "selector": "button.cookie__button._button_1muj3_1:nth-of-type(1)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"decline\"",
+    "banner_gone": false
+  },
+  "https://stirileprotv.ro": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://store.dji.com": {
+    "selector": ".cc-window.cc-visible .cc-consent-require-only",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "dji",
+    "banner_gone": true
+  },
+  "https://suno.com": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://supremevalues.com": {
+    "selector": ".fc-cta-do-not-consent,.fc-cta-manage-options",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "funding-choices",
+    "banner_gone": true
+  },
+  "https://tabs.ultimate-guitar.com": {
+    "selector": "#disagree-btn",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "quantcast",
+    "banner_gone": true
+  },
+  "https://tankstelle.aral.de": {
+    "selector": "div.ap-btn-list > button.ap-btn.ap-btn--primary:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://telex.hu": {
+    "selector": ".qc-cmp2-summary-buttons > button[mode=\"secondary\"]:nth-of-type(1) -> .qc-cmp2-buttons-desktop > button[mode=primary]",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "quantcast",
+    "banner_gone": true
+  },
+  "https://teveo.com": {
+    "selector": "#pandectes-banner .cc-deny",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "pandectes",
+    "banner_gone": true
+  },
+  "https://thehappybed.com": {
+    "selector": "#shopify-pc__banner__btn-decline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "shopify",
+    "banner_gone": true
+  },
+  "https://timesofindia.indiatimes.com": {
+    "selector": ".fc-cta-do-not-consent,.fc-cta-manage-options",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "funding-choices",
+    "banner_gone": true
+  },
+  "https://trello.com": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://tupperware-eu.com": {
+    "selector": "#shopify-pc__banner__btn-decline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "shopify",
+    "banner_gone": true
+  },
+  "https://urbansportsclub.com": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://v3.ketogo.app": {
+    "selector": "button.pipe-cookie-consent-btn-outline:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://woolworth.de": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://www.3pagen.de": {
+    "selector": "a[id*='reject' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.3sat.de": {
+    "selector": "#zdf-cmp-main #zdf-cmp-deny-btn",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "zdf",
+    "banner_gone": true
+  },
+  "https://www.4komma5.de": {
+    "selector": "#consent-banner-btn-close",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.50plus-treff.de": {
+    "selector": "a.cmpboxbtn.cmpboxbtnno",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alle ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.aachen2026.com": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://www.ai-fitness.de": {
+    "selector": "[data-testid='uc-deny-all-button']",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.aktionspreis.de": {
+    "selector": "div.cookiescript-iab-headerAction:nth-of-type(3)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"reject all\"",
+    "banner_gone": false
+  },
+  "https://www.alditalk.de": {
+    "selector": "[data-testid='uc-deny-all-button']",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.amazon.jobs": {
+    "selector": "body > div:not([id]) > div:nth-child(2):not([id]) > div:nth-child(3):not([id]) > container:nth-child(2):not([id]) > div:not([id]) > div:not([id]) > div#versionized-cookie-banner > div:nth-child(2):not([id]) > ul:not([id]) > li:nth-child(2):not([id]) > button#btn-reject-cookies",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "auto_US_amazon.jobs_0",
+    "banner_gone": true
+  },
+  "https://www.ankerkraut.de": {
+    "selector": "a.cmpboxbtn.cmpboxbtnno",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"nur notwendige verwenden\"",
+    "banner_gone": true
+  },
+  "https://www.antenne.de": {
+    "selector": "[data-testid='uc-deny-all-button']",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.apollo.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.aquasabi.de": {
+    "selector": "button[aria-label*='ablehnen' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.ashemaletube.me": {
+    "selector": "a.cb-btn.cb-btn-tertiary:nth-of-type(1)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"essential only\"",
+    "banner_gone": true
+  },
+  "https://www.astroportal.com": {
+    "selector": "nav.fast-cmp-layout-nav > span.fast-cmp-home-refuse:nth-of-type(1) > button.fast-cmp-button-secondary",
+    "frame_url": "about:blank",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.astroshop.de": {
+    "selector": "button[data-cookiefirst-action=reject]",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiefirst.com",
+    "banner_gone": true
+  },
+  "https://www.badewelt-sinsheim.de": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://www.bayer04.de": {
+    "selector": "[data-testid='uc-deny-all-button']",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.bbv-net.de": {
+    "selector": "a.cmpboxbtn.cmpboxbtnno",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alles ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.bergson-shop.de": {
+    "selector": "#alleauswaehlen",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.bestfans.com": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://www.blau.de": {
+    "selector": "[data-testid='uc-deny-all-button']",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.blick-aktuell.de": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://www.bosch-home.com": {
+    "selector": ".cmpboxbtnno",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "consentmanager.net",
+    "banner_gone": true
+  },
+  "https://www.bosch-professional.com": {
+    "selector": "button.a-button.a-button--secondary",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"decline all\"",
+    "banner_gone": true
+  },
+  "https://www.brickmerge.de": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://www.bsb.de": {
+    "selector": "#usercentrics-button #uc-btn-deny-banner",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "usercentrics-button",
+    "banner_gone": true
+  },
+  "https://www.bundeswehr-und-mehr.de": {
+    "selector": "button.btn.btn-block:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alle ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.bvb.de": {
+    "selector": "a.cmpboxbtn.cmpboxbtnno",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alles ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.c-and-a.com": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.capfun.de": {
+    "selector": ".axeptio_mount .needsclick >> button#axeptio_btn_dismiss,button.ax-discardButton",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "axeptio",
+    "banner_gone": true
+  },
+  "https://www.caravan-salon.de": {
+    "selector": "[data-testid='uc-deny-all-button']",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.card-corner.de": {
+    "selector": "#consent-banner-btn-close",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.cashper.de": {
+    "selector": "[data-testid='uc-deny-all-button']",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.change.org": {
+    "selector": "[data-testid*='reject' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.cigarworld.de": {
+    "selector": "[data-testid='uc-deny-all-button']",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.cinecitta.de": {
+    "selector": "button[class*='decline' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.citroen.de": {
+    "selector": "#_psaihm_refuse_all",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alle ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.cleverdialer.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.cnv-medien.de": {
+    "selector": "button[aria-label*='ablehnen' i]",
+    "frame_url": "https://cdn.privacy-mgmt.com/index.html?message_id=1309298&consentUUID=undefined&preload_message=true&hasCsp=true&version=v1&consent_origin=https%3A%2F%2Fcdn.privacy-mgmt.com%2Fconsent%2Ftcfv2&mms_origin=https%3A%2F%2Fcdn.privacy-mgmt.com%2Fmms%2Fv2",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.coeo-inkasso.de": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://www.combi.de": {
+    "selector": "button[data-action=\"click-\\>consent\\#acceptNecessary\\ prevent\"]",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"nur notwendige zulassen\"",
+    "banner_gone": true
+  },
+  "https://www.commerzbank.de": {
+    "selector": "button[id*='deny' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.cornelsen.de": {
+    "selector": "a.cvcm-cookie-consent-settings-basic__decline-link",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.crazypatterns.net": {
+    "selector": "div.modal-footer.text-end:nth-of-type(2) > button.btn.btn-secondary:nth-of-type(1)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.crocs.de": {
+    "selector": "button[class*='reject' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.dak.de": {
+    "selector": "button[data-testid=\"extenden-consent-only-technical\"]",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"nur erforderliche\"",
+    "banner_gone": true
+  },
+  "https://www.dampflager.de": {
+    "selector": "button[data-qa=\"oil-only-essentials-button\"]",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"nur notwendige\"",
+    "banner_gone": true
+  },
+  "https://www.danisch.de": {
+    "selector": "button[aria-label*='ablehnen' i]",
+    "frame_url": "https://cdn.privacy-mgmt.com/index.html?hasCsp=true&message_id=887800&consentUUID=null&consent_origin=https%3A%2F%2Fcdn.privacy-mgmt.com%2Fconsent%2Ftcfv2&preload_message=true&version=v1",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.dasrehaportal.de": {
+    "selector": "button[class*='decline' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.ddizi.im": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "https://join.worldoftanks.eu/1789481152/de/?pub_id=11308942&xid=1790341169111300DE2a02810db1022700e0eacace72989591be4b12f4I&xid_param1=11308942-1406167115-2521801171&chu=%22HeadlessChrome%22%3Bv%3D149,%20%22Chromium%22%3Bv%3D149,%20%22Not%29A%3BBrand%22%3Bv%3D24&chmob=%3F0&chp=Linux&chuafv=149.0.7827.55&sid=SIDbxbSZSVIEd69-5brxsS9NsJn-CKcXGp4BP2wdetTwxt6lhw7uF1nm5DLFO3u953bOBW-zESrn6Z8q_WKxKG7ZuvQfE5Ac5QqYNtyL4IL1aAgObqqwDvSfkfstw153IaD-HI7jLu8QTyjdw&enctid=dloez77dn1to&lpsn=WOT%20WLAP%20Ongoing%20Video&foris=1&teclient=1790341170118951217&utm_source=networks&utm_medium=affiliate&utm_campaign=c7pffjar&utm_content=11308942",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.degewo.de": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://www.dict.cc": {
+    "selector": "button[data-testid=\"rejectAllButton\"]",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alles ablehnen\"",
+    "banner_gone": false
+  },
+  "https://www.dieblaue24.com": {
+    "selector": "nav.fast-cmp-layout-nav > span.fast-cmp-home-refuse:nth-of-type(1) > button.fast-cmp-button-secondary",
+    "frame_url": "about:blank",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.diefalsche9.de": {
+    "selector": ".cmpboxbtnno",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "consentmanager.net",
+    "banner_gone": true
+  },
+  "https://www.dresden.de": {
+    "selector": ".cc-deny",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "Complianz optin",
+    "banner_gone": false
+  },
+  "https://www.dropbox.com": {
+    "selector": "body > div#root > div#ccpa-iframe-theme-provider[data-testid=\"ccpa-iframe-theme-provider\"] > div#ccpa-iframe[data-testid=\"ccpa-iframe\"] > div#ccpa_consent_banner[data-testid=\"ccpa_consent_banner\"] > div:not([id]) > div:nth-child(3):not([id]) > span:not([id]) > span:not([id]) > div:nth-child(2):not([id]) > span:nth-child(1):not([id]) > button#decline_cookies_button[data-testid=\"decline_cookies_button\"]",
+    "frame_url": "https://www.dropbox.com/ccpa_iframe?hide_gdpr=false&should_disable_banner=false&gpc=false&origin=https%253A%252F%252Fwww.dropbox.com&uri_for_logging=dropbox.com%2F&should_show_floating_button=false&should_auto_open_options=undefined&width=1366&locale_override=de&default_non_ccpa=true",
+    "method": "rule",
+    "rule_name": "auto_AU_help.dropbox.com_4ad",
+    "banner_gone": true
+  },
+  "https://www.dus.com": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://www.dynamo-dresden.de": {
+    "selector": "a.cmpboxbtn.cmpboxbtnno",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alles ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.edel-optics.de": {
+    "selector": "a.cmpboxbtn.cmpboxbtnno",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alle ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.edelmetall-handel.de": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://www.ehorses.de": {
+    "selector": "button[aria-label*='ablehnen' i]",
+    "frame_url": "https://cdn.privacy-mgmt.com/index.html?hasCsp=true&message_id=1190947&consentUUID=null&consent_origin=https%3A%2F%2Fcdn.privacy-mgmt.com%2Fconsent%2Ftcfv2&preload_message=true&version=v1",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.elbenwald.de": {
+    "selector": "#shopify-pc__banner__btn-decline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "shopify",
+    "banner_gone": true
+  },
+  "https://www.emirates.com": {
+    "selector": "#onetrust-pc-btn-handler -> .save-preference-btn-handler,.js-consent-save",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.enterprise.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.ergo.de": {
+    "selector": "#onetrust-pc-btn-handler -> .save-preference-btn-handler,.js-consent-save",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.erotikforum.at": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://www.eurogamer.de": {
+    "selector": "#onetrust-pc-btn-handler -> #onetrust-consent-sdk input.category-switch-handler:checked -> .save-preference-btn-handler,.js-consent-save",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.europapark.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.europarcs.de": {
+    "selector": "button[data-action=\"click-\\>consent--consent-management\\#declineAll\"]",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.eyesandmore.de": {
+    "selector": "button.button.is-secondary:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"nur notwendige\"",
+    "banner_gone": true
+  },
+  "https://www.faber.de": {
+    "selector": "div.col-auto:nth-of-type(3) > a.tw-btn.tw-btn-outline",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alle ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.farmerama.com": {
+    "selector": "#disagree-btn",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "quantcast",
+    "banner_gone": true
+  },
+  "https://www.finanztip.de": {
+    "selector": ".cmpboxbtnno",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "consentmanager.net",
+    "banner_gone": true
+  },
+  "https://www.firmoo.de": {
+    "selector": ".cmpboxbtnno",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "consentmanager.net",
+    "banner_gone": true
+  },
+  "https://www.fischer-wolle.de": {
+    "selector": "button[class*='decline' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.flashscore.com": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.flashscore.com.ua": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.flashscore.pl": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.floraprima.de": {
+    "selector": "button[class*='decline' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.frosta.de": {
+    "selector": ".brlbs-btn-accept-only-essential,a[data-cookie-refuse]",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "borlabs",
+    "banner_gone": true
+  },
+  "https://www.g2g.com": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://www.garmin.com": {
+    "selector": "#truste-consent-required",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "trustarc-top",
+    "banner_gone": true
+  },
+  "https://www.garnier.de": {
+    "selector": "#onetrust-pc-btn-handler -> .save-preference-btn-handler,.js-consent-save",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.gate-to-the-games.de": {
+    "selector": "#consent-banner-btn-close",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.gettyimages.de": {
+    "selector": "#onetrust-pc-btn-handler -> .save-preference-btn-handler,.js-consent-save",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.glamour.de": {
+    "selector": "#fides-banner .fides-reject-all-button",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "fides",
+    "banner_gone": false
+  },
+  "https://www.goleasy.de": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://www.gomibo.de": {
+    "selector": "button[class*='decline' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.google.com.hk": {
+    "selector": ".HTjtHe#xe7COe button#W0wltc",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "google.com",
+    "banner_gone": true
+  },
+  "https://www.grillfuerst.de": {
+    "selector": "#acceptnone",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alle ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.grover.com": {
+    "selector": "button.Button__ButtonWrapper-devsbb__sc-jy90we-0.hqiWdo:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"nur notwendige\"",
+    "banner_gone": true
+  },
+  "https://www.grower.ch": {
+    "selector": "a.button--link.button:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"optionale cookies ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.handystar.de": {
+    "selector": "a.uc-deny-all:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.hannover-airport.de": {
+    "selector": "button[data-cookiefirst-action=reject]",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiefirst.com",
+    "banner_gone": true
+  },
+  "https://www.heide-park.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.honda.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.humblebundle.com": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.hyundai.com": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.idrlabs.com": {
+    "selector": "a.cmpboxbtn.cmpboxbtnno",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alles ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.ign.com": {
+    "selector": "#disagree-btn",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "quantcast",
+    "banner_gone": true
+  },
+  "https://www.ilfattoquotidiano.it": {
+    "selector": "#cl-consent [data-role=\"b_options\"] -> .cl-consent-popup.cl-consent-visible [data-role=\"alloff\"] -> [data-role=\"b_save\"]",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "click.io",
+    "banner_gone": true
+  },
+  "https://www.imago-images.de": {
+    "selector": "button[data-cookiefirst-action=reject]",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiefirst.com",
+    "banner_gone": true
+  },
+  "https://www.impericon.com": {
+    "selector": "[data-testid='uc-deny-all-button']",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.insetto.eu": {
+    "selector": "button[class*='decline' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.istockphoto.com": {
+    "selector": "#onetrust-pc-btn-handler -> .save-preference-btn-handler,.js-consent-save",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.jet.de": {
+    "selector": "button[id*='deny' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.jobs-beim-staat.de": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://www.jochen-schweizer.de": {
+    "selector": "[data-testid='uc-deny-all-button']",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.juedische-allgemeine.de": {
+    "selector": "button[class*='deny' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.kartenmacherei.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.kfzteile24.de": {
+    "selector": "button[class*='reject' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.kia.com": {
+    "selector": "#onetrust-pc-btn-handler -> .save-preference-btn-handler,.js-consent-save",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.koeln.de": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://www.koffer.com": {
+    "selector": "[data-testid*='reject' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.kreiszeitung-wochenblatt.de": {
+    "selector": "div[aria-label=\"Reject\\ all\\ consents\"]",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alles ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.kuechengoetter.de": {
+    "selector": ".cmpboxbtnno",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "consentmanager.net",
+    "banner_gone": true
+  },
+  "https://www.kvb.koeln": {
+    "selector": ".cc-dismiss",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "Complianz optin",
+    "banner_gone": false
+  },
+  "https://www.leitner-reisen.de": {
+    "selector": "div.MuiStack-root.mui-opkp0k:nth-of-type(2) > button.MuiButtonBase-root.MuiButton-root:nth-of-type(1)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.lenovo.com": {
+    "selector": "body > div#_evidon-barrier-wrapper > div:nth-child(2)#_evidon-banner > div:nth-child(1)#_evidon-banner-content > div:nth-child(5):not([id]) > button:nth-child(2)#_evidon-barrier-declinebutton",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "auto_DE_lenovo.com_xcv",
+    "banner_gone": true
+  },
+  "https://www.lidl-reisen.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.liebherr.com": {
+    "selector": "button[id*='deny' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.liebscher-bracht.com": {
+    "selector": ".cky-consent-container [data-cky-tag=reject-button]",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookieyes",
+    "banner_gone": true
+  },
+  "https://www.liquid-life.de": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://www.livescore.in": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.loewen-play.de": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://www.loreal-paris.de": {
+    "selector": "#onetrust-pc-btn-handler -> .save-preference-btn-handler,.js-consent-save",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.lotto-niedersachsen.de": {
+    "selector": "button[id*='reject' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.ma-shops.de": {
+    "selector": "input[name=\"gdprDeny\"]",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.magentasport.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.malteser.de": {
+    "selector": "[data-omcookie-panel-save=min]",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "om",
+    "banner_gone": true
+  },
+  "https://www.marktcom.de": {
+    "selector": "#cookiescript_reject",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookie-script",
+    "banner_gone": true
+  },
+  "https://www.meinbezirk.at": {
+    "selector": ".ot-pc-refuse-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.misterspex.de": {
+    "selector": "[data-testid='uc-deny-all-button']",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.mittelhessen.de": {
+    "selector": ".cmpboxbtnno",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "consentmanager.net",
+    "banner_gone": true
+  },
+  "https://www.modellbahnshop-lippe.com": {
+    "selector": "#cookiescript_reject",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookie-script",
+    "banner_gone": true
+  },
+  "https://www.momondo.de": {
+    "selector": "button.RxNS.RxNS-mod-stretch:nth-of-type(3)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alle ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.movieside.de": {
+    "selector": "a.button.button--link:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"optionale cookies ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.msdmanuals.com": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.munich-airport.de": {
+    "selector": ".cmpboxbtnno",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "consentmanager.net",
+    "banner_gone": true
+  },
+  "https://www.mymuesli.com": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://www.mytime.de": {
+    "selector": "button[data-action=\"click-\\>consent\\#acceptNecessary\\ prevent\"]",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"nur notwendige zulassen\"",
+    "banner_gone": true
+  },
+  "https://www.nanu-nana.de": {
+    "selector": "div.et-consent-button-container:nth-of-type(6) > div > button:nth-of-type(1)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alles ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.oberstdorf.de": {
+    "selector": "div.bottom:nth-of-type(2) > button.bgcolor:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"nur notwendige akzeptieren\"",
+    "banner_gone": true
+  },
+  "https://www.opel.de": {
+    "selector": "#_psaihm_refuse_all",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alle ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.oppo.com": {
+    "selector": "#truste-consent-required",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "trustarc-top",
+    "banner_gone": true
+  },
+  "https://www.ost2rad.de": {
+    "selector": "button[data-qa=\"oil-only-essentials-button\"]",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"nur notwendige\"",
+    "banner_gone": true
+  },
+  "https://www.ostseewelle.de": {
+    "selector": "[data-testid='uc-deny-all-button']",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.pamperedchef.de": {
+    "selector": ".osano-cm-denyAll,.osano-cm-deny",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "osano",
+    "banner_gone": true
+  },
+  "https://www.panini.de": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://www.paramountplus.com": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.parfumdreams.de": {
+    "selector": "[data-testid='uc-deny-all-button']",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.pattydoo.de": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://www.penny.de": {
+    "selector": "[data-testid='uc-deny-all-button']",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.peugeot.de": {
+    "selector": "#_psaihm_refuse_all",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alle ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.pferdesport-deutschland.de": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://www.pflege.de": {
+    "selector": ".cmpboxbtnno",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "consentmanager.net",
+    "banner_gone": true
+  },
+  "https://www.pflegecampus.de": {
+    "selector": "button.pc-cc-btn.pc-cc-btn--secondary:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alle ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.picdrop.com": {
+    "selector": "button[id*='decline' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.playboy.de": {
+    "selector": "button[aria-label*='ablehnen' i]",
+    "frame_url": "https://cdn.privacy-mgmt.com/index.html?hasCsp=true&message_id=869026&consentUUID=null&consent_origin=https%3A%2F%2Fcdn.privacy-mgmt.com%2Fconsent%2Ftcfv2&preload_message=true&version=v1",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.playmobil-funpark.de": {
+    "selector": "button[id*='deny' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.playmobil.com": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.plotek.pl": {
+    "selector": ".ot-pc-refuse-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.polsatnews.pl": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.proaurum.de": {
+    "selector": "button[data-cookiefirst-action=reject]",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiefirst.com",
+    "banner_gone": true
+  },
+  "https://www.prosport.ro": {
+    "selector": "#onetrust-pc-btn-handler -> .save-preference-btn-handler,.js-consent-save",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.ravensburger.de": {
+    "selector": "div.modal-btn:nth-of-type(2) > button.flex-grow-1.btn",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"nur notwendige\"",
+    "banner_gone": true
+  },
+  "https://www.rebuy.de": {
+    "selector": "#cookiescript_reject",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookie-script",
+    "banner_gone": true
+  },
+  "https://www.recklinghaeuser-zeitung.de": {
+    "selector": "a.cmpboxbtn.cmpboxbtnno",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alles ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.reifenleader.de": {
+    "selector": "[data-action*='reject' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.renault.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.rezultati.com": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.roompot.de": {
+    "selector": "#CybotCookiebotDialogBodyLevelButtonLevelOptinDeclineAll",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://www.rottentomatoes.com": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.rtl2.de": {
+    "selector": ".sp_choice_type_13",
+    "frame_url": "https://sourcepoint.rtl2.de/index.html?hasCsp=true&message_id=941524&consentUUID=null&consent_origin=https%3A%2F%2Fsourcepoint.rtl2.de%2Fconsent%2Ftcfv2&preload_message=true&version=v1",
+    "method": "rule",
+    "rule_name": "sourcepoint-frame",
+    "banner_gone": true
+  },
+  "https://www.ruehl24.de": {
+    "selector": "button[data-qa=\"oil-only-essentials-button\"]",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"nur notwendige\"",
+    "banner_gone": true
+  },
+  "https://www.saalesparkasse.de": {
+    "selector": "a.secondary:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.sana.de": {
+    "selector": ".cmpboxbtnno",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "consentmanager.net",
+    "banner_gone": true
+  },
+  "https://www.schwarzwald-tourismus.info": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://www.scribd.com": {
+    "selector": ".osano-cm-denyAll,.osano-cm-deny",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "osano",
+    "banner_gone": true
+  },
+  "https://www.secretescapes.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.seen.de": {
+    "selector": ".cmpboxbtnsave",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "consentmanager.net",
+    "banner_gone": true
+  },
+  "https://www.shop-naturpur.de": {
+    "selector": "#consent-banner-btn-close",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.sieh-an.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.sim.de": {
+    "selector": "#consent_wall_optout",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.singles-leipzig.de": {
+    "selector": ".qc-cmp2-summary-buttons > button[mode=\"secondary\"]:nth-of-type(2)",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "quantcast",
+    "banner_gone": true
+  },
+  "https://www.sinnesfeuer.de": {
+    "selector": "input[name=\"accept__default\"]",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.slotmagie.de": {
+    "selector": "#cookiescript_reject",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookie-script",
+    "banner_gone": true
+  },
+  "https://www.smarticular.net": {
+    "selector": ".brlbs-btn-save,#CookieBoxSaveButton",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "borlabs",
+    "banner_gone": false
+  },
+  "https://www.snipes.com": {
+    "selector": "a.cmpboxbtn.cmpboxbtnno",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alle ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.spaetzlesuche.de": {
+    "selector": "div.contacting_cookie_consent > input:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alle ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.sparda-west.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.sparkasse-aachen.de": {
+    "selector": "a.secondary:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.sparkasse-dadi.de": {
+    "selector": "a.secondary:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.sparkasse-essen.de": {
+    "selector": "a.secondary:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.sparkasse-hannover.de": {
+    "selector": "a.secondary:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.sparkasse-leipzig.de": {
+    "selector": "a.secondary:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.sparkasse-oberlausitz-niederschlesien.de": {
+    "selector": "a.secondary:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.sparkasse-westmuensterland.de": {
+    "selector": "a.secondary:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.sparwelt.de": {
+    "selector": "a.cmpboxbtn.cmpboxbtnno",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alle ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.spk-schwaben-bodensee.de": {
+    "selector": "a.secondary:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.sport.ro": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.sskduesseldorf.de": {
+    "selector": "a.secondary:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.stage-entertainment.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.stihl.de": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.summer-breeze.de": {
+    "selector": ".brlbs-btn-accept-only-essential,a[data-cookie-refuse]",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "borlabs",
+    "banner_gone": true
+  },
+  "https://www.superdry.de": {
+    "selector": ".ot-pc-refuse-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.surveymonkey.com": {
+    "selector": "#fides-banner .fides-reject-all-button",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "fides",
+    "banner_gone": true
+  },
+  "https://www.swatch.com": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.tennis-point.de": {
+    "selector": "#onetrust-pc-btn-handler -> .save-preference-btn-handler,.js-consent-save",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.terminland.de": {
+    "selector": ".cc-dismiss",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "Complianz optin",
+    "banner_gone": true
+  },
+  "https://www.the-british-shop.de": {
+    "selector": "button[id*='reject' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.themoviedb.org": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.thomassabo.com": {
+    "selector": "a.cmpboxbtn.cmpboxbtnno",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.toypro.com": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://www.trauer.ms": {
+    "selector": ".cmpboxbtnno",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "consentmanager.net",
+    "banner_gone": true
+  },
+  "https://www.trekbikes.com": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://www.trustdeals.de": {
+    "selector": "#cookiescript_reject",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookie-script",
+    "banner_gone": true
+  },
+  "https://www.tube8.fr": {
+    "selector": "#cookie_consent_wrapper #consent_accept_essential -> #cookie_consent_min_wrapper #close_minimized_banner",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "aylo-cookie-banner",
+    "banner_gone": true
+  },
+  "https://www.uber.com": {
+    "selector": "button[aria-label*='ablehnen' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.ufc.com": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.vangraaf.com": {
+    "selector": "[data-testid='uc-deny-all-button']",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.vbb.de": {
+    "selector": "#CybotCookiebotDialogBodyButtonDecline",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://www.vbs-hobby.com": {
+    "selector": "div.d-flex.gap-3:nth-of-type(4) > button.btn.btn-primary:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.voyage-prive.de": {
+    "selector": "button[class*='reject' i]",
+    "frame_url": "",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.vrr.de": {
+    "selector": "#CybotCookiebotDialogBodyLevelButtonLevelOptinDeclineAll",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "cookiebot",
+    "banner_gone": true
+  },
+  "https://www.w3schools.com": {
+    "selector": "button.fast-cmp-button-secondary",
+    "frame_url": "about:blank",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.waipu.tv": {
+    "selector": ".sp_choice_type_SE",
+    "frame_url": "https://cdn.privacy-mgmt.com/index.html?message_id=1469322&consentUUID=undefined&preload_message=true&hasCsp=true&version=v1&consent_origin=https%3A%2F%2Fcdn.privacy-mgmt.com%2Fconsent%2Ftcfv2&mms_origin=https%3A%2F%2Fcdn.privacy-mgmt.com%2Fmms%2Fv2",
+    "method": "rule",
+    "rule_name": "sourcepoint-frame",
+    "banner_gone": true
+  },
+  "https://www.wempe.com": {
+    "selector": "a.cmpboxbtn.cmpboxbtnno",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"alles ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.westfield.com": {
+    "selector": "#onetrust-reject-all-handler",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.westwing.de": {
+    "selector": "#onetrust-pc-btn-handler -> .save-preference-btn-handler,.js-consent-save",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "onetrust",
+    "banner_gone": true
+  },
+  "https://www.winsim.de": {
+    "selector": "#consent_wall_optout",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.wirtrauern.de": {
+    "selector": "button[aria-label*='ablehnen' i]",
+    "frame_url": "https://cdn.privacy-mgmt.com/index.html?message_id=928666&consentUUID=undefined&preload_message=true&hasCsp=true&version=v1&consent_origin=https%3A%2F%2Fcdn.privacy-mgmt.com%2Fconsent%2Ftcfv2&mms_origin=https%3A%2F%2Fconsent.dumont.de%2Fmms%2Fv2",
+    "method": "generic",
+    "rule_name": "",
+    "banner_gone": true
+  },
+  "https://www.xasiat.com": {
+    "selector": "#kt-cookie-decline",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"decline\"",
+    "banner_gone": true
+  },
+  "https://www.xbox.com": {
+    "selector": "button._1XuCi2WhiqeWRUVp3pnFG3.erL690_8JwUW-R4bJRcfl:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": true
+  },
+  "https://www.xn--pfotenglck-bayern-92b.de": {
+    "selector": "a.medium.cli-plugin-button:nth-of-type(1)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"ablehnen\"",
+    "banner_gone": false
+  },
+  "https://www.zaehlerschrank24.de": {
+    "selector": ".cc-dismiss",
+    "frame_url": "",
+    "method": "rule",
+    "rule_name": "Complianz optin",
+    "banner_gone": true
+  },
+  "https://xhplus.live": {
+    "selector": "div:nth-of-type(3) > button.root-f87d5.withSlot-f87d5:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"reject\"",
+    "banner_gone": true
+  },
+  "https://xhtv.today": {
+    "selector": "div:nth-of-type(3) > button.root-f87d5.withSlot-f87d5:nth-of-type(2)",
+    "frame_url": "",
+    "method": "text",
+    "rule_name": "text=\"reject\"",
+    "banner_gone": true
+  }
+}
