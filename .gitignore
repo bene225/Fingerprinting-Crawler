@@ -1,14 +1,23 @@
-# Obsidian Einstellungen ignorieren
+# Obsidian 
 docs/.obsidian
 
+# Caches
 __pycache__
 core/__pycache__
 
+# IDE Settings
+.vscode/
 
-tests
-
+# Ergebnisse zu groß 
 results/*
 
+# Nur Screens
 crux_negation_selectors/shots/*
 
+
 utils/trackerradar/data
+
+# Tranco zu groß, selberdownloaden
+utils/tranco_647LX.csv
+
+crux_negation_selectors/crux_de_202608.csv
